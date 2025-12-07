@@ -18,7 +18,7 @@ const SocialLogin = () => {
 
                 // create user in the database
                 const userInfo = {
-                    email: result.user.email,
+                    email: result.user.email || result.user?.providerData?.[0]?.email,
                     displayName: result.user.displayName,
                     photoURL: result.user.photoURL,
                     role: "Student",

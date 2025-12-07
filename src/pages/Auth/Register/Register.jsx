@@ -8,20 +8,14 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 
 const Register = () => {
-    const { register, handleSubmit, watch,  formState: { errors }, } = useForm();
+    const { register, handleSubmit, formState: { errors }, } = useForm();
     const [authError, setAuthError] = React.useState("");
-    const passwordValue = watch("password", "");
+
     const { registerUser, updateUserProfile } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
-    const passwordChecks = [
-        { regex: /[A-Z]/, label: "At least one uppercase letter" },
-        { regex: /[a-z]/, label: "At least one lowercase letter" },
-        { regex: /\d/, label: "At least one number" },
-        { regex: /[^A-Za-z0-9]/, label: "At least one special character" },
-        { regex: /.{6,}/, label: "Minimum 6 characters long" },
-    ];      
+      
 
     const handleRegistration = (data) => {
     const profileImg = data.photo[0];
@@ -62,7 +56,7 @@ const Register = () => {
         updateUserProfile(userProfile)
             .then(() => {
             //   console.log('user profile updated done.')
-                navigate(location.state || "/");
+                navigate(location?.state || "/");
             })
             .catch((error) => {
                 toast.error("Profile update failed!");
@@ -97,38 +91,11 @@ return (
         <input type="email" {...register("email", { required: true })} className="input w-full" placeholder="Email" />
         {errors.email?.type === "required" && <p className="text-red-500">Email is required.</p>}
 
-        {/* <label className="label">Password</label>
+        <label className="label">Password</label>
         <input type="password" {...register("password", { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/, })}  className="input w-full" placeholder="Password" />
             {errors.password?.type === "required" && <p className="text-red-500">Password is required.</p>}
             {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
-            {errors.password?.type === "pattern" && <p className="text-red-500">Password must have at least one uppercase, at least one lowercase, at least one number, and at least one special characters</p>} */}
-
-<label className="label">Password</label>
-      <input
-        type="password"
-        {...register("password", { required: true })}
-        className="input w-full"
-        placeholder="Password"
-      />
-
-      {/* Live feedback list */}
-      {passwordValue && (
-        <ul className="mt-2 space-y-1 text-sm">
-          {passwordChecks.map((check, index) => {
-            const passed = check.regex.test(passwordValue);
-            return (
-              <li key={index} className={passed ? "text-green-600" : "text-red-500"}>
-                {check.label}
-              </li>
-            );
-          })}
-        </ul>
-      )}
-
-      {/* react-hook-form validation error */}
-      {errors.password?.type === "required" && (
-        <p className="text-red-500">Password is required.</p>
-      )}
+            {errors.password?.type === "pattern" && <p className="text-red-500">Password must contain an uppercase letter, a lowercase letter, a number, and a special character.</p>}
 
 
         <label className="label">Register As</label>

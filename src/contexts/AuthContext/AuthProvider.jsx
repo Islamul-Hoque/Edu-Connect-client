@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged,
 import { auth } from '../../Firebase/firebase.init';
 
 const googleProvider = new GoogleAuthProvider();
+googleProvider.addScope('email')
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
