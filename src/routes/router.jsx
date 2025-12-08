@@ -7,6 +7,8 @@ import AllTuitions from "../pages/AllTuitions/AllTuitions";
 import AllTutors from "../pages/AllTutors/AllTutors";
 import About from "../pages/About/About";
 import Contact from "../pages/Contact/Contact";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import TuitionDetails from "../pages/TuitionDetails/TuitionDetails";
 
 
 
@@ -32,6 +34,11 @@ export const router = createBrowserRouter([
         Component: AllTuitions
       },
       {
+        path: 'tuition-details/:id',
+        Component: TuitionDetails,
+        
+      },
+      {
         path: 'all-tutors',
         Component: AllTutors
       },
@@ -45,5 +52,9 @@ export const router = createBrowserRouter([
       },
     ]
   }, 
+  {
+    path: '*',
+    Component: ErrorPage
+  }
 
 ]);

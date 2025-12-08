@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import { FaBookOpen, FaGraduationCap, FaSchool, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaEye } from "react-icons/fa";
+import { Link } from 'react-router';
 
 const TuitionCard = ({ tuition }) => {
     const cardVariants = {
@@ -17,7 +18,7 @@ const TuitionCard = ({ tuition }) => {
                 <p className="text-gray-600 text-sm flex items-center gap-2"><FaClock className="text-indigo-500" /> {tuition.schedule}</p>
                 <p className="text-gray-600 text-sm flex items-center gap-2"><FaMoneyBillWave className="text-indigo-500" /> {tuition.budget} Tk/Month</p>
             </div>
-            <button className="mt-4 bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition flex items-center justify-center gap-2"><FaEye /> View Details</button>
+            <Link to={`/tuition-details/${tuition._id}`} className="mt-4 bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 transition flex items-center justify-center gap-2"><FaEye /> View Details</Link>
         </motion.div>
     );
 };
