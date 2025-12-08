@@ -3,6 +3,8 @@ import Register from "../pages/Auth/Register/Register";
 import Login from "../pages/Auth/Login/Login";
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home";
+import AllTuitions from "../pages/AllTuitions/AllTuitions";
+import AllTutors from "../pages/AllTutors/AllTutors";
 
 
 
@@ -22,7 +24,15 @@ export const router = createBrowserRouter([
       {
         path: 'register',
         Component: Register
-      }
+      },
+      {
+        path: 'all-tuitions',
+        Component: AllTuitions
+      },
+      {
+        path: 'all-tutors',
+        Component: AllTutors
+      },
     ]
   }, 
 
