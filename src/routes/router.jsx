@@ -13,6 +13,7 @@ import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/Dashboard/Dashboard";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import AddTuition from "../pages/Dashboard/AddTuition/AddTuition";
+import MyTuitions from "../pages/Dashboard/My Tuitions/MyTuitions";
 
 
 
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: 'add-tuition', 
         Component: AddTuition
+      },
+      {
+        path: 'my-tuitions', 
+        Component: MyTuitions
       },
       // {
       //   path: 'payment/:parcelId',

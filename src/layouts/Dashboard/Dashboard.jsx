@@ -38,12 +38,12 @@ const DashboardLayout = () => {
                         </li>
 
                         {/* our dashboard links */}
-                        <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Tuitions" to="/dashboard/my-tuitions">
-                                <FaBookOpen /> <span className="is-drawer-close:hidden">My Tuitions</span>
-                            </NavLink>
-                        </li>
                         <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Tuition" to="/dashboard/add-tuition">
                                 <FaPlusCircle /><span className="is-drawer-close:hidden">Add Tuition</span>
+                            </NavLink>
+                        </li>
+                        <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Tuitions Post" to="/dashboard/my-tuitions">
+                                <FaBookOpen /> <span className="is-drawer-close:hidden">My Tuitions Post</span>
                             </NavLink>
                         </li>
                         <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Applied Tutors" to="/dashboard/applied-tutors">
