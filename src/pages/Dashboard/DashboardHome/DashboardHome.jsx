@@ -1,9 +1,10 @@
 import React from 'react';
+import AddTuition from '../AddTuition/AddTuition';
 
 const DashboardHome = () => {
     return (
         <div>
-            <h3>DashboardHome.jsx</h3>
+            <AddTuition/>
         </div>
     );
 };

@@ -3,6 +3,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import TutorsCard from '../Home/Tutors/TutorsCard';
 import { motion } from "framer-motion";
+import Loading from '../../Components/Loading/Loading';
 
 const AllTutors = () => {
     const axiosSecure = useAxiosSecure();
@@ -12,10 +13,9 @@ const AllTutors = () => {
         queryFn: async () => {
         const res = await axiosSecure.get('/all-tutors');
         return res.data;
-    }
-});
+    }})
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <Loading/>
     if (isError) return <p>Something went wrong!</p>;
 
     return (

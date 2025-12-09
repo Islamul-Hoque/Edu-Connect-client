@@ -12,6 +12,7 @@ import TuitionDetails from "../pages/TuitionDetails/TuitionDetails";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/Dashboard/Dashboard";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
+import AddTuition from "../pages/Dashboard/AddTuition/AddTuition";
 
 
 
@@ -63,14 +64,14 @@ export const router = createBrowserRouter([
     path: 'dashboard',
     element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
     children: [
-      {
-        index: true,
-        Component: DashboardHome
-      },
       // {
-      //   path: 'my-parcels', 
-      //   Component: MyParcels
+      //   index: true,
+      //   Component: DashboardHome
       // },
+      {
+        path: 'add-tuition', 
+        Component: AddTuition
+      },
       // {
       //   path: 'payment/:parcelId',
       //   Component: Payment

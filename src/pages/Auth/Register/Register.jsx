@@ -15,7 +15,6 @@ const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
-      
 
     const handleRegistration = (data) => {
     const profileImg = data.photo[0];
