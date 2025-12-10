@@ -14,6 +14,7 @@ import DashboardLayout from "../layouts/Dashboard/Dashboard";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import AddTuition from "../pages/Dashboard/AddTuition/AddTuition";
 import MyTuitions from "../pages/Dashboard/My Tuitions/MyTuitions";
+import UpdateTuitionPost from "../pages/Dashboard/UpdateTuitionPost/UpdateTuitionPost";
 
 
 
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path: 'add-tuition', 
         Component: AddTuition
+      },
+      {
+        path: 'update-tuition/:id', 
+        Component: UpdateTuitionPost
       },
       {
         path: 'my-tuitions', 
