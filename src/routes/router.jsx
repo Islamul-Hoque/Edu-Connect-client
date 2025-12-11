@@ -16,6 +16,7 @@ import AddTuition from "../pages/Dashboard/AddTuition/AddTuition";
 import MyTuitions from "../pages/Dashboard/My Tuitions/MyTuitions";
 import UpdateTuitionPost from "../pages/Dashboard/UpdateTuitionPost/UpdateTuitionPost";
 import AppliedTutors from "../pages/Dashboard/AppliedTutors/AppliedTutors";
+import MyApplications from "../pages/Dashboard/MyApplications/MyApplications";
 
 
 export const router = createBrowserRouter([
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
       {
         path: 'applied-tutors', 
         Component: AppliedTutors
+      },
+      {
+        path: 'my-applications', 
+        Component: MyApplications
       },
     ]
   }

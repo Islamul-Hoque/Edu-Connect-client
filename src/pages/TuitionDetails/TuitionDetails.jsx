@@ -30,6 +30,8 @@ const TuitionDetails = () => {
 
   const application = {
     tuitionId: id,
+    tuitionClass: tuition.class,
+    tuitionSubject: tuition.subject,
     tutorPhoto: user?.photoURL ||  user?.providerData?.[0]?.photoURL,
     tutorName: form.name.value,
     tutorEmail: form.email.value,

@@ -114,10 +114,6 @@ const { data: applications = [], isLoading } = useQuery({
   </table>
 </div>
 
-
-
-    
-    
     </div>
   );
 };
