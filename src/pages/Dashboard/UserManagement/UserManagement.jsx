@@ -15,10 +15,21 @@ const UserManagement = () => {
 
   const handleUpdateSubmit = async (e, user) => {
     e.preventDefault();
-    // const form = e.target;
-    // const updatedData = { displayName: form.displayName.value, email: form.email.value, photoURL: form.photoURL.value, phone: form.phone.value, role: form.role.value, status: form.status.value };
-    // const res = await axiosSecure.patch(`/users/${user._id}`, updatedData);
-    // if (res.data.modifiedCount > 0) { refetch(); UpdateModalRef.current.close(); toast.success("User updated successfully!"); }
+    const form = e.target;
+    const updatedData = { 
+      displayName: form.displayName.value, 
+      email: form.email.value, 
+      photoURL: form.photoURL.value, 
+      phone: form.phone.value, 
+      role: form.role.value, 
+      status: form.status.value 
+    };
+    const res = await axiosSecure.patch(`/users/${user._id}`, updatedData);
+    if (res.data.modifiedCount > 0) { 
+      refetch(); 
+      UpdateModalRef.current.close(); 
+      toast.success("User updated successfully!") 
+    }
   };
 
   const handleDelete = async (userId) => {
