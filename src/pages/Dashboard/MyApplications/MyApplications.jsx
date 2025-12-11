@@ -33,23 +33,23 @@ const MyApplications = () => {
   };
 
 const handleDelete = async (appId) => {
-  // Swal.fire({
-  //   title: "Are you sure?",
-  //   text: "You won't be able to revert this!",
-  //   icon: "warning",
-  //   showCancelButton: true,
-  //   confirmButtonColor: "#3085d6",
-  //   cancelButtonColor: "#d33",
-  //   confirmButtonText: "Yes, delete it!"
-  // }).then(async (result) => {
-  //   if (result.isConfirmed) {
-  //     const res = await axiosSecure.delete(`/applications/${appId}`);
-  //     if (res.data.deletedCount > 0) {
-  //       Swal.fire("Deleted!", "Application removed successfully.", "success");
-  //       refetch();
-  //     }
-  //   }
-  // });
+  Swal.fire({
+    title: "Are you sure?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      const res = await axiosSecure.delete(`/applications/${appId}`);
+      if (res.data.deletedCount > 0) {
+        Swal.fire("Deleted!", "Application removed successfully.", "success");
+        refetch();
+      }
+    }
+  });
 };
 
 
