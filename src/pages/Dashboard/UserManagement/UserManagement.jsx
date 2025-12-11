@@ -89,9 +89,13 @@ const UserManagement = () => {
                 <td>{user.role}</td>
                 <td><select defaultValue={user.role} onChange={(e) => handleRoleUpdate(user._id, e.target.value)} className="select select-sm"><option value="Student">Student</option><option value="Tutor">Tutor</option><option value="Admin">Admin</option></select></td>
                 <td>{user.status}</td>
-                <td className="flex gap-2">
+                {/* <td className="flex gap-2">
                   <button onClick={() => { setSelectedUser(user); UpdateModalRef.current.showModal(); }} className="btn btn-sm btn-warning flex items-center gap-1"><FaEdit /> Update</button>
                   <button onClick={() => handleDelete(user._id)} className="btn btn-sm btn-error flex items-center gap-1"><FaTrash /> Delete</button>
+                </td> */}
+                <td className="flex gap-2">
+                  <button onClick={() => { setSelectedUser(user); UpdateModalRef.current.showModal(); }} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-1 shadow-md"><FaEdit /> Update</button>
+                  <button onClick={() => handleDelete(user._id)} className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-1 shadow-md"><FaTrash /> Delete</button>
                 </td>
               </tr>
             ))}
@@ -116,7 +120,11 @@ const UserManagement = () => {
               <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3 flex items-center justify-center gap-2"><FaSync /> Save Changes</button>
             </form>
           )}
-          <div className="modal-action"><form method="dialog" className="w-full"><button className="w-full bg-indigo-100 text-gray-800 py-2 rounded-lg hover:bg-indigo-200 transition duration-300 font-semibold shadow-md">Cancel</button></form></div>
+          <div className="modal-action">
+            <form method="dialog" className="w-full">
+              <button className="w-full bg-indigo-100 text-gray-800 py-2 rounded-lg hover:bg-indigo-200 transition duration-300 font-semibold shadow-md">Cancel</button>
+            </form>
+          </div>
         </div>
       </dialog>
     </div>

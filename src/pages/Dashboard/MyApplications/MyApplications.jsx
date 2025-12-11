@@ -5,6 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const MyApplications = () => {
   const { user } = useAuth();
@@ -88,8 +89,8 @@ const handleDelete = async (appId) => {
                 <td className="flex gap-2">
                   {app.status !== "Approved" ? (
                     <>
-                      <button onClick={() => { setSelectedApp(app); UpdateModalRef.current.showModal(); }} className="btn btn-sm btn-warning">Update</button>
-                      <button onClick={() => handleDelete(app._id)} className="btn btn-sm btn-error">Delete</button>
+                      <button onClick={() => { setSelectedApp(app); UpdateModalRef.current.showModal(); }} className="btn btn-sm btn-warning"><FaEdit />Update</button>
+                      <button onClick={() => handleDelete(app._id)} className="btn btn-sm btn-error"><FaTrash />Delete</button>
                     </>
                   ) : (
                     <span className="text-green-600 font-semibold">Locked</span>
