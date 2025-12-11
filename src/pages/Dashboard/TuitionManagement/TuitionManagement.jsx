@@ -18,21 +18,21 @@ const TuitionManagement = () => {
   });
 
   const handleStatusChange = async (tuitionId, newStatus) => {
-    // Swal.fire({
-    //     title: `Confirm ${newStatus}`,
-    //     text: `Are you sure you want to mark this tuition as ${newStatus}?`,
-    //     icon: "question",
-    //     showCancelButton: true,
-    //     confirmButtonText: `Yes, ${newStatus}`,
-    // }).then(async (result) => {
-    //   if (result.isConfirmed) {
-    //     const res = await axiosSecure.patch(`/tuitions/${tuitionId}`, { status: newStatus });
-    //     if (res.data.modifiedCount > 0) {
-    //       Swal.fire("Updated!", `Tuition marked as ${newStatus}.`, "success");
-    //       refetch();
-    //     }
-    //   }
-    // });
+    Swal.fire({
+        title: `Confirm ${newStatus}`,
+        text: `Are you sure you want to mark this tuition as ${newStatus}?`,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: `Yes, ${newStatus}`,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosSecure.patch(`/tuitions/${tuitionId}`, { status: newStatus });
+        if (res.data.modifiedCount > 0) {
+          Swal.fire("Updated!", `Tuition marked as ${newStatus}.`, "success");
+          refetch();
+        }
+      }
+    });
   };
 
   if (isLoading) return <Loading />;
@@ -67,7 +67,7 @@ const TuitionManagement = () => {
                 <td>{tuition.status}</td>
                 <td className="flex gap-2">
                     <button onClick={() => handleStatusChange(tuition._id, "Approved")} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-2 shadow-md"> <HiCheckCircle className="text-lg" /> Approve</button>
-                    <button onClick={() => handleStatusChange(tuition._id, "Rejected")} className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-2 shadow-md"><HiXCircle className="text-lg" /> Reject</button>
+                    {/* <button onClick={() => handleStatusChange(tuition._id, "Rejected")} className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-2 shadow-md"><HiXCircle className="text-lg" /> Reject</button> */}
                 </td>
               </tr>
             ))}
