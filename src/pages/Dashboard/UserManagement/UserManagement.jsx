@@ -28,9 +28,18 @@ const UserManagement = () => {
   };
 
   const handleRoleUpdate = async (userId, newRole) => {
-    // Swal.fire({ title: "Confirm Role Change", text: `Are you sure you want to change role to ${newRole}?`, icon: "question", showCancelButton: true, confirmButtonText: "Yes, change it!" }).then(async (result) => {
-    //   if (result.isConfirmed) { const res = await axiosSecure.patch(`/users/${userId}`, { role: newRole }); if (res.data.modifiedCount > 0) { toast.success("Role updated successfully!"); refetch(); } }
-    // });
+    Swal.fire({ title: "Confirm Role Change", 
+      text: `Are you sure you want to change role to ${newRole}?`, 
+      icon: "question", 
+      showCancelButton: true, 
+      confirmButtonText: "Yes, change it!" 
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosSecure.patch(`/users/${userId}`, { role: newRole }); 
+        if (res.data.modifiedCount > 0) { 
+          toast.success("Role updated successfully!"); refetch(); } 
+        }
+    });
   };
 
   if (isLoading) return <Loading />;
