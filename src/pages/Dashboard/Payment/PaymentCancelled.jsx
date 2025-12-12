@@ -5,8 +5,8 @@ const PaymentCancelled = () => {
     return (
         <div>
             <h2>Payment is cancelled. Please try again</h2>
-            <Link to="/dashboard/applied-tutors">
-            <button className='btn btn-primary text-black'>Try Again</button></Link>
+            {/* <Link to="/dashboard/applied-tutors">
+            <button className='btn btn-primary text-black'>Try Again</button></Link> */}
         </div>
     );
 };
