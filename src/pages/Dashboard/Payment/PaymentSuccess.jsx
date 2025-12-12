@@ -8,7 +8,6 @@ const PaymentSuccess = () => {
     const sessionId = searchParams.get('session_id');
     const axiosSecure = useAxiosSecure();
 
-    // console.log(sessionId);
 
     useEffect(() => {
         if (sessionId) {
@@ -27,8 +26,8 @@ const PaymentSuccess = () => {
     return (
         <div>
             <h2 className="text-4xl">Payment successful</h2>
-            {/* <p>Your TransactionId: {paymentInfo.transactionId}</p>
-            <p>Your Parcel Tracking id: {paymentInfo.trackingId}</p> */}
+            <p>Your TransactionId: {paymentInfo.transactionId}</p>
+            <p>Your  Tracking id: {paymentInfo.trackingId}</p>
         </div>
     );
 };
