@@ -32,8 +32,8 @@ const DashboardLayout = () => {
                     <ul className="menu w-full grow">
                         {/* Home icon */}
                         <li>
-                            <Link to="/" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
-                                <img className='w-[4rem]' src={logo} alt="" />
+                            <Link to="/" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="">
+                                <img className='w-[5rem]' src={logo} alt="" />
                             </Link>
                         </li>
                         <li>
@@ -57,8 +57,8 @@ const DashboardLayout = () => {
                                     <FaUsers /><span className="is-drawer-close:hidden">Applied Tutors</span>
                                 </NavLink>
                             </li>
-                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payments" to="/dashboard/payments">
-                                    <FaRegCreditCard /><span className="is-drawer-close:hidden">Payments</span>
+                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History" to="/dashboard/payments">
+                                    <FaRegCreditCard /><span className="is-drawer-close:hidden">Payment History</span>
                                 </NavLink>
                             </li>
                         </>

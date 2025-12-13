@@ -66,12 +66,12 @@ const PaymentHistory = () => {
             <tbody>
               {payments.map((pay, index) => (
                 <tr key={pay._id}>
-                  <td>{index + 1}</td>
-                  <td>{pay.tutorName} ({pay.tutorEmail})</td>
-                  <td>{pay.subject}</td>
-                  <td>{pay.class}</td>
-                  <td className="text-indigo-600 font-semibold">{pay.amount}</td>
-                  <td>
+                    <td>{index + 1}</td>
+                    <td>{pay.tutorName} ({pay.tutorEmail})</td>
+                    <td>{pay.subject}</td>
+                    <td>{pay.class}</td>
+                    <td className="text-indigo-600 font-semibold">{pay.amount}</td>
+                    <td>
                     {new Date(pay.paidAt).toLocaleDateString('en-US', {
                       month: 'short',
                       day: 'numeric',
