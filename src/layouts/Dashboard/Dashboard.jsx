@@ -33,7 +33,7 @@ const DashboardLayout = () => {
                         {/* Home icon */}
                         <li>
                             <Link to="/" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
-                                <img className='w-full' src={logo} alt="" />
+                                <img className='w-[4rem]' src={logo} alt="" />
                             </Link>
                         </li>
                         <li>

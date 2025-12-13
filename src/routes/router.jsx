@@ -25,11 +25,10 @@ import TutorRoute from "./TutorRoute";
 import StudentRoute from "./StudentRoute";
 import PaymentCancelled from "../pages/Dashboard/Payment/PaymentCancelled";
 import PaymentSuccess from "../pages/Dashboard/Payment/PaymentSuccess";
-import Payment from "../pages/Dashboard/Payment/Payment";
-import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory";
 import OngoingTuitions from "../pages/Dashboard/OngoingTuitions/OngoingTuitions";
 import RevenueHistory from "../pages/Dashboard/RevenueHistory/RevenueHistory";
-
+import ReportsAnalytics from "../pages/Dashboard/ReportsAnalytics/ReportsAnalytics";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -83,13 +82,6 @@ export const router = createBrowserRouter([
         index: true,
         Component: DashboardHome
       },
-      // {
-      //   path: 'payment/:parcelId',
-      //   Component: Payment
-      // },
-      {path: 'payment-history',
-        Component: PaymentHistory
-      },
       {
         path: 'payment-success',
         Component: PaymentSuccess
@@ -114,6 +106,10 @@ export const router = createBrowserRouter([
         path: 'applied-tutors', 
         element: <StudentRoute> <AppliedTutors/> </StudentRoute>,
       },
+      {
+        path: 'payments',
+        element: <StudentRoute> <PaymentHistory/> </StudentRoute>,
+      },
       // Tutor route......................
       {
         path: 'my-applications', 
@@ -135,6 +131,10 @@ export const router = createBrowserRouter([
       {
         path: 'tuition-management', 
         element: <AdminRoute> <TuitionManagement/> </AdminRoute>,
+      },
+      {
+        path: 'reports', 
+        element: <AdminRoute> <ReportsAnalytics/> </AdminRoute>,
       },
       {
         path: 'edit-profile', 
