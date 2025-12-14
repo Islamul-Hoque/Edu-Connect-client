@@ -1,113 +1,97 @@
 import React from 'react';
-import { CiDeliveryTruck } from 'react-icons/ci';
-import { FaBookOpen, FaChartBar, FaClipboardList, FaGraduationCap, FaMoneyBillWave, FaMotorcycle, FaPlusCircle, FaRegCreditCard, FaTasks, FaUserEdit, FaUsers } from 'react-icons/fa';
+import { FaBookOpen, FaChartBar, FaClipboardList, FaGraduationCap, FaMoneyBillWave, FaPlusCircle, FaRegCreditCard, FaTasks, FaUserEdit, FaUsers } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../../hooks/useRole';
-import logo from '../../assets/logo2.png';
-
+import logo from '../../assets/eTuitionBD.png';
 
 const DashboardLayout = () => {
-    const { role } = useRole();
-    return (
-        <div className="drawer lg:drawer-open max-w-7xl mx-auto ">
-            <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                {/* Navbar */}
-                <nav className="navbar w-full bg-indigo-50 text-gray-800 shadow sticky top-0 z-10">
-                    <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn bg-indigo-50 btn-square btn-ghost">
-                        {/* Sidebar toggle icon */}
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M9 4v16"></path><path d="M14 10l2 2l-2 2"></path></svg>
-                    </label>
-                    <div className="">eTuitionBD Dashboard</div>
-                </nav>
-                {/* Page content here */}
-                <Outlet></Outlet>
-            </div>
+  const { role } = useRole();
 
-            <div className="drawer-side is-drawer-close:overflow-visible sticky left-0 bottom-0">
-                <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                <div className="flex min-h-full flex-col items-start bg-indigo-50   text-gray-800 shadow is-drawer-close:w-14 is-drawer-open:w-64">
-                    {/* Sidebar content here */}
+  const activeClass = ({ isActive }) => isActive
+    ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
+    : "text-gray-700 hover:text-indigo-500 px-3 py-1 rounded-md";
+    // ? "bg-indigo-600 text-white font-semibold" : "text-gray-700 hover:bg-indigo-100"
 
-                    <ul className="menu w-full grow">
-                        {/* Home icon */}
-                        <li>
-                            <Link to="/" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="">
-                                <img className='w-[5rem]' src={logo} alt="" />
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
-                                <span className="is-drawer-close:hidden">Home page</span>
-                            </Link>
-                        </li>
+  return (
+    <div className="drawer lg:drawer-open max-w-7xl mx-auto">
+      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
 
-                    {
-                        role === 'Student' && <>
-                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add Tuition" to="/dashboard/add-tuition">
-                                    <FaPlusCircle /><span className="is-drawer-close:hidden">Add Tuition</span>
-                                </NavLink>
-                            </li>
-                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Tuitions Post" to="/dashboard/my-tuitions">
-                                    <FaBookOpen /> <span className="is-drawer-close:hidden">My Tuitions Post</span>
-                                </NavLink>
-                            </li>
-                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Applied Tutors" to="/dashboard/applied-tutors">
-                                    <FaUsers /><span className="is-drawer-close:hidden">Applied Tutors</span>
-                                </NavLink>
-                            </li>
-                            <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History" to="/dashboard/payments">
-                                    <FaRegCreditCard /><span className="is-drawer-close:hidden">Payment History</span>
-                                </NavLink>
-                            </li>
-                        </>
-                    }
+      {/* Content */}
+      <div className="drawer-content flex flex-col">
+        {/* Navbar */}
+        <nav className="navbar w-full bg-indigo-50 text-gray-800 shadow sticky top-0 z-10 flex justify-between">
+          {/* Toggle button শুধু mobile এ */}
+          <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </label>
+          <div className="font-bold">eTuitionBD Dashboard</div>
+        </nav>
 
-                        {
-                            role === 'Tutor' && <>
-                                <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My Applications" to="/dashboard/my-applications">
-                                        <FaClipboardList /> <span className="is-drawer-close:hidden">My Applications</span>
-                                    </NavLink>
-                                </li>
-                                <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Ongoing Tuitions" to="/dashboard/ongoing-tuitions">
-                                        <FaTasks /> <span className="is-drawer-close:hidden">Ongoing Tuitions</span>
-                                    </NavLink>
-                                </li>
-                                <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Revenue History" to="/dashboard/revenue-history">
-                                        <FaMoneyBillWave />  <span className="is-drawer-close:hidden">Revenue History</span>
-                                    </NavLink>
-                                </li>
-                            </>
-                        }
-
-                        {
-                            role === 'Admin' && <>
-                                <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="User Management" to="/dashboard/users-management">
-                                        <FaUsers /><span className="is-drawer-close:hidden">User Management</span>
-                                    </NavLink>
-                                </li>
-                                <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Tuition Management" to="/dashboard/tuition-management">
-                                        <FaGraduationCap /><span className="is-drawer-close:hidden">Tuition Management</span>
-                                    </NavLink>
-                                </li>
-                                <li><NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Reports & Analytics" to="/dashboard/reports">
-                                        <FaChartBar />  <span className="is-drawer-close:hidden">Reports & Analytics</span>
-                                    </NavLink>
-                                </li>
-                            </>
-                        }
-
-                        <li>
-                            <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Edit Profile" to="/dashboard/edit-profile">
-                                <FaUserEdit /><span className="is-drawer-close:hidden">Edit Profile</span>
-                            </NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        {/* Page content */}
+        <div className="p-4">
+          <Outlet />
         </div>
-    );
+      </div>
+
+      {/* Sidebar */}
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
+        <div className="flex min-h-full flex-col bg-indigo-50 text-gray-800 shadow w-64">
+          <ul className="menu p-4 w-full grow">
+            {/* Logo */}
+            <li>
+              <Link to="/" className="flex justify-center mb-4">
+                <img className="" src={logo} alt="Logo" />
+              </Link>
+            </li>
+
+            {/* Common Home */}
+            <li>
+              <NavLink className={activeClass} end to="/dashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>                               
+                <span>Home page</span>
+              </NavLink>
+            </li>
+
+            {/* Student Routes */}
+            {role === 'Student' && (
+              <>
+                <li><NavLink className={activeClass} end to="/dashboard/add-tuition"><FaPlusCircle /> Add Tuition</NavLink></li>
+                <li><NavLink className={activeClass} end to="/dashboard/my-tuitions"><FaBookOpen /> My Tuitions Post</NavLink></li>
+                <li><NavLink className={activeClass} end to="/dashboard/applied-tutors"><FaUsers /> Applied Tutors</NavLink></li>
+                <li><NavLink className={activeClass} end to="/dashboard/payments"><FaRegCreditCard /> Payment History</NavLink></li>
+              </>
+            )}
+
+            {/* Tutor Routes */}
+            {role === 'Tutor' && (
+              <>
+                <li><NavLink className={activeClass} end to="/dashboard/my-applications"><FaClipboardList /> My Applications</NavLink></li>
+                <li><NavLink className={activeClass} end to="/dashboard/ongoing-tuitions"><FaTasks /> Ongoing Tuitions</NavLink></li>
+                <li><NavLink className={activeClass} end to="/dashboard/revenue-history"><FaMoneyBillWave /> Revenue History</NavLink></li>
+              </>
+            )}
+
+            {/* Admin Routes */}
+            {role === 'Admin' && (
+              <>
+                <li><NavLink className={activeClass} end to="/dashboard/users-management"><FaUsers /> User Management</NavLink></li>
+                <li><NavLink className={activeClass} end to="/dashboard/tuition-management"><FaGraduationCap /> Tuition Management</NavLink></li>
+                <li><NavLink className={activeClass} end to="/dashboard/reports"><FaChartBar /> Reports & Analytics</NavLink></li>
+              </>
+            )}
+
+            {/* Common Edit Profile */}
+            <li>
+              <NavLink className={activeClass} to="/dashboard/edit-profile"><FaUserEdit /> Edit Profile</NavLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default DashboardLayout;
