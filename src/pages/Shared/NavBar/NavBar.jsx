@@ -3,17 +3,20 @@ import Logo from '../../../components/Logo/Logo';
 import { Link, NavLink } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import Loading from '../../../Components/Loading/Loading';
+import toast from 'react-hot-toast';
 
 const NavBar = () => {
-    const { user, loading, logOut } = useAuth();
+    const { user, logOut } = useAuth();
 
-    const handleLogOut = () => {
-        logOut()
-        .then()
-        .catch(error => {
-            console.log(error)
-        })
-    }
+    const handleLogOut = async () => {
+        try {
+            await logOut();
+            toast.success("Logged out successfully!");
+        } catch (error) { 
+            toast.error("Logout failed. Please try again.");
+        }
+    };
+
     const activeClass = ({ isActive }) => isActive
         ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
         : "text-gray-700 hover:text-indigo-500 px-3 py-1 rounded-md";

@@ -4,16 +4,23 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router';
 import useRole from '../../hooks/useRole';
 import logo from '../../assets/eTuitionBD.png';
 import useAuth from '../../hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const DashboardLayout = () => {
   const { role } = useRole();
   const { logOut } = useAuth();
-const navigate = useNavigate();
+
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
-  await logOut();
-  navigate('/login');
-  
-};
+    try {
+      await logOut();
+      navigate("/login"); 
+      toast.success("Logged out successfully!");
+    } catch (error) { 
+      toast.error("Logout failed. Please try again.");
+    }
+  };
 
   const activeClass = ({ isActive }) => isActive
     ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
