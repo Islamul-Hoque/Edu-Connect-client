@@ -52,7 +52,7 @@ const AllTuitions = () => {
 
   const headingVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
   return (
-    <div className="bg-gray-50 p-6">
+    <div className="bg-gray-50 px-6 md:px-10 py-6 md:py-10">
       <div className="text-center mb-6">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 text-center" >All Tuitions</motion.h2>
         <br />
@@ -103,7 +103,7 @@ const AllTuitions = () => {
         )}
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {tuitions.map(tuition => <TuitionCard key={tuition._id} tuition={tuition} />)}
         {tuitions.length === 0 && <div className="col-span-full text-center text-gray-500">No tuitions found.</div>}
       </div>

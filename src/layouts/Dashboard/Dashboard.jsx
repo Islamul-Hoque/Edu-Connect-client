@@ -12,6 +12,7 @@ const navigate = useNavigate();
   const handleLogout = async () => {
   await logOut();
   navigate('/login');
+  
 };
 
   const activeClass = ({ isActive }) => isActive

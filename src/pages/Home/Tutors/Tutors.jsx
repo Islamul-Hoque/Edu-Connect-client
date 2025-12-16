@@ -21,7 +21,7 @@ const LatestTutors = () => {
       <div className="max-w-7xl mx-auto">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 mb-8 text-center">Latest Tutors</motion.h2>
 
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} transition={{ staggerChildren: 0.15 }} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} transition={{ staggerChildren: 0.15 }} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           { 
             tutors.map(tutor => ( <TutorsCard key={tutor._id} tutor={tutor} />
 

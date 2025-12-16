@@ -1,17 +1,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
-import { Link, useLocation, useNavigate } from "react-router";
-import SocialLogin from "../SocialLogin/SocialLogin.jsx";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [authError, setAuthError] = React.useState("");
 
-    const { registerUser, updateUserProfile } = useAuth();
+    const { registerUser, updateUserProfile, signInGoogle } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
@@ -37,7 +37,6 @@ const Register = () => {
             };
             axiosSecure.post("/users", userInfo).then((res) => {
                 if (res.data.insertedId) {
-                    console.log("user created in the database");
                     toast.success(`🎉 Welcome ${data.name}, your account has been created!`);
                 }
             });
@@ -50,7 +49,6 @@ const Register = () => {
 
         updateUserProfile(userProfile)
             .then(() => {
-            //   console.log('user profile updated done.')
                 navigate(location?.state || "/");
             })
             .catch((error) => {
@@ -67,57 +65,93 @@ const Register = () => {
 
 };
 
+    const handleGoogleSignIn = () => {
+        signInGoogle()
+            .then(result => {
+                navigate(location?.state || "/");
+                toast.success('Signed up with Google successfully!')
+                // create user in the database
+                const userInfo = {
+                    email: result.user?.email || result.user?.providerData?.[0]?.email,
+                    displayName: result.user?.displayName,
+                    photoURL: result.user?.photoURL || result.user?.providerData?.[0]?.photoURL,
+                    role: "Student",
+                    phone: ""
+                }
+
+                axiosSecure.post('/users', userInfo)
+                    .then(res => {
+                        navigate(location?.state || "/");
+                    })
+            })
+            .catch(err => {
+                if (err.response?.status === 409) { 
+                    navigate(location?.state || "/"); 
+                } 
+            })
+    }
+
+
 return (
-  <div className="py-16 bg-gray-100">
-  <div className="card bg-base-100 w-[85%] md:w-[45%] mx-auto shadow-2x">
-    <h3 className="text-3xl pt-3 text-center">Welcome to eTuitionBd</h3>
-    <p className="text-center">Please Register to Continue</p>
-    <form className="card-body" onSubmit={handleSubmit(handleRegistration)}>
-      <fieldset className="fieldset">
-        <label className="label">Name</label>
-        <input type="text" {...register("name", { required: true })} className="input w-full" placeholder="Your Name" />
-        {errors.name?.type === "required" && <p className="text-red-500">Name is required.</p>}
+    <div className="flex justify-center items-center min-h-screen pt-12 pb-16 ">
+        <div className="w-[88%] md:w-[40%] pb-3 rounded-[0.7rem]  overflow-hidden shadow bg-white  border border-gray-200 ">
+            <h2 className="text-3xl font-bold text-center pt-6"> Sign Up for <span className="text-gradient">eTuitionBd</span></h2>   
+            <div className="card-body text-gray-800 ">
+                <form onSubmit={handleSubmit(handleRegistration)}>
+                    <fieldset className="fieldset">
+                        <label className="label">Name</label>
+                        <input type="text" {...register("name", { required: true })} className="input w-full" placeholder="Your Name" />
+                        {errors.name?.type === "required" && <p className="text-red-500">Name is required.</p>}
 
-        <label className="label">Photo</label>
-        <input type="file" {...register("photo", { required: true })} className="file-input w-full" placeholder="Your Photo" />
-        {errors.photo?.type === "required" && <p className="text-red-500">Photo is required.</p>}
+                        <label className="label">Photo</label>
+                        <input type="file" {...register("photo", { required: true })} className="file-input w-full" placeholder="Your Photo" />
+                        {errors.photo?.type === "required" && <p className="text-red-500">Photo is required.</p>}
 
-        <label className="label">Email</label>
-        <input type="email" {...register("email", { required: true })} className="input w-full" placeholder="Email" />
-        {errors.email?.type === "required" && <p className="text-red-500">Email is required.</p>}
+                        <label className="label">Email</label>
+                        <input type="email" {...register("email", { required: true })} className="input w-full" placeholder="Email" />
+                        {errors.email?.type === "required" && <p className="text-red-500">Email is required.</p>}
 
-        <label className="label">Password</label>
-        <input type="password" {...register("password", { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/, })}  className="input w-full" placeholder="Password" />
-            {errors.password?.type === "required" && <p className="text-red-500">Password is required.</p>}
-            {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
-            {errors.password?.type === "pattern" && <p className="text-red-500">Password must contain an uppercase letter, a lowercase letter, a number, and a special character.</p>}
+                        <label className="label">Password</label>
+                        <input type="password" {...register("password", { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/, })}  className="input w-full" placeholder="Password" />
+                            {errors.password?.type === "required" && <p className="text-red-500">Password is required.</p>}
+                            {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
+                            {errors.password?.type === "pattern" && <p className="text-red-500">Password must contain an uppercase letter, a lowercase letter, a number, and a special character.</p>}
 
+                        <label className="label">Register As</label>
+                        <select {...register("role", { required: true })} className="select  w-full">
+                            <option value="">Select Role</option>
+                            <option value="Student">Student</option>
+                            <option value="Tutor">Tutor</option>
+                        </select>
+                        {errors.role && <p className="text-red-500 text-sm">Role is required.</p>}
 
-        <label className="label">Register As</label>
-        <select {...register("role", { required: true })} className="select  w-full">
-            <option value="">Select Role</option>
-            <option value="Student">Student</option>
-            <option value="Tutor">Tutor</option>
-        </select>
-        {errors.role && <p className="text-red-500 text-sm">Role is required.</p>}
+                        <label className="label">Phone Number</label>
+                        <input type="text" {...register("phone", { required: true })} className="input w-full" placeholder="Enter your phone number" />
+                        {errors.phone && <p className="text-red-500">Phone number is required.</p>}
 
-        <label className="label">Phone Number</label>
-        <input type="text" {...register("phone", { required: true })} className="input w-full" placeholder="Enter your phone number" />
-        {errors.phone && <p className="text-red-500">Phone number is required.</p>}
+                        {/* <div><a className="link link-hover">Forgot password?</a></div> */}
 
-        <div><a className="link link-hover">Forgot password?</a></div>
+                        {authError && <p className="text-red-500 text-[0.8rem]">{authError}</p>}
+                        <button className="w-full btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mt-3">Register</button>
+                    </fieldset>
+                </form>
 
-        {authError && <p className="text-red-500 text-[0.8rem]">{authError}</p>}
-        <button className="btn btn-neutral mt-4">Register</button>
-      </fieldset>
+                <p className="text-gray-500  text-center">Already have an account? <Link to="/login" state={location.state}  className="text-gradient font-medium hover:text-indigo-600 hover:link" >  Login </Link></p>
 
-      {/* <p>Already have an account <Link state={location.state} className="text-blue-400 underline" to="/login">Login</Link></p> */}
-        <p className="text-gray-500 text-center">Already have an account? <Link state={location.state} className="text-blue-400 underline" to="/login">  Login </Link></p>
-    </form>
-    <SocialLogin />
-  </div>
-  </div>
-);
+                <div className="flex items-center gap-3 ">
+                    <hr className="flex-1 border-gray-200" />
+                    <span className="text-gray-500  text-sm"> Or </span>
+                    <hr className="flex-1 border-gray-200" />
+                </div>
+
+                <button onClick={handleGoogleSignIn} className="btn w-full bg-white text-black rounded-md border border-[#e5e5e5] flex items-center justify-center gap-2"> 
+                    <FcGoogle size={18}/>Sign Up with Google
+                </button>
+
+            </div>
+        </div>
+    </div>
+)
 }
 
 export default Register;
