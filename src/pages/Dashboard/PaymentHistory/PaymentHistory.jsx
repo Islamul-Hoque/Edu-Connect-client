@@ -5,14 +5,16 @@ import useAuth from '../../../hooks/useAuth';
 const PaymentHistory = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const studentEmail = user?.email || user?.providerData?.[0]?.email;
 
   const { data: payments = [] } = useQuery({
-    queryKey: ['payments', user?.email],
+    queryKey: ['payments', studentEmail],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/payments/${user?.email}`);
+      const res = await axiosSecure.get(`/payments/${studentEmail}`);
       return res.data;
     },
-    enabled: !!user?.email,
+    enabled: !!studentEmail
+
   });
 
   return (

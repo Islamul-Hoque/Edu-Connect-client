@@ -11,7 +11,7 @@ const RevenueHistory = () => {
     const { data: payments = [], isLoading } = useQuery({
         queryKey: ["revenueHistory", user?.email],
         queryFn: async () => { 
-            const res = await axiosSecure.get(`/revenue/${user?.email  || user?.providerData?.[0]?.email}`);
+            const res = await axiosSecure.get(`/revenue/${user?.email || user?.providerData?.[0]?.email}`);
             return res.data;
         },
     });
