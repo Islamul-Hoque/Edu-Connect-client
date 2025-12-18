@@ -32,7 +32,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="px-6 md:px-10 py-6 md:py-10 bg-gray-50">
+    <section className="px-6 md:px-10 py-6 md:py-10 bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-gray-50">
       <div className="max-w-7xl mx-auto">
         <motion.h2  variants={headingVariants} initial="hidden"  whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 mb-12 text-center" > How the Platform Works </motion.h2>
 

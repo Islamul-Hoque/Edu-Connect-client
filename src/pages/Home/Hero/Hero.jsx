@@ -8,11 +8,12 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
         <motion.div initial={{ opacity: 0, scale: 0.8, rotate: -5 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 0.3, type: "spring", stiffness: 70 }} className="flex justify-center md:justify-end order-1 md:order-2" >
-          <img src="https://i.ibb.co.com/fVMfzsRF/hand-drawn-online-tutor-illustration.png"  className="w- 64 md:w-100 object-contain drop-shadow-xl"  alt="Education Hero" />
+          <img src="https://i.ibb.co.com/fVMfzsRF/hand-drawn-online-tutor-illustration.png"
+            className=" md:w-[35.1rem] object-contain drop-shadow-xl"  alt="Education Hero" />
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 80, damping: 20 }}
-         className="space-y-6 text-center md:text-left order-2 md:order-1  mb-10 md:mb-0" >
+          className="space-y-6 text-center md:text-left order-2 md:order-1  mb-10 md:mb-0" >
           <motion.h1 initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, type: "spring" }}  className="text-3xl md:text-5xl font-extrabold leading-tight text-indigo-600"  > Find Verified Tutors & Trusted Tuition Posts
           </motion.h1>
 

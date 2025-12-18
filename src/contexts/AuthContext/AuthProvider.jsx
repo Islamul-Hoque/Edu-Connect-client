@@ -3,6 +3,9 @@ import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 // import { auth } from '../../Firebase/firebase.init.js';
 import { auth } from '../../Firebase/firebase.init';
+import axios from 'axios';
+// import useAxiosSecure from '../../hooks/useAxiosSecure';
+// import { database } from 'firebase-admin';
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope('email')
@@ -10,6 +13,7 @@ googleProvider.addScope('email')
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    // const axiosSecure = useAxiosSecure()
 
     const registerUser = (email, password) => {
         setLoading(true);
@@ -39,12 +43,21 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            if (currentUser) {
+                const loggedUser = { email: currentUser?.email || currentUser?.providerData?.[0]?.email }
+                    axios.post('http://localhost:3000/getToken', loggedUser)
+                    // axios.post('https://etuitionbd-api.vercel.app/getToken', loggedUser)
+                        .then(res => {
+                            const receivedToken = res.data.token; 
+                            localStorage.setItem('jwt-token', receivedToken)
+                            console.log( 'after getting token' ,res.data.token);
+                        })
+            } else { 
+                localStorage.removeItem('jwt-token'); 
+            }
             setLoading(false);
-            console.log(currentUser)
-        })
-        return () => {
-            unSubscribe();
-        }
+            })
+        return () =>  unSubscribe(); 
     }, [])
 
     const authInfo = {

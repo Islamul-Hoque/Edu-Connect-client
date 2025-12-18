@@ -14,7 +14,7 @@ useEffect(() => {
   if (sessionId) {
     axiosSecure.patch(`/payment-success?session_id=${sessionId}`)
       .then(res => {
-        setPaymentInfo(res.data); // ✅ এখন সব info আসবে
+        setPaymentInfo(res.data);
       })
       .catch(() => {
         Swal.fire("Error", "Failed to verify payment", "error");
@@ -22,22 +22,19 @@ useEffect(() => {
   }
 }, [sessionId, axiosSecure]);
 
-
 return (
-  <div className="p-6 text-center">
-    
-  <h2 className="text-4xl font-bold text-success mb-4">Payment Successful 🎉</h2>
-  <p className="text-lg">Transaction ID: <span className="font-mono">{paymentInfo.transactionId}</span></p>
-  <p className="text-lg">Tutor: {paymentInfo.tutorName} ({paymentInfo.tutorEmail})</p>
-  <p className="text-lg">Tuition: {paymentInfo.subject} ({paymentInfo.class})</p>
-  <p className="text-lg">Paid Amount: ${paymentInfo.amount}</p>
-  <p className="text-sm text-gray-500 mt-2">Paid At: {new Date(paymentInfo.paidAt).toLocaleString()}</p>
-  <p className="mt-4 text-gray-600">Thank you! Your tutor application has been approved.</p>
-
-  <Link to="/dashboard/applied-tutors">
-    <button className="btn btn-primary mt-6">Back to My Applications</button>
-  </Link>
-</div>
+  <div className='p-6  bg-linear-to-bl from-indigo-50  via-purple-50/0.1 to-gray-100  min-h-screen'>
+    <div className="text-center ">
+      <h2 className="text-4xl font-bold text-success mb-4">Payment Successful 🎉</h2>
+      <p className="text-lg">Transaction ID: <span className="font-mono">{paymentInfo.transactionId}</span></p>
+      <p className="text-lg">Tutor: {paymentInfo.tutorName} ({paymentInfo.tutorEmail})</p>
+      <p className="text-lg">Tuition: {paymentInfo.subject} ({paymentInfo.class})</p>
+      <p className="text-lg">Paid Amount: ${paymentInfo.amount}</p>
+      <p className="text-sm text-gray-500 mt-2">Paid At: {new Date(paymentInfo.paidAt).toLocaleString()}</p>
+      <p className="mt-4 text-gray-600">Thank you! Your tutor application has been approved.</p>
+      <Link to="/dashboard/applied-tutors"> <button className="btn btn-primary mt-6">Back to My Applications</button> </Link>
+    </div>
+  </div>
 
   
 );

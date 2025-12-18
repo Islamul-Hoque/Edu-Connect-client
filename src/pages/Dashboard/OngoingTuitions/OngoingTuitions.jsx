@@ -11,7 +11,7 @@ const OngoingTuitions = () => {
     const { data: ongoingTuitions = [], isLoading } = useQuery({
         queryKey: ["ongoingTuitions", user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/tuitions/ongoing/${user?.email}`);
+            const res = await axiosSecure.get(`/tuitions/ongoing/${user?.email || user?.providerData?.[0]?.email}`);
         return res.data;
     },
     });

@@ -7,6 +7,8 @@ import toast from 'react-hot-toast';
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
+    console.log(user);
+    
 
     const handleLogOut = async () => {
         try {

@@ -64,7 +64,8 @@ try {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="px-6 md:px-14 py-14"><h1 className="text-4xl font-bold text-indigo-600 mb-6 text-center">{tuition.subject} Tuition Details</h1>
+    <div className="px-6 md:px-10 py-14 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white ">
+      <h1 className="text-4xl font-bold text-indigo-600 mb-6 text-center">{tuition.subject} Tuition Details</h1>
     <motion.div className="max-w-7xl mx-auto bg-white shadow-lg rounded-xl p-8 mt-10 space-y-4" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
       <h2 className="text-3xl font-bold text-indigo-600 mb-6 flex items-center gap-2"><FaBookOpen /> {tuition.subject}</h2>
 

@@ -39,7 +39,7 @@ const DashboardLayout = () => {
             </svg>
           </label>
 
-          <div className="font-bold text-indigo-600">eTuitionBD Dashboard</div>
+          <Link to='/' className="font-bold md:text-2xl text-indigo-500">eTuitionBD Dashboard</Link>
             <button  onClick={handleLogout} className="btn btn-sm bg-indigo-100 text-indigo-600 hover:bg-indigo-200"> <FaSignOutAlt /> Logout</button>
         </nav>
 
@@ -47,7 +47,7 @@ const DashboardLayout = () => {
       </div>
 
       {/* Sidebar */}
-      <div className="drawer-side">
+      <div className="drawer-side  shadow">
         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className="flex min-h-full flex-col bg-indigo-50 text-gray-800 shadow w-52">
           <ul className="menu p-4 w-full grow">

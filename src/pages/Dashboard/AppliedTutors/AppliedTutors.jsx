@@ -31,7 +31,7 @@ const AppliedTutors = () => {
         subject: application.tuitionInfo?.subject,
         tuitionClass: application.tuitionInfo?.class,
         tuitionId: application.tuitionInfo?._id,
-        studentEmail: user.email
+        studentEmail: user?.email || user?.providerData?.[0]?.email
       };
 
       const res = await axiosSecure.post("/payment-checkout-session", paymentInfo);

@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
 import toast from "react-hot-toast";
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors }, } = useForm();
   const { signInUser, signInGoogle } = useAuth();
+  const [show, setShow] = useState(false)
   const location = useLocation();
   const navigate = useNavigate();
-      const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
   const handleLogin = (data) => {
-    console.log("form data", data);
     signInUser(data.email, data.password)
       .then((result) => {
-        // console.log(result.user);
         navigate(location?.state || "/");
-        // navigate( "/");
       })
       .catch((error) => {
         console.log(error);
@@ -52,7 +52,7 @@ const Login = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-white ">
       <div className="w-[88%] md:w-[50%] pb-3 rounded-[0.7rem] overflow-hidden shadow bg-white border border-gray-200 ">
         <h2 className="text-2xl md:text-4xl font-bold text-center text-indigo-500 pt-10"> Login to <span className="text-gradient">eTuitionBd</span></h2>
         <div className="card-body text-gray-800 ">
@@ -62,11 +62,13 @@ const Login = () => {
               <input type="email" {...register("email", { required: true })} className="input w-full" placeholder="Email" />
               {errors.email?.type === "required" && <p className="text-red-500">Email is required</p>}
 
-              <label className="label">Password</label>
-              <input type="password" {...register("password", { required: true, minLength: 6 })} className="input w-full" placeholder="Password" />
-              {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
+              <div className="relative">
+                <label className="label">Password</label>
+                <input type={ show ? "text" : "password" } {...register("password", { required: true, minLength: 6 })} className="input w-full" placeholder="Password" />
+                <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.95rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
+                {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
+              </div>
 
-              <div><a className="link link-hover">Forgot password?</a></div>
               <button className="w-full btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mt-3">Login</button>
             </fieldset>
           </form>

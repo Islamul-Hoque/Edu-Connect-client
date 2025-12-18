@@ -52,7 +52,7 @@ const AllTuitions = () => {
 
   const headingVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
   return (
-    <div className="bg-gray-50 px-6 md:px-10 py-6 md:py-10">
+    <div className=" px-6 md:px-10 py-6 md:py-10 bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-white ">
       <div className="text-center mb-6">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 text-center" >All Tuitions</motion.h2>
         <br />

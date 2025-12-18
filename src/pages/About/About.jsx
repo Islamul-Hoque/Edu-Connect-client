@@ -35,7 +35,7 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-gray-50 px-6 md:px-10 py-6 md:py-10">
+    <div className=" px-6 md:px-10 py-6 md:py-10 bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-white ">
       <div className="max-w-7xl mx-auto ">
         <motion.header className="text-center mb-14" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={fadeInUp}>
           <h1 className="text-3xl md:text-4xl font-extrabold text-indigo-600 mb-4">About eTuitionBD</h1>
