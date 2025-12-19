@@ -41,14 +41,6 @@ const AppliedTutors = () => {
     }
   };
 
-  // const handleReject = async (applicationId) => {
-  //   const res = await axiosSecure.patch(`/applications/${applicationId}`, { status: "Rejected" });
-  //   if (res.data.modifiedCount > 0) {
-  //     Swal.fire("Rejected!", "Tutor application has been rejected.", "success");
-  //     refetch();
-  //   }
-  // };
-
   const handleReject = async (applicationId) => {
   const result = await Swal.fire({
     title: "Are you sure?",

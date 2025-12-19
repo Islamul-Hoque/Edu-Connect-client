@@ -92,7 +92,8 @@ const UserManagement = () => {
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center gap-3">
-                    <div className="avatar"><div className="mask mask-squircle h-12 w-12"><img src={user?.photoURL || "https://img.daisyui.com/images/profile/demo/2@94.webp"} alt="User Avatar" /></div></div>
+                    <div className="avatar"><div className="mask mask-squircle h-12 w-12">
+                      <img src={user?.photoURL || "https://img.daisyui.com/images/profile/demo/2@94.webp"} alt="User Avatar" /></div></div>
                     <div><div className="font-bold">{user?.displayName}</div><div className="text-sm opacity-50">{user?.email}</div></div>
                   </div>
                 </td>

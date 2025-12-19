@@ -14,7 +14,6 @@ const PaymentHistory = () => {
       return res.data;
     },
     enabled: !!studentEmail
-
   });
 
   return (

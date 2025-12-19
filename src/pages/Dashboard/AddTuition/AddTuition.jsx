@@ -22,6 +22,7 @@ const AddTuition = () => {
             daysPerWeek: parseInt(data.daysPerWeek),
             budget: parseInt(data.budget),
             studentName: user?.displayName || user?.providerData?.[0]?.displayName,
+            // studentPhotoURL: user?.photoURL ||  user?.providerData?.[0]?.photoURL,
             studentEmail: user?.email || user?.providerData?.[0]?.email,
             phone: data.phone,
             additionalRequirements: data.additionalRequirements,
@@ -81,11 +82,11 @@ const AddTuition = () => {
   </div>
 
   {/* Address */}
-  <div>
+  {/* <div>
     <label className="label">Address</label>
     <input type="text" {...register("address", { required: true })} className="input w-full" placeholder="Enter full address" />
     {errors.address && <p className="text-red-500">Address is required.</p>}
-  </div>
+  </div> */}
 
   {/* Schedule */}
   <div>

@@ -31,7 +31,7 @@ const EditProfile = () => {
     };
 
     return (
-        <div className="min-h-screen flex justify-center items-center">
+        <div className="min-h-screen flex justify-center items-center bg-linear-to-bl from-indigo-50  via-purple-50/0.1 to-gray-100">
             <div className=" w-[88%] md:w-[40%] mx-auto bg-white p-6 rounded-[0.6rem] shadow">
             <div className="flex flex-col items-center mb-6">
                 <h2 className="text-[1.5rem] font-bold mb-6">My Profile</h2>
