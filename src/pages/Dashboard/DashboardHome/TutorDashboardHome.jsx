@@ -5,7 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 const TutorDashboardHome = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    const email = user?.email || user?.providerData?.[0]?.email || "";
+    const email = user?.email || user?.providerData?.[0]?.email ;
 
     const { data: stats = { totalApplications: 0, approvedApplications: 0, pendingApplications: 0, rejectedApplications: 0 } } = useQuery({
         queryKey: ['tutorStats', email],

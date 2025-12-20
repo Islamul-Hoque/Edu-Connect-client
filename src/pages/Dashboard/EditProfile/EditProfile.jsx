@@ -43,10 +43,10 @@ const EditProfile = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <fieldset className="fieldset">
                     <label className="label">Your Name</label>
-                    <input {...register("name", { required: "Name is required" })}  type="text" className="input w-full" placeholder="Enter your name" />
+                    <input {...register("name", { required: "Name is required" })}  type="text" className="inputField" placeholder="Enter your name" />
 
                     <label className="label mt-2">Photo URL</label>
-                    <input {...register("photo", { required: "Photo URL is required" })}  type="url"  className="input w-full" placeholder="Enter your photo URL" />
+                    <input {...register("photo", { required: "Photo URL is required" })}  type="url"  className="inputField" placeholder="Enter your photo URL" />
 
                     <button type="submit" disabled={isSubmitting} className="w-full mt-4 bg-indigo-600 text-white rounded-md font-semibold py-2 hover:bg-indigo-700 transition duration-300 shadow-md"
                     > {isSubmitting ? "Updating..." : "Update Profile"}

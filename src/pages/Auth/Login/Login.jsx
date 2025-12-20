@@ -31,7 +31,6 @@ const Login = () => {
         .then(result => {
           navigate(location?.state || "/");
           toast.success('Logged in with Google!');
-            // create user in the database
             const userInfo = {
                 email: result.user?.email || result.user?.providerData?.[0]?.email,
                 displayName: result.user?.displayName,
@@ -52,20 +51,20 @@ const Login = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-white ">
+    <div className="flex justify-center items-center min-h-screen bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white ">
       <div className="w-[88%] md:w-[50%] pb-3 rounded-[0.7rem] overflow-hidden shadow bg-white border border-gray-200 ">
         <h2 className="text-2xl md:text-4xl font-bold text-center text-indigo-500 pt-10"> Login to <span className="text-gradient">eTuitionBd</span></h2>
         <div className="card-body text-gray-800 ">
           <form  onSubmit={handleSubmit(handleLogin)}>
             <fieldset className="fieldset">
               <label className="label">Email</label>
-              <input type="email" {...register("email", { required: true })} className="input w-full" placeholder="Email" />
+              <input type="email" {...register("email", { required: true })} className="inputField" placeholder="Email" />
               {errors.email?.type === "required" && <p className="text-red-500">Email is required</p>}
 
               <div className="relative">
                 <label className="label">Password</label>
-                <input type={ show ? "text" : "password" } {...register("password", { required: true, minLength: 6 })} className="input w-full" placeholder="Password" />
-                <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.95rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
+                <input type={ show ? "text" : "password" } {...register("password", { required: true, minLength: 6 })} className="inputField" placeholder="Password" />
+                <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.9rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
                 {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
               </div>
 

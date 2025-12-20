@@ -120,23 +120,23 @@ npm install
 ## 🌐 Frontend `.env` :
 
 ```
-- VITE_apiKey = Firebase API key  
-- VITE_authDomain = Firebase auth domain  
-- VITE_projectId = Firebase project ID  
-- VITE_storageBucket = Firebase storage bucket  
-- VITE_messagingSenderId = Firebase messaging sender ID  
-- VITE_appId = Firebase app ID  
-- VITE_image_host_key = Image hosting API key  
+VITE_apiKey = Firebase API key  
+VITE_authDomain = Firebase auth domain  
+VITE_projectId = Firebase project ID  
+VITE_storageBucket = Firebase storage bucket  
+VITE_messagingSenderId = Firebase messaging sender ID  
+VITE_appId = Firebase app ID  
+VITE_image_host_key = Image hosting API key  
 ```
 
 ## ⚙️ Backend `.env` :
 
 ```
-- DB_USER = MongoDB database user  
-- DB_PASS = MongoDB database password  
-- STRIPE_SECRET = Stripe secret key  
-- SITE_DOMAIN = Deployed site domain  
-- JWT_SECRET = Secret key for JWT authentication
+DB_USER = MongoDB database user  
+DB_PASS = MongoDB database password  
+STRIPE_SECRET = Stripe secret key  
+SITE_DOMAIN = Deployed site domain  
+JWT_SECRET = Secret key for JWT authentication
 ```
 
 ### 4. Start Development Servers

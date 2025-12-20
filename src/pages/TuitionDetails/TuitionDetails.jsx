@@ -7,14 +7,13 @@ import { FaBookOpen, FaGraduationCap, FaSchool, FaMapMarkerAlt, FaClock, FaMoney
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../Components/Loading/Loading";
 import toast from "react-hot-toast";
-import useRole from "../../hooks/useRole";
 import { format } from "date-fns";
 
 const TuitionDetails = () => {
-  const { role } = useRole()
   const { user } = useAuth();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
+  const email = user?.email || user?.providerData?.[0]?.email ;
 
   const { data: tuition = {}, isLoading } = useQuery({
     queryKey: ["tuition", id],
@@ -23,7 +22,16 @@ const TuitionDetails = () => {
       return res.data;
     },
   });
-  
+
+const { data: role = null, isLoading: roleLoading,  } = useQuery({
+  enabled: !!email,   
+  queryKey: ["user-role", email],
+  queryFn: async () => {
+    const res = await axiosSecure.get(`/users/${email}/role`);
+    return res.data?.role;
+  },
+});
+
   const ApplyModalRef = useRef(null);
   const handleApplyModalOpen = () => {  ApplyModalRef.current.showModal() };
 
@@ -56,7 +64,7 @@ try {
     toast.error(`${res.data.message}`);
   }
 } catch (err) {
-  toast.error(`${err.response?.data?.message || "Error submitting application!"}`);
+  toast.error(`${err.response?.data?.message }`);
   console.error(err);
 }
 };
@@ -79,11 +87,12 @@ try {
       <p className="text-gray-700 flex items-center gap-2"><FaEnvelope className="text-indigo-500" /> Email: {tuition.studentEmail}</p>
       <p className="text-gray-700 flex items-center gap-2"> <FaClipboardList className="text-indigo-500" />Additional Requirements: {tuition.additionalRequirements}</p>
       <div className="text-gray-600 text-sm flex items-center gap-2"> <FaRegCalendarAlt className='text-indigo-500'/> {format(new Date(tuition.createdAt), "dd/MM/yyyy")}</div>
-    {role === "Tutor" && (
+    {user && role === "Tutor" && (
           <button className="mt-6 w-full cursor-pointer bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md"
             onClick={handleApplyModalOpen} 
             > Apply Now </button>
     )} 
+    
     </motion.div>
 
     <dialog ref={ApplyModalRef} className="modal modal-bottom sm:modal-middle">
@@ -92,13 +101,13 @@ try {
 
             <form onSubmit={handleApplySubmit} className="space-y-3 mt-4">
               <div className="flex gap-4">
-                <div className="w-1/2"><label className="label">Name</label><input name="name" defaultValue={user?.displayName} readOnly type="text" className="input w-full" placeholder="Your name" required /></div>
-                <div className="w-1/2"><label className="label">Email</label><input name="email" defaultValue={user?.email || user?.providerData?.[0]?.email} readOnly type="email" className="input w-full" placeholder="Your email" required /></div>
+                <div className="w-1/2"><label className="label">Name</label><input name="name" defaultValue={user?.displayName} readOnly type="text" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your name" required /></div>
+                <div className="w-1/2"><label className="label">Email</label><input name="email" defaultValue={user?.email || user?.providerData?.[0]?.email} readOnly type="email" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your email" required /></div>
               </div>
-              <label className="label">Qualifications</label><input name="qualifications" type="text" className="input w-full" placeholder={`e.g. B.Sc in ${tuition.subject}`} required />
-              <label className="label">Experience</label><input name="experience" type="text" className="input w-full" placeholder="e.g. 6 years overall teaching experience" required />
-              <label className="label">Expected Salary</label><input name="salary" type="number" className="input w-full" placeholder="e.g. 4000" required />
-              <label className="label">Contact Number</label><input name="contact" type="text" className="input w-full" placeholder="e.g. 017XXXXXXXX" required />
+              <label className="label -mb-[0.2rem]">Qualifications</label><input name="qualifications" type="text" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder={`e.g. B.Sc in ${tuition.subject}`} required />
+              <label className="label -mb-[0.2rem]">Experience</label><input name="experience" type="text" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g. 6 years overall teaching experience" required />
+              <label className="label -mb-[0.2rem]">Expected Salary</label><input name="salary" type="number" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g. 4000" required />
+              <label className="label -mb-[0.2rem]">Contact Number</label><input name="contact" type="text" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g. 017XXXXXXXX" required />
               <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">Submit Application</button>
             </form>
 

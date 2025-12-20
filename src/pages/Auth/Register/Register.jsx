@@ -103,29 +103,28 @@ const Register = () => {
 
 
 return (
-    <div className="flex justify-center items-center min-h-screen pt-12 pb-16 bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-white ">
+    <div className="flex justify-center items-center min-h-screen pt-12 pb-16 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white ">
         <div className="w-[88%] md:w-[50%] pb-3 rounded-[0.7rem]  overflow-hidden shadow bg-white  border border-gray-200 ">
             <h2 className="text-2xl md:text-4xl font-bold text-center text-indigo-500 pt-10"> Sign Up for <span className="text-gradient">eTuitionBd</span></h2>   
             <div className="card-body text-gray-800 ">
                 <form onSubmit={handleSubmit(handleRegistration)}>
                     <fieldset className="fieldset">
                         <label className="label">Name</label>
-                        <input type="text" {...register("name", { required: true })} className="input w-full" placeholder="Your Name" />
+                        <input type="text" {...register("name", { required: true })} className="inputField" placeholder="Your Name" />
                         {errors.name?.type === "required" && <p className="text-red-500">Name is required.</p>}
 
                         <label className="label">Photo</label>
-                        <input type="file" {...register("photo", { required: true })} className="file-input w-full" placeholder="Your Photo" />
+                        <input type="file" {...register("photo", { required: true })}  className="file-input w-full border border-slate-300 rounded-lg text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500"  placeholder="Your Photo" />
                         {errors.photo?.type === "required" && <p className="text-red-500">Photo is required.</p>}
 
                         <label className="label">Email</label>
-                        <input type="email" {...register("email", { required: true })} className="input w-full" placeholder="Email" />
+                        <input type="email" {...register("email", { required: true })} className="inputField" placeholder="Email" />
                         {errors.email?.type === "required" && <p className="text-red-500">Email is required.</p>}
 
-            {/* input border-slate-300 rounded-[0.4rem] px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-purple-400 w-full */}
                     <div className="relative">
                         <label className="label">Password</label>
-                        <input type={ show ? "text" : "password" }  {...register("password", { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/, })}  className="input w-full" placeholder="Password" />
-                        <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.95rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
+                        <input type={ show ? "text" : "password" }  {...register("password", { required: true, minLength: 6, pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/, })}  className="inputField" placeholder="Password" />
+                        <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.9rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
 
                             {errors.password?.type === "required" && <p className="text-red-500">Password is required.</p>}
                             {errors.password?.type === "minLength" && <p className="text-red-500">Password must be 6 characters or longer</p>}
@@ -133,7 +132,7 @@ return (
                     </div>
 
                         <label className="label">Register As</label>
-                        <select {...register("role", { required: true })} className="select  w-full">
+                        <select {...register("role", { required: true })} className=" select inputField" >
                             <option value="">Select Role</option>
                             <option value="Student">Student</option>
                             <option value="Tutor">Tutor</option>
@@ -141,7 +140,7 @@ return (
                         {errors.role && <p className="text-red-500 text-sm">Role is required.</p>}
 
                         <label className="label">Phone Number</label>
-                        <input type="text" {...register("phone", { required: true })} className="input w-full" placeholder="Enter your phone number" />
+                        <input type="text" {...register("phone", { required: true })} className="inputField" placeholder="Enter your phone number" />
                         {errors.phone && <p className="text-red-500">Phone number is required.</p>}
 
                         {authError && <p className="text-red-500 text-[0.8rem]">{authError}</p>}

@@ -52,7 +52,7 @@ const AllTuitions = () => {
 
   const headingVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
   return (
-    <div className=" px-6 md:px-10 py-6 md:py-10 bg-gradient-to-br from-indigo-50 via-purple-50/0.1 to-white ">
+    <div className=" px-6 md:px-10 py-6 md:py-10 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white ">
       <div className="text-center mb-6">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 text-center" >All Tuitions</motion.h2>
         <br />
@@ -61,12 +61,14 @@ const AllTuitions = () => {
 
       <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
         <div className="flex flex-wrap gap-4 justify-center items-center">
-          <label className="input flex items-center gap-2 w-full sm:w-64 md:w-80"> <FaSearch className="opacity-50" />
-            <input type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search by subject, location or class..."  className="w-full outline-none bg-transparent" />
-          </label>
+          <div className="relative w-full sm:w-64 md:w-80"> 
+            <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[1rem]" />
+            <input type="search" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 " placeholder="Search by subject, location or class..." />
+          </div>
 
-          <button onClick={() => setShowFilters(!showFilters)} className="btn flex items-center gap-2"> <FaFilter /> Filters </button>
-          <select value={sort} onChange={(e) => setSort(e.target.value)} className="select select-bordered">
+          <button onClick={() => setShowFilters(!showFilters)}  className="flex items-center gap-2 w-full md:w-fit px-4 py-2 rounded-lg border border-slate-300 bg-white text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 " > 
+            <FaFilter className="text-gay-600" /> Filters </button>
+          <select value={sort} onChange={(e) => setSort(e.target.value)} className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option value="budget-desc">Budget: High to Low</option>
             <option value="budget-asc">Budget: Low to High</option>
             <option value="date-desc">Date: Newest First</option>
@@ -79,21 +81,21 @@ const AllTuitions = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="form-control w-full">
                 <label className="label"><span className="label-text">Class/Grade</span></label>
-                <select value={filterClass} onChange={(e) => setFilterClass(e.target.value)} className="select select-bordered w-full">
+                <select value={filterClass} onChange={(e) => setFilterClass(e.target.value)} className="select inputField" >
                   <option value="">All Classes</option>
                   {filterData.classes?.map(cls => <option key={cls}>{cls}</option>)}
                 </select>
               </div>
               <div className="form-control w-full">
                 <label className="label"><span className="label-text">Subject</span></label>
-                <select value={filterSubject} onChange={(e) => setFilterSubject(e.target.value)} className="select select-bordered w-full">
+                <select value={filterSubject} onChange={(e) => setFilterSubject(e.target.value)} className="select inputField" >
                   <option value="">All Subjects</option>
                   {filterData.subjects?.map(sub => <option key={sub}>{sub}</option>)}
                 </select>
               </div>
               <div className="form-control w-full">
                 <label className="label"><span className="label-text">Location</span></label>
-                <select value={filterLocation} onChange={(e) => setFilterLocation(e.target.value)} className="select select-bordered w-full">
+                <select value={filterLocation} onChange={(e) => setFilterLocation(e.target.value)}  className="select inputField">
                   <option value="">All Locations</option>
                   {filterData.locations?.map(loc => <option key={loc}>{loc}</option>)}
                 </select>
