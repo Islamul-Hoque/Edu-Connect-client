@@ -90,6 +90,7 @@ export const router = createBrowserRouter([
         path: 'payment-cancelled', 
         Component: PaymentCancelled
       },
+      // Student route......................
       {
         path: 'add-tuition', 
         element: <StudentRoute> <AddTuition/> </StudentRoute>,

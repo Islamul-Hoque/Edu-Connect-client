@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import { FaArrowLeft } from "react-icons/fa";
 
 const PaymentSuccess = () => {
-    const [searchParams] = useSearchParams();
-    const [paymentInfo, setPaymentInfo] = useState({});
-    const sessionId = searchParams.get('session_id');
-    const axiosSecure = useAxiosSecure();
-
+  const [searchParams] = useSearchParams();
+  const [paymentInfo, setPaymentInfo] = useState({});
+  const sessionId = searchParams.get('session_id');
+  const axiosSecure = useAxiosSecure();
 
 useEffect(() => {
   if (sessionId) {
@@ -26,21 +26,17 @@ return (
   <div className='p-6  bg-linear-to-bl from-indigo-50  via-purple-50/0.1 to-gray-100  min-h-screen'>
     <div className="text-center ">
       <h2 className="text-4xl font-bold text-success mb-4">Payment Successful 🎉</h2>
-      <p className="text-lg">Transaction ID: <span className="font-mono">{paymentInfo.transactionId}</span></p>
-      <p className="text-lg">Tutor: {paymentInfo.tutorName} ({paymentInfo.tutorEmail})</p>
-      <p className="text-lg">Tuition: {paymentInfo.subject} ({paymentInfo.class})</p>
-      <p className="text-lg">Paid Amount: ${paymentInfo.amount}</p>
-      <p className="text-sm text-gray-500 mt-2">Paid At: {new Date(paymentInfo.paidAt).toLocaleString()}</p>
-      <p className="mt-4 text-gray-600">Thank you! Your tutor application has been approved.</p>
-      <Link to="/dashboard/applied-tutors"> <button className="btn btn-primary mt-6">Back to My Applications</button> </Link>
+      <div className="text-lg">Transaction ID: <span className="font-mono">{paymentInfo.transactionId}</span></div>
+      <div className="text-lg">Tutor: {paymentInfo.tutorName} ({paymentInfo.tutorEmail})</div>
+      <div className="text-lg">Tuition: {paymentInfo.subject} ({paymentInfo.class})</div>
+      <div className="text-lg">Paid Amount: ${paymentInfo.amount}</div>
+      <div className="text-sm text-gray-500 mt-2">Paid At: {new Date(paymentInfo.paidAt).toLocaleString()}</div>
+      <p className="mt-4 text-gray-600">Thank you! You’ve successfully approved the tutor’s application with payment.</p>
+      <Link to="/dashboard/applied-tutors"> <button className="btn bg-indigo-600 text-white rounded-md font-semibold py-2 hover:bg-indigo-700 transition duration-300 shadow-md mt-4">
+        <FaArrowLeft className="text-white" /> Back to My Applications</button> </Link>
     </div>
   </div>
-
-  
 );
 }
 
 export default PaymentSuccess;
-
-
-//  64-1 Fix Payment entry getting duplicate

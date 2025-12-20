@@ -50,18 +50,6 @@ const MyTuitions = () => {
         })
     }
 
-    const handlePayment = async (tuition) => {
-        const paymentInfo = {
-            amount: tuition.budget,   
-            tuitionId: tuition._id,   
-            studentEmail: tuition.studentEmail,
-            subject: tuition.subject
-        };
-
-        const res = await axiosSecure.post('/payment-checkout-session', paymentInfo);
-        window.location.assign(res.data.url);
-    };
-
     if (isLoading) return <Loading/>
     if (isError) return <p>Something went wrong!</p>;
 
@@ -76,7 +64,6 @@ const MyTuitions = () => {
                             <th>Subject</th>
                             <th>Class</th>
                             <th>Budget</th>
-                            {/* <th>Payment</th> */}
                             <th>Date</th>
                             <th>Status</th>
                             <th>Actions</th>
@@ -90,13 +77,6 @@ const MyTuitions = () => {
                             <td>{tuition.class}</td>
                             <td>{tuition.budget} Tk/Month</td>
                             <td>{format(new Date(tuition.createdAt), "dd/MM/yyyy")}</td>
-                            {/* <td>
-                                {tuition.paymentStatus === 'paid' ? ( <span className="text-green-800 font-semibold">Paid</span>
-                                    ) : (
-                                    <button onClick={() => handlePayment(tuition)} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700"> Pay </button> )}
-                            </td> */}
-
-                            {/* <td>{tuition.studentEmail}</td> */}
                             <td>{tuition.status}</td>
                             <td className="flex gap-2">
                                 <Link to={`/tuition-details/${tuition._id}`} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-2 shadow-md"> <FaEye /> <span>View</span></Link>

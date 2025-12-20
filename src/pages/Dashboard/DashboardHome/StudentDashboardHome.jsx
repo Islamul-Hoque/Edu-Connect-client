@@ -5,7 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 const StudentDashboardHome = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const email = user?.email || user?.providerData?.[0]?.email || "";
+  const email = user?.email || user?.providerData?.[0]?.email;
 
   const { data: stats = { totalPosts: 0, approved: 0, pending: 0, rejected: 0 } } = useQuery({
     queryKey: ['studentStats', email],

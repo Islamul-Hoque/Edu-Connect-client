@@ -69,7 +69,7 @@ try {
 }
 };
 
-  if (isLoading) return <Loading />;
+  if (isLoading || roleLoading) return <Loading />;
 
   return (
     <div className="px-6 md:px-10 py-14 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white ">
@@ -87,11 +87,11 @@ try {
       <p className="text-gray-700 flex items-center gap-2"><FaEnvelope className="text-indigo-500" /> Email: {tuition.studentEmail}</p>
       <p className="text-gray-700 flex items-center gap-2"> <FaClipboardList className="text-indigo-500" />Additional Requirements: {tuition.additionalRequirements}</p>
       <div className="text-gray-600 text-sm flex items-center gap-2"> <FaRegCalendarAlt className='text-indigo-500'/> {format(new Date(tuition.createdAt), "dd/MM/yyyy")}</div>
-    {user && role === "Tutor" && (
-          <button className="mt-6 w-full cursor-pointer bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md"
-            onClick={handleApplyModalOpen} 
-            > Apply Now </button>
-    )} 
+      {user && role === "Tutor" && (
+            <button className="mt-6 w-full cursor-pointer bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md"
+              onClick={handleApplyModalOpen} 
+              > Apply Now </button>
+      )} 
     
     </motion.div>
 
