@@ -10,7 +10,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors }, } = useForm();
-  const { signInUser, signInGoogle } = useAuth();
+  const { signInUser, signInGoogle, getJwtToken } = useAuth();
   const [show, setShow] = useState(false)
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,36 +19,67 @@ const Login = () => {
   const handleLogin = (data) => {
     signInUser(data.email, data.password)
       .then((result) => {
-        navigate(location?.state || "/");
+        // navigate(location?.state || "/");
+        getJwtToken(data.email)
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const handleGoogleSignIn = () => {
-    signInGoogle()
-        .then(result => {
-          navigate(location?.state || "/");
-          toast.success('Logged in with Google!');
-            const userInfo = {
-                email: result.user?.email || result.user?.providerData?.[0]?.email,
-                displayName: result.user?.displayName,
-                photoURL: result.user.photoURL || result.user?.providerData?.[0]?.photoURL,
-                role: "Student",
-                phone: ""
-            }
-            axiosSecure.post('/users', userInfo)
-                .then(res => {
-                  navigate(location?.state || "/");
-                })
-        })
-        .catch(err => {
-          if (err.response?.status === 409) { 
-            navigate(location?.state || "/"); 
-          } 
-        })
-  }
+  // const handleGoogleSignIn = () => {
+  //   signInGoogle()
+  //       .then(result => {
+  //         navigate("/");
+  //         toast.success('Logged in with Google!');
+  //           const userInfo = {
+  //               email: result.user?.email || result.user?.providerData?.[0]?.email,
+  //               displayName: result.user?.displayName,
+  //               photoURL: result.user.photoURL || result.user?.providerData?.[0]?.photoURL,
+  //               role: "Student",
+  //               phone: ""
+  //           }
+  //           axiosSecure.post('/users', userInfo)
+  //               .then(res => {
+  //                 // getJwtToken(res.email)
+  //                 navigate( "/");
+  //               })
+  //       })
+  //       .catch(err => {
+  //         if (err.response?.status === 409) { 
+  //           navigate( "/"); 
+  //         } 
+  //       })
+  // }
+
+const handleGoogleSignIn = () => {
+  signInGoogle()
+    .then(async (result) => {
+      const email = result.user?.email || result.user?.providerData?.[0]?.email;
+
+      const userInfo = {
+        email,
+        displayName: result.user?.displayName,
+        photoURL: result.user.photoURL || result.user?.providerData?.[0]?.photoURL,
+        phone: ""
+      };
+
+      await axiosSecure.post('/users', userInfo).catch(err => {
+        if (err.response?.status === 409) {
+          console.log(err.response);
+          
+        }
+      });
+      await getJwtToken(email);
+
+      toast.success('Logged in with Google!');
+      navigate("/");
+    })
+    .catch(err => {
+      console.error("Google login failed:", err);
+    });
+};
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white ">

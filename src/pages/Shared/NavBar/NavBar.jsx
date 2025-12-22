@@ -4,20 +4,33 @@ import { Link, NavLink } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import Loading from '../../../Components/Loading/Loading';
 import toast from 'react-hot-toast';
+import { useQueryClient } from '@tanstack/react-query';
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
     console.log(user);
-    
 
-    const handleLogOut = async () => {
-        try {
-            await logOut();
-            toast.success("Logged out successfully!");
-        } catch (error) { 
-            toast.error("Logout failed. Please try again.");
-        }
-    };
+    // const handleLogOut = async () => {
+    //     try {
+    //         await logOut();
+    //         toast.success("Logged out successfully!");
+    //     } catch (error) { 
+    //         toast.error("Logout failed. Please try again.");
+    //     }
+    // };
+
+    const queryClient = useQueryClient();
+
+const handleLogOut = async () => {
+  try {
+    await logOut();
+    queryClient.clear();   // ✅ clear react-query cache
+    toast.success("Logged out successfully!");
+    // navigate("/login");
+  } catch (error) {
+    toast.error("Logout failed. Please try again.");
+  }
+};
 
     const activeClass = ({ isActive }) => isActive
         ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"

@@ -106,10 +106,6 @@ const UserManagement = () => {
                   </select>
                 </td>
                 <td>{user.status}</td>
-                {/* <td className="flex gap-2">
-                  <button onClick={() => { setSelectedUser(user); UpdateModalRef.current.showModal(); }} className="btn btn-sm btn-warning flex items-center gap-1"><FaEdit /> Update</button>
-                  <button onClick={() => handleDelete(user._id)} className="btn btn-sm btn-error flex items-center gap-1"><FaTrash /> Delete</button>
-                </td> */}
                 <td className="flex gap-2">
                   <button onClick={() => { setSelectedUser(user); UpdateModalRef.current.showModal(); }} className="btn btn-sm bg-indigo-600 text-white hover:bg-indigo-700 flex items-center gap-1 shadow-md"><FaEdit /> Update</button>
                   <button onClick={() => handleDelete(user._id)} className="btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-1 shadow-md"><FaTrash /> Delete</button>

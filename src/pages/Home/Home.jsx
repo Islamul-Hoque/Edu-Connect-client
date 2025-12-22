@@ -4,6 +4,8 @@ import TuitionPosts from './TuitionPosts/TuitionPosts';
 import Tutors from './Tutors/Tutors';
 import HowItWorks from './HowItWorks/HowItWorks';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
+import Loading from '../../Components/Loading/Loading';
+import useAuth from '../../hooks/useAuth';
 
 const Home = () => {
     return (

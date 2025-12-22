@@ -48,21 +48,19 @@ const ReportsAnalytics = () => {
                         <th>Student</th>
                         <th>Tutor</th>
                         <th>Subject</th>
-                        {/* <th>Class</th> */}
                         <th>Amount</th>
                         <th>Date</th>
                         <th>Transaction ID</th>
                     </tr>
                 </thead>
             <tbody>
-                {reports.transactions.map((tx, index) => (
+                {reports.transactions.map((tx) => (
                 <tr key={tx._id}>
                     {/* <td>{index + 1}</td> */}
-                    <td>{tx.studentEmail}</td>
+                    <td>{tx.studentEmail} </td>
                     <td>{tx.tutorName} ({tx.tutorEmail})
                   </td>
                   <td>{tx.subject}</td>
-                  {/* <td>{tx.class}</td> */}
                   <td className="text-indigo-500 font-semibold">
                     {tx.amount} <span className='uppercase'>{tx.currency}</span>
                   </td>

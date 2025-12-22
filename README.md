@@ -69,9 +69,9 @@ This platform offers three distinct role‑based dashboards — **Student**, **T
 ### 🌐 Frontend
 - React.js (Component‑based UI)
 - TailwindCSS (Utility‑first styling)
-- Framer Motion (Animations)
-- Swiper.js (Interactive sliders)
 - Recharts (Data visualization)
+- Framer Motion (Animations)
+<!-- - Swiper.js (Interactive sliders) -->
 - SweetAlert2 & React‑Toastify (User feedback system)
 
 ### ⚙️ Backend

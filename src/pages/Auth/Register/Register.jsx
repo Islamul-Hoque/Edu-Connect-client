@@ -7,14 +7,15 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const [authError, setAuthError] = useState("");
     const [show, setShow] = useState(false);
 
-    const { registerUser, updateUserProfile, signInGoogle } = useAuth();
+
+    const { registerUser, updateUserProfile, getJwtToken  } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
@@ -22,7 +23,8 @@ const Register = () => {
     const handleRegistration = (data) => {
     const profileImg = data.photo[0];
 
-    registerUser(data.email, data.password)
+    
+    registerUser(data.email, data.password) 
         .then(() => {
         const formData = new FormData();
         formData.append("image", profileImg);
@@ -40,6 +42,9 @@ const Register = () => {
             };
             axiosSecure.post("/users", userInfo).then((res) => {
                 if (res.data.insertedId) {
+                    // get token function
+                    getJwtToken(data.email)
+                    navigate( "/");
                     toast.success(`🎉 Welcome ${data.name}, your account has been created!`);
                 }
             });
@@ -52,10 +57,10 @@ const Register = () => {
 
         updateUserProfile(userProfile)
             .then(() => {
-                navigate(location?.state || "/");
+                navigate( "/");
             })
             .catch((error) => {
-                toast.error("Profile update failed!");
+                // toast.error("Profile update failed!");
                 console.log(error)
             });
         });
@@ -68,38 +73,7 @@ const Register = () => {
 
 };
 
-    const handleGoogleSignIn = () => {
-        signInGoogle()
-            .then(result => {
-                navigate(location?.state || "/");
-                toast.success('Signed up with Google successfully!')
-                // create user in the database
-                const userInfo = {
-                    email: result.user?.email || result.user?.providerData?.[0]?.email,
-                    displayName: result.user?.displayName,
-                    photoURL: result.user?.photoURL || result.user?.providerData?.[0]?.photoURL,
-                    role: "Student",
-                    phone: ""
-                }
 
-                axiosSecure.post('/users', userInfo)
-                    .then(res => {
-                        navigate(location?.state || "/");
-                    })
-                    .catch(err => { if (err.response?.status === 409) { 
-                        console.log("User already exists, skipping insert."); 
-                        navigate(location?.state || "/");  
-                        } 
-                        else { 
-                            toast.error("Something went wrong during registration."); 
-                        } });
-            })
-            .catch(err => {
-                if (err.response?.status === 409) { 
-                    navigate(location?.state || "/"); 
-                } 
-            })
-    }
 
 
 return (
@@ -149,17 +123,6 @@ return (
                 </form>
 
                 <p className="text-gray-500  text-center">Already have an account? <Link to="/login" state={location.state}  className="text-gradient font-medium hover:text-indigo-600 hover:link" >  Login </Link></p>
-
-                <div className="flex items-center gap-3 ">
-                    <hr className="flex-1 border-gray-200" />
-                    <span className="text-gray-500  text-sm"> Or </span>
-                    <hr className="flex-1 border-gray-200" />
-                </div>
-
-                <button onClick={handleGoogleSignIn} className="btn w-full bg-white text-black rounded-md border border-[#e5e5e5] flex items-center justify-center gap-2"> 
-                    <FcGoogle size={18}/>Sign Up with Google
-                </button>
-
             </div>
         </div>
     </div>
