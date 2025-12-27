@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "e-tuition-bd-296b7"
-  }
+    "default": "edu-connect-e1d7e"
+  },
+  "targets": {},
+  "etags": {}
 }

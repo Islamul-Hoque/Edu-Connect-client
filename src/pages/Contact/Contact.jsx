@@ -24,7 +24,7 @@ const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-12">
                     <motion.div className="bg-white p-8 rounded-xl shadow-lg" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={staggerContainer}>
                         <h3 className="text-2xl font-semibold text-indigo-600 mb-6">Get in Touch</h3>
-                        <motion.div className="flex items-start space-x-4 mb-5" variants={fadeInUp}><FaEnvelope className="text-indigo-500 text-xl shrink-0 mt-1" /><div><h4 className="text-lg font-medium text-gray-900">Email Address</h4><p className="text-gray-700">etuitionbd@gmail.com</p></div></motion.div>
+                        <motion.div className="flex items-start space-x-4 mb-5" variants={fadeInUp}><FaEnvelope className="text-indigo-500 text-xl shrink-0 mt-1" /><div><h4 className="text-lg font-medium text-gray-900">Email Address</h4><p className="text-gray-700">educonnect@gmail.com</p></div></motion.div>
                         <motion.div className="flex items-start space-x-4 mb-5" variants={fadeInUp}><FaPhoneAlt className="text-indigo-500 text-xl shrink-0 mt-1" /><div><h4 className="text-lg font-medium text-gray-900">Phone</h4><p className="text-gray-700">+8801761830425</p></div></motion.div>
                         <motion.div className="flex items-start space-x-4 mb-5" variants={fadeInUp}><FaMapMarkerAlt className="text-indigo-500 text-xl shrink-0 mt-1" /><div><h4 className="text-lg font-medium text-gray-900">Office Location</h4><p className="text-gray-700">Chittagong, Bangladesh (Headquarters)</p></div></motion.div>
                         <hr className="my-6 border-gray-200" />

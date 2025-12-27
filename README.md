@@ -1,14 +1,14 @@
-# eTuitionBD - Tuition Management Platform
+# EduConnect - Tuition Management Platform
 
 ## 📖 Project Overview
 
-**eTuitionBD** is a MERN stack powered role‑based tuition management platform. It features three separate dashboards — **Student**, **Tutor**, and **Admin**. User login and registration are handled through **Firebase Authentication**, followed by **JWT authentication** and **role‑based access control** to provide tailored functionality for each user. **Stripe payment integration** and a **modern UI design** make this project even more powerful and user‑friendly. 
+**EduConnect** is a MERN stack powered role‑based tuition management platform. It features three separate dashboards — **Student**, **Tutor**, and **Admin**. User login and registration are handled through **Firebase Authentication**, followed by **JWT authentication** and **role‑based access control** to provide tailored functionality for each user. **Stripe payment integration** and a **modern UI design** make this project even more powerful and user‑friendly. 
 
 --- 
 
 ## 🎯 Purpose
 
-The purpose of **eTuitionBD** is to build a comprehensive digital platform for managing tuition services. It connects students seeking tuition, tutors offering teaching expertise, and admins supervising the system — all brought together in a secure, scalable, and user‑friendly environment.
+The purpose of **EduConnect** is to build a comprehensive digital platform for managing tuition services. It connects students seeking tuition, tutors offering teaching expertise, and admins supervising the system — all brought together in a secure, scalable, and user‑friendly environment.
 
 --- 
 
@@ -56,11 +56,11 @@ This platform offers three distinct role‑based dashboards — **Student**, **T
 --- 
 
 ## 🌐 Live Demo
-👉 [eTuitionBD Live Site](https://e-tuition-bd-296b7.web.app) 
+👉 [EduConnect Live Site](https://edu-connect-e1d7e.web.app) 
 
 ## 📂 GitHub Repositories 
-- [Client Repository](https://github.com/Islamul-Hoque/eTuitionBd-client) 
-- [Server Repository](https://github.com/Islamul-Hoque/eTuitionBd-server)
+- [Client Repository](https://github.com/Islamul-Hoque/Edu-Connect-client) 
+- [Server Repository](https://github.com/Islamul-Hoque/Edu-Connect-server)
 
 --- 
 
@@ -99,14 +99,14 @@ This platform offers three distinct role‑based dashboards — **Student**, **T
 ### Client (Frontend):
 
 ```
-git clone https://github.com/Islamul-Hoque/eTuitionBd-client.git
-cd eTuitionBd-client
+git clone https://github.com/Islamul-Hoque/Edu-Connect-client.git
+cd EduConnect-client
 ```
 ### Server (Express + MongoDB Backend):
 
 ```
-git clone https://github.com/Islamul-Hoque/eTuitionBd-server.git
-cd eTuitionBd-server
+git clone https://github.com/Islamul-Hoque/Edu-Connect-server.git
+cd EduConnect-server
 ```
 
 ### 2. Install Dependencies

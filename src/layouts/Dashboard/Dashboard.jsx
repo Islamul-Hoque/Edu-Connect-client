@@ -26,7 +26,7 @@ const DashboardLayout = () => {
             </svg>
           </label>
 
-          <Link to='/' className="font-bold md:text-2xl text-indigo-500">eTuitionBD Dashboard</Link>
+          <Link to='/' className="font-bold md:text-2xl text-indigo-500">EduConnect Dashboard</Link>
         </nav>
 
         <div className=""> <Outlet /> </div>
