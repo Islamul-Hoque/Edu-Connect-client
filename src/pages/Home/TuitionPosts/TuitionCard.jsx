@@ -11,7 +11,7 @@ const TuitionCard = ({ tuition }) => {
 };
     return (
         <motion.div key={tuition._id} variants={cardVariants} className="flex flex-col justify-between group p-6 rounded-xl 
-         dark:hover:shadow-[0_0_7px_rgba(255,255,255,0.05)]  bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+         SectionCard 
          shadow-lg transform transition-all duration-300 ease-out hover:scale-[1.05] ">
             <div className="space-y-3 flex-1 text-gray-600 dark:text-gray-50">
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 flex items-center gap-2"><FaBookOpen className="text-indigo-500" /> {tuition.subject}</h3>

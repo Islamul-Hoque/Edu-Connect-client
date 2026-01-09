@@ -16,10 +16,10 @@ const AllTutors = () => {
     }})
 
     return (
-        <div className='py-12 px-6 md:px-16 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white'>
+        <div className='py-12 px-6 md:px-16 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white bg-dark '>
             <div className="p-6 text-center">
                 <h2 className="text-2xl font-bold text-indigo-600 mb-2">All Tutors</h2>
-                <p className="text-gray-600 mb-6"> Browse all verified tutors with their qualifications and experience.  </p>
+                <p className="text-gray-600 dark:text-gray-50 mb-6"> Browse all verified tutors with their qualifications and experience.  </p>
             </div>
 
             {isLoading && <Loading />}
