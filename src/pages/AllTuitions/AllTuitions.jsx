@@ -59,10 +59,6 @@ const AllTuitions = () => {
     keepPreviousData: true
   });
 
-
-
-
-
   const tuitions = listData?.data || [];
   const total = listData?.total || 0;
   const totalPages = Math.max(1, Math.ceil(total / limit));
@@ -73,7 +69,7 @@ const AllTuitions = () => {
       <div className="text-center mb-6">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 text-center" >All Tuitions</motion.h2>
         <br />
-        <p className="text-gray-600">Showing {tuitions.length} of {total} tuitions</p>
+        <p className="text-gray-600 dark:text-gray-50">Showing {tuitions.length} of {total} tuitions</p>
       </div>
 
       <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm mb-6">
