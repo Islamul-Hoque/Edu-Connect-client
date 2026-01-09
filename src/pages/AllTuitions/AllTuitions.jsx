@@ -126,7 +126,7 @@ const AllTuitions = () => {
 
             
             {isLoading && <TuitionCardSkeleton />}  
-            {/* {isFetching && !isLoading && <TuitionCardSkeleton />}  */}
+            {isFetching && !isLoading && <TuitionCardSkeleton />} 
 
 
             {isError && (
