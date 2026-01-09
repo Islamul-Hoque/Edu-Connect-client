@@ -125,7 +125,7 @@ const AllTuitions = () => {
       </div>
 
             
-            {/* {isLoading && <TuitionCardSkeleton />}   */}
+            {isLoading && <TuitionCardSkeleton />}  
             {/* {isFetching && !isLoading && <TuitionCardSkeleton />}  */}
 
 
