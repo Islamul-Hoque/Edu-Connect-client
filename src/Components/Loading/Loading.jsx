@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Loading = () => {
   return (
-    <div  className="flex flex-col items-center justify-center h-screen gap-6" role="status"  aria-live="polite" >
+    <div  className="flex flex-col items-center justify-center py-14 h- screen gap-6" role="status"  aria-live="polite" >
 
       <Oval height={70} width={70} color="#6366F1"  secondaryColor="#A5B4FC"  strokeWidth={4}  strokeWidthSecondary={4}  ariaLabel="loading" />
 

@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaBookOpen, FaGraduationCap, FaSchool, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaEye } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import TuitionCard from "./TuitionCard";
+import { QueryClient, useQuery } from "@tanstack/react-query";
+import Loading from "../../../Components/Loading/Loading";
 
 const TuitionPosts = () => {
-    const [tuitions, setTuitions] = useState([]);
+    // const [tuitions, setTuitions] = useState([]);
     const axiosSecure = useAxiosSecure();
 
-    useEffect(() => {
-    axiosSecure.get("/latest-tuitions")
-        .then(res => setTuitions(res.data))
-        .catch(error => console.error("Error fetching tuitions:", error));
-    }, [axiosSecure]);
+    // useEffect(() => {
+    // axiosSecure.get("/latest-tuitions")
+    //     .then(res => setTuitions(res.data))
+    //     .catch(error => console.error("Error fetching tuitions:", error));
+    // }, [axiosSecure]);
+
+    const { data: tuitions = [], isLoading, isError } = useQuery({
+        queryKey: ["latest-tuitions"],
+        queryFn: async () => {
+            const res = await axiosSecure.get("/latest-tuitions");
+        return res.data;
+        },
+    });
 
     const headingVariants = {
         hidden: { opacity: 0, y: 50 },   
@@ -20,10 +29,23 @@ const TuitionPosts = () => {
     };
 
     return (
-        <section className="px-6 md:px-10 py-6 md:py-10 ">
+        <section className="px-6 md:px-10 py-6 md:py-10 bg-linear-to-br from-indigo-50 via-purple-50/0.1
+        bg-dark 
+        ">
             <div className="max-w-7xl mx-auto ">
                 <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} 
                 className="text-3xl md:text-4xl font-bold text-indigo-600 mb-8 text-center"> Latest Tuition Posts</motion.h2>
+
+            {isLoading && <Loading />}
+
+            {isError && (
+                <div className="text-center py-10 ">
+                    <p className="text-red-600 font-semibold mb-4"> Oops! We couldn’t load the tuition posts. </p>
+                    <p className="text-gray-500 mb-6"> Please check your connection or try again later. </p>
+                    <button  onClick={() => QueryClient.invalidateQueries(["latest-tuitions"])} className="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" > Retry</button>
+                </div>
+            )}
+
 
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} transition={{ staggerChildren: 0.15 }} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {tuitions.map(tuition => (

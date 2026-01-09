@@ -41,8 +41,8 @@ const AuthProvider = ({ children }) => {
 
     const getJwtToken = async (email) => {
     try {
-        const res = await axios.post("https://etuitionbd-api.vercel.app/getToken", { email });
-        // const res = await axios.post("http://localhost:3000/getToken", { email });
+        // const res = await axios.post("https://etuitionbd-api.vercel.app/getToken", { email });
+        const res = await axios.post("http://localhost:3000/getToken", { email });
         const token = res.data.token;
         localStorage.setItem("jwt-token", token);
         console.log("Token received:", token);

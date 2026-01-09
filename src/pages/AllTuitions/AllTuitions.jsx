@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { QueryClient, useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import TuitionCard from '../Home/TuitionPosts/TuitionCard';
 import { FaFilter, FaSearch } from 'react-icons/fa';
 import { motion } from "framer-motion";
+import Loading from '../../Components/Loading/Loading';
+import TuitionCardSkeleton from '../../Components/Skeleton/TuitionCardSkeleton';
 
 const AllTuitions = () => {
   const axiosSecure = useAxiosSecure()
@@ -26,7 +28,7 @@ const AllTuitions = () => {
   }, [search]);
 
   // Dropdown filters (Class, Subject, Location)
-  const { data: filterData = {},  } = useQuery({
+  const { data: filterData = {},   } = useQuery({
     queryKey: ['tuition-filters'],
     queryFn: async () => {
       const res = await axiosSecure.get('/tuition-filters');
@@ -35,7 +37,18 @@ const AllTuitions = () => {
   });
 
   // All Tuition   
-  const { data: listData,  } = useQuery({
+  // const { data: listData,  } = useQuery({
+  //   queryKey: ['all-tuitions', searchQuery, sort, page, filterClass, filterSubject, filterLocation],
+  //   queryFn: async () => {
+  //     const res = await axiosSecure.get('/all-tuitions', {
+  //       params: { search: searchQuery, sort, page, limit, class: filterClass, subject: filterSubject, location: filterLocation }
+  //     });
+  //     return res.data;
+  //   },
+  //   keepPreviousData: true
+  // });
+
+  const { data: listData, isLoading, isError, isFetching } = useQuery({
     queryKey: ['all-tuitions', searchQuery, sort, page, filterClass, filterSubject, filterLocation],
     queryFn: async () => {
       const res = await axiosSecure.get('/all-tuitions', {
@@ -46,29 +59,35 @@ const AllTuitions = () => {
     keepPreviousData: true
   });
 
+
+
+
+
   const tuitions = listData?.data || [];
   const total = listData?.total || 0;
   const totalPages = Math.max(1, Math.ceil(total / limit));
 
   const headingVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
   return (
-    <div className=" px-6 md:px-10 py-6 md:py-10 bg-linear-to-br from-indigo-50 via-purple-50/0.1 to-white ">
+    <div className=" px-6 md:px-10 py-6 md:py-10 bg-linear-to-br from-indigo-50 via-purple-50/0.1 bg-dark ">
       <div className="text-center mb-6">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 text-center" >All Tuitions</motion.h2>
         <br />
         <p className="text-gray-600">Showing {tuitions.length} of {total} tuitions</p>
       </div>
 
-      <div className="bg-white rounded-xl p-6 shadow-sm mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm mb-6">
         <div className="flex flex-wrap gap-4 justify-center items-center">
-          <div className="relative w-full sm:w-64 md:w-80"> 
+          <div className="relative w-full sm:w-64 md:w-80 "> 
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[1rem]" />
-            <input type="search" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 " placeholder="Search by subject, location or class..." />
+            <input type="search" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg text-sm inputFieldDark focus:outline-none focus:ring-2 focus:ring-indigo-500 " placeholder="Search by subject, location or class..." />
           </div>
 
-          <button onClick={() => setShowFilters(!showFilters)}  className="flex items-center gap-2 w-full md:w-fit px-4 py-2 rounded-lg border border-slate-300 bg-white text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 " > 
-            <FaFilter className="text-gay-600" /> Filters </button>
-          <select value={sort} onChange={(e) => setSort(e.target.value)} className="select border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <button onClick={() => setShowFilters(!showFilters)}  className="  flex items-center gap-2 w-full md:w-fit px-4 py-2 rounded-lg border border-slate-300 inputFieldDark text-sm font-medium text-gay-700 dark:text-gray-50 hover:bg-indigo-50 hover:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 " > 
+            <FaFilter /> Filters 
+          </button>
+
+          <select value={sort} onChange={(e) => setSort(e.target.value)} className="select border border-slate-300 rounded-lg px-3 py-2 text-sm inputFieldDark focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option value="budget-desc">Budget: High to Low</option>
             <option value="budget-asc">Budget: Low to High</option>
             <option value="date-desc">Date: Newest First</option>
@@ -77,25 +96,25 @@ const AllTuitions = () => {
         </div>
 
         {showFilters && (
-          <div className="w-full max-w-6xl mx-auto mt-6">
+          <div className="w-full max-w- 6xl mx- auto mt-6 ">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="form-control w-full">
                 <label className="label"><span className="label-text">Class/Grade</span></label>
-                <select value={filterClass} onChange={(e) => setFilterClass(e.target.value)} className="select inputField" >
+                <select value={filterClass} onChange={(e) => setFilterClass(e.target.value)} className="select inputField inputFieldDark " >
                   <option value="">All Classes</option>
                   {filterData.classes?.map(cls => <option key={cls}>{cls}</option>)}
                 </select>
               </div>
               <div className="form-control w-full">
                 <label className="label"><span className="label-text">Subject</span></label>
-                <select value={filterSubject} onChange={(e) => setFilterSubject(e.target.value)} className="select inputField" >
+                <select value={filterSubject} onChange={(e) => setFilterSubject(e.target.value)} className="select inputField inputFieldDark  " >
                   <option value="">All Subjects</option>
                   {filterData.subjects?.map(sub => <option key={sub}>{sub}</option>)}
                 </select>
               </div>
               <div className="form-control w-full">
                 <label className="label"><span className="label-text">Location</span></label>
-                <select value={filterLocation} onChange={(e) => setFilterLocation(e.target.value)}  className="select inputField">
+                <select value={filterLocation} onChange={(e) => setFilterLocation(e.target.value)}  className="select inputField   inputFieldDark  ">
                   <option value="">All Locations</option>
                   {filterData.locations?.map(loc => <option key={loc}>{loc}</option>)}
                 </select>
@@ -105,20 +124,34 @@ const AllTuitions = () => {
         )}
       </div>
 
+            
+            {/* {isLoading && <TuitionCardSkeleton />}   */}
+            {/* {isFetching && !isLoading && <TuitionCardSkeleton />}  */}
+
+
+            {isError && (
+                <div className="text-center py-10 ">
+                    <p className="text-red-600 font-semibold mb-4"> Oops! We couldn’t load the tuition posts. </p>
+                    <p className="text-gray-500 mb-6"> Please check your connection or try again later. </p>
+                    <button  onClick={() => QueryClient.invalidateQueries(["latest-tuitions"])} className="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white" > Retry</button>
+                </div>
+            )}
+
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {tuitions.map(tuition => <TuitionCard key={tuition._id} tuition={tuition} />)}
         {tuitions.length === 0 && <div className="col-span-full text-center text-gray-500">No tuitions found.</div>}
       </div>
 
+      
       <div className="flex justify-center mt-8">
         <div className="join gap-2">
-          {page > 1 && <button onClick={() => setPage(page - 1)} className="join-item btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-1 ">Previous</button>}
+          {page > 1 && <button onClick={() => setPage(page - 1)} className="join-item btn btn-sm paginationBtnPreNext  flex items-center gap-1 ">Previous</button>}
           {Array.from({ length: totalPages }, (_, i) => (
             <button key={i} onClick={() => setPage(i + 1)} className={`join-item btn btn-sm ${page === i + 1 ?
               "btn-active bg-indigo-600 text-white" :
-              "btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-1 shadow"}`}>{i + 1}</button>
+              "btn btn-sm paginationBtnPage flex items-center gap-1 shadow"}`}>{i + 1}</button>
           ))}
-          {page < totalPages && <button onClick={() => setPage(page + 1)} className="join-item btn btn-sm bg-indigo-100 text-gray-800 hover:bg-indigo-200 flex items-center gap-1 ">Next</button>}
+          {page < totalPages && <button onClick={() => setPage(page + 1)} className="join-item btn btn-sm paginationBtnPreNext flex items-center gap-1 ">Next</button>}
         </div>
       </div>
     </div>
