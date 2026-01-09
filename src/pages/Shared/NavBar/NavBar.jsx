@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../../../components/Logo/Logo';
 import { Link, NavLink } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
-import Loading from '../../../Components/Loading/Loading';
 import toast from 'react-hot-toast';
 import { useQueryClient } from '@tanstack/react-query';
+import { HiOutlineHome, HiOutlineInformationCircle, HiOutlineMail } from "react-icons/hi";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
     const queryClient = useQueryClient();
+
+    // Theme 
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+    useEffect(() => {
+        const html = document.querySelector("html");
+        html.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+    const handleTheme = (checked) => {
+        setTheme(checked ? "dark" : "light");
+    };
 
     const handleLogOut = async () => {
         try {
@@ -20,26 +34,32 @@ const NavBar = () => {
         }
     }
 
-    const activeClass = ({ isActive }) => isActive
-        ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
-        : "text-gray-700 hover:text-indigo-500 px-3 py-1 rounded-md";
+    // const activeClass = ({ isActive }) => isActive
+    //     ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
+    //     : "text-gray-800 dark:text-gray-50 hover:text-indigo-500 px-3 py-1 rounded-md";
+
+    const activeClass = ({ isActive }) =>
+  isActive
+    ? "bg-indigo-100 text-indigo-600 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-md font-semibold"
+    : "text-gray-800 dark:text-gray-50 hover:text-indigo-500 dark:hover:text-indigo-400 px-3 py-1 rounded-md";
+
 
     const links = <>
-        <li><NavLink className={activeClass} to="/">Home</NavLink></li>
+        <li><NavLink className={activeClass} to="/"><HiOutlineHome/>Home</NavLink></li>
         <li><NavLink className={activeClass} to="/all-tuitions">Tuitions</NavLink></li>
         <li><NavLink className={activeClass} to="/all-tutors">Tutors</NavLink></li>
-        <li><NavLink className={activeClass} to="/about">About</NavLink></li>
-        <li><NavLink className={activeClass} to="/contact">Contact</NavLink></li>
+        <li><NavLink className={activeClass} to="/about"><HiOutlineInformationCircle /> About</NavLink></li>
+        <li><NavLink className={activeClass} to="/contact"><HiOutlineMail/>Contact</NavLink></li>
 
         {
             user && <>
-                <li><NavLink className={activeClass} to="/dashboard">Dashboard</NavLink></li>
+                <li><NavLink className={activeClass} to="/dashboard"><LuLayoutDashboard/> Dashboard</NavLink></li>
             </>
         }
     </>
 
     return (
-        <div className="px-6 md:px-10  navbar bg-indigo-50 text-gray-800 sticky z-50 top-0 shadow">
+        <div className="px-6 md:px-10 navbar bg-indigo-50 dark:bg-gray-800 sticky z-50 top-0 shadow">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,9 +72,19 @@ const NavBar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1"> {links} </ul>
             </div>
-            <div className="navbar-end">
 
-            {user ? (
+            <div className="navbar-end md:gap-3">
+
+                <label className="swap swap-rotate text-base-content mr-4">
+                    <input type="checkbox"
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    defaultChecked={localStorage.getItem('theme') === "dark"}
+                    className="theme-controller" />
+                    <svg aria-label="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="swap-off fill-current w-6 h-6"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></g></svg>
+                    <svg aria-label="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="swap-on fill-current w-6 h-6"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></g></svg>
+                </label>
+
+                {user ? (
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full"> 
@@ -64,8 +94,8 @@ const NavBar = () => {
                         </div>
 
                         <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <li><a>{user?.displayName || user?.providerData?.[0]?.displayName || "User"}</a></li>
-                            <li><a>{user?.email || user?.providerData?.[0]?.email}</a></li>
+                            <li><a className="hover:bg-indigo-50 dark:hover:bg-indigo-900 dark:text-gray-200">{user?.displayName || user?.providerData?.[0]?.displayName || "User"}</a></li>
+                            <li><a className="hover:bg-indigo-50 dark:hover:bg-indigo-900 dark:text-gray-200">{user?.email || user?.providerData?.[0]?.email}</a></li>
                             <li><Link onClick={handleLogOut} className="text-red-600 hover:bg-red-50">Logout</Link></li>
                         </ul>
                     </div>
@@ -75,7 +105,6 @@ const NavBar = () => {
                         <Link to="/register" className="btn btn-sm bg-indigo-500 hover:bg-indigo-600 text-white">Register</Link>
                     </div>
                 )}
-                
             </div>
         </div>
     );
