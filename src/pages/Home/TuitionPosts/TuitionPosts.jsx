@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import TuitionCard from "./TuitionCard";
 import { QueryClient, useQuery } from "@tanstack/react-query";
 import Loading from "../../../Components/Loading/Loading";
+import TuitionCardSkeleton from "../../../Components/Skeleton/TuitionCardSkeleton";
 
 const TuitionPosts = () => {
     // const [tuitions, setTuitions] = useState([]);
@@ -36,7 +37,7 @@ const TuitionPosts = () => {
                 <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} 
                 className="text-3xl md:text-4xl font-bold text-indigo-600 mb-8 text-center"> Latest Tuition Posts</motion.h2>
 
-            {isLoading && <Loading />}
+            {isLoading && <TuitionCardSkeleton />}
 
             {isError && (
                 <div className="text-center py-10 ">

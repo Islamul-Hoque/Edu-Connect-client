@@ -19,7 +19,7 @@ const DashboardLayout = () => {
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
 
       <div className="drawer-content flex flex-col">
-        <nav className="navbar w-full bg-indigo-50 text-gray-800 shadow sticky top-0 z-10 flex justify-between">
+        <nav className="navbar w-full bg-indigo-50 dark:bg-gray-800 text-gray-800 shadow sticky top-0 z-10 flex justify-between">
           <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -34,7 +34,7 @@ const DashboardLayout = () => {
 
       <div className="drawer-side  shadow">
         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-        <div className="flex min-h-full flex-col bg-indigo-50 text-gray-800 shadow w-52">
+        <div className="flex min-h-full flex-col bg-indigo-50 dark:bg-gray-800 text-gray-800 shadow w-52">
           <ul className="menu p-4 w-full grow">
             <li> <Link to="/" className="flex justify-center mb-4"> <img className="" src={logo} alt="Logo" /> </Link>  </li>
 
