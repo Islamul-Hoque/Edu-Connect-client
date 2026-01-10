@@ -1,14 +1,13 @@
 import React from 'react';
-import { FaBookOpen, FaChartBar, FaClipboardList, FaGraduationCap, FaMoneyBillWave, FaPlusCircle, FaRegCreditCard, FaSignOutAlt, FaTasks, FaUserEdit, FaUsers } from 'react-icons/fa';
+import { FaBookOpen, FaChartBar, FaClipboardList, FaGraduationCap, FaMoneyBillWave, FaPlusCircle, FaRegCreditCard, FaTasks, FaUserEdit, FaUsers } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../../hooks/useRole';
 import logo from '../../assets/eTuitionBD.png';
-import { FaHome, FaTachometerAlt } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { MdDashboard } from 'react-icons/md';
 
 const DashboardLayout = () => {
   const { role } = useRole();
-
 
   const activeClass = ({ isActive }) => isActive
     ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
@@ -38,7 +37,7 @@ const DashboardLayout = () => {
           <ul className="menu p-4 w-full grow">
             <li> <Link to="/" className="flex justify-center mb-4"> <img className="" src={logo} alt="Logo" /> </Link>  </li>
 
-            <li> <NavLink className={activeClass} end to="/dashboard">  <MdDashboard /> <span>Dashboard</span> </NavLink> </li>
+            <li> <NavLink className={activeClass} end to="/dashboard">  <MdDashboard /> <span>Overview</span> </NavLink> </li>
             <div className="border-t border-gray-300 my-2"></div>
 
             {role === 'Student' && (

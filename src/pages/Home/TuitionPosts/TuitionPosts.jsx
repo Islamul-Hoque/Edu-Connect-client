@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import TuitionCard from "./TuitionCard";
 import { QueryClient, useQuery } from "@tanstack/react-query";
-import Loading from "../../../Components/Loading/Loading";
 import TuitionCardSkeleton from "../../../Components/Skeleton/TuitionCardSkeleton";
 
 const TuitionPosts = () => {

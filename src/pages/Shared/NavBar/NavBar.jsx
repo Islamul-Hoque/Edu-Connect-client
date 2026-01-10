@@ -41,7 +41,7 @@ const NavBar = () => {
     const activeClass = ({ isActive }) =>
   isActive
     ? "bg-indigo-100 text-indigo-600 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-md font-semibold"
-    : "text-gray-800 dark:text-gray-50 hover:text-indigo-500 dark:hover:text-indigo-400 px-3 py-1 rounded-md";
+    : "text-gray-800 dark:text-gray-50 hover:text-indigo-500 dark:hover:text-indigo-800 px-3 py-1 rounded-md";
 
 
     const links = <>
@@ -59,7 +59,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="px-6 md:px-10 navbar bg-indigo-50 dark:bg-gray-800 sticky z-50 top-0 shadow">
+        <div className="px-6 md:px-10 navbar bg-indigo-50 dark:bg-gray-900 sticky z-50 top-0 shadow">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

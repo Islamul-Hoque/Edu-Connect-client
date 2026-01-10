@@ -4,7 +4,6 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import TuitionCard from '../Home/TuitionPosts/TuitionCard';
 import { FaFilter, FaSearch } from 'react-icons/fa';
 import { motion } from "framer-motion";
-import Loading from '../../Components/Loading/Loading';
 import TuitionCardSkeleton from '../../Components/Skeleton/TuitionCardSkeleton';
 
 const AllTuitions = () => {
