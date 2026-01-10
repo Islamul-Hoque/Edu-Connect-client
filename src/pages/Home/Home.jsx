@@ -5,6 +5,7 @@ import Tutors from './Tutors/Tutors';
 import HowItWorks from './HowItWorks/HowItWorks';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 import Faq from './WhyChooseUs/FAQ/Faq';
+import PlatformStats from './PlatformStats/PlatformStats';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <HowItWorks/>
             <WhyChooseUs/> */}
             <Faq/>
+            <PlatformStats />
         </div>
     );
 };

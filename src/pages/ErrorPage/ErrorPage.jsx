@@ -18,7 +18,7 @@ const ErrorPage = () => {
                 <Link to="/"><motion.button className="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition duration-300" variants={buttonVariants} whileHover="hover" whileTap="tap">Go to Homepage</motion.button></Link>
             </motion.div>
 
-            <motion.p className="mt-10 text-sm text-gray-500" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0 }}>Need help? Contact etuitionbd@gmail.com</motion.p>
+            <motion.p className="mt-10 text-sm text-gray-500" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0 }}>Need help? Contact educonnect@gmail.com</motion.p>
         </motion.div>
     );
 };
