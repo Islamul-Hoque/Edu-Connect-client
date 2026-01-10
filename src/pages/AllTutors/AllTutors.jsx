@@ -4,11 +4,12 @@ import { QueryClient, useQuery } from '@tanstack/react-query';
 import TutorsCard from '../Home/Tutors/TutorsCard';
 import { motion } from "framer-motion";
 import Loading from '../../Components/Loading/Loading';
+import TutorsCardSkeleton from '../../Components/Skeleton/TutorsCardSkeleton';
 
 const AllTutors = () => {
     const axiosSecure = useAxiosSecure();
 
-    const { data: allTutors = [], isLoading, isError } = useQuery({
+    const { data: allTutors = [], isLoading, isError, isFetching } = useQuery({
         queryKey: ['all-tutors'],
         queryFn: async () => {
         const res = await axiosSecure.get('/all-tutors');
@@ -22,7 +23,7 @@ const AllTutors = () => {
                 <p className="text-gray-600 dark:text-gray-50 mb-6"> Browse all verified tutors with their qualifications and experience.  </p>
             </div>
 
-            {isLoading && <Loading />}
+            { isLoading && isFetching && ( <TutorsCardSkeleton count={8} /> )}
 
             {isError && (
                 <div className="flex flex-col items-center justify-center py-12">
@@ -32,7 +33,7 @@ const AllTutors = () => {
                 </div>
             )}
 
-            {!isLoading && !isError && (
+            {!isLoading && !isError && !isFetching && (
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} transition={{ staggerChildren: 0.15 }} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {allTutors.map(tutor => ( <TutorsCard key={tutor._id} tutor={tutor}/> ))}
             </motion.div>
