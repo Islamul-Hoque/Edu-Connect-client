@@ -361,14 +361,14 @@ const HowItWorks = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <motion.h2  initial={{ opacity: 0, y: -20 }}  whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl font-extrabold mb-6 bg-linear-to-r from-indigo-500 via-purple-500 to-indigo-600  bg-clip-text text-transparent"
+            className="text-4xl font-bold mb-6 bg-linear-to-r from-indigo-500 via-purple-500 to-indigo-600  bg-clip-text text-transparent"
           > How EduConnect Works? </motion.h2>
 
           {/* Tab Switcher */}
           <div className="inline-flex bg-base-200 p-1.5 rounded-2xl border border-base-300 shadow-inner">
             <button  onClick={() => setActiveTab("student")}  className={`px-6 py-2.5 rounded-xl font-bold transition-all duration-300 ${
                 activeTab === "student" ? "bg-indigo-600 text-white shadow-md" : "text-gray-500 hover:text-indigo-600"  }`}
-            >  For Students
+              > For Students
             </button>
 
             <button onClick={() => setActiveTab("tutor")}  className={`px-6 py-2.5 rounded-xl font-bold transition-all duration-300 ${
@@ -387,54 +387,34 @@ const HowItWorks = () => {
 
         {/* Timeline */}
         <div className="relative max-w-5xl mx-auto">
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-400/30 via-purple-400/30 to-transparent"></div>
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-linear-to-b from-indigo-400/30 via-purple-400/30 to-transparent"></div>
 
           <div className="space-y-12">
             <AnimatePresence >
-              {currentSteps.map((step, index) => {
-                const isEven = index % 2 === 1;
+              {currentSteps.map((step, index) => { const isEven = index % 2 === 1;
                 return (
-                  <div  key={`${activeTab}-${step.id}`}  className={`flex flex-col md:flex-row items-center justify-between w-full ${
-                      isEven ? "md:flex-row-reverse" : ""  }`} >
-                    <motion.div
-                      initial={{ opacity: 0, x: isEven ? 100 : -100 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 15,
-                        bounce: 0.4,
-                        delay: index * 0.1,
-                      }}
-                      className="w-full md:w-[45%] group"
-                    >
+                  <div key={`${activeTab}-${step.id}`}  className={`flex flex-col md:flex-row items-center justify-between w-full ${ isEven ? "md:flex-row-reverse" : ""  }`} >
+
+                    <motion.div initial={{ opacity: 0, x: isEven ? 100 : -100 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                      transition={{ type: "spring", stiffness: 100, damping: 15, bounce: 0.4, delay: index * 0.1,  }} className="w-full md:w-[45%] group" >
+
                       <div className="bg-base-200 p-8 rounded-4xl shadow -xl border border-base-300  transition-all duration-300 relative">
                         {/* Icon + Step + Title in one row */}
                         <div className="flex items-center gap-3 mb-4">
-                          <div
-                            className={`w-12 h-12 rounded-2xl ${step.color} text-white flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform`}
-                          >
+                          <div className={`w-12 h-12 rounded-2xl ${step.color} text-white flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform`} >
                             {step.icon}
                           </div>
                           <div>
-                            <span className="text-xs font-bold text-indigo-500 tracking-widest uppercase">
-                              STEP 0{step.id}
-                            </span>
-                            <h3 className="text-xl font-bold text-base-content uppercase leading-tight">
-                              {step.title}
-                            </h3>
+                            <span className="text-xs font-bold text-indigo-500 tracking-widest uppercase"> STEP 0{step.id} </span>
+                            <h3 className="text-xl font-bold text-base-content uppercase leading-tight"> {step.title} </h3>
                           </div>
                         </div>
                         <p className="text-base-content/60 leading-relaxed font-medium">{step.description}</p>
                       </div>
                     </motion.div>
 
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full border-4 border-base-100 bg-indigo-500 z-10 items-center justify-center shadow-lg"
-                    >
+                    <motion.div initial={{ scale: 0 }}  whileInView={{ scale: 1 }}
+                      className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full border-4 border-base-100 bg-indigo-500 z-10 items-center justify-center shadow-lg" >
                       <div className="w-2.5 h-2.5 bg-white rounded-full animate-pulse"></div>
                     </motion.div>
 
@@ -448,7 +428,6 @@ const HowItWorks = () => {
         </div>
       </div>
     </section>
-
   );
 }
 

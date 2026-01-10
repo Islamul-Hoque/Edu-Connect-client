@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaShieldAlt, FaUsers, FaMoneyCheckAlt, FaChalkboardTeacher } from "react-icons/fa";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -13,48 +12,62 @@ const headingVariants = {
 };
 
 const WhyChooseUs = () => {
-  const features = [
-    {
-      icon: <FaShieldAlt className="text-indigo-500 text-3xl" />,
-      title: "Verified Tutors",
-      desc: "All tutors are verified by admin to ensure trust and quality.",
-    },
-    {
-      icon: <FaUsers className="text-indigo-500 text-3xl" />,
-      title: "Smart Matching",
-      desc: "Students get matched with the right tutors based on subject and location.",
-    },
-    {
-      icon: <FaMoneyCheckAlt className="text-indigo-500 text-3xl" />,
-      title: "Transparent Payments",
-      desc: "Secure payment tracking ensures clarity and trust for both sides.",
-    },
-    {
-      icon: <FaChalkboardTeacher className="text-indigo-500 text-3xl" />,
-      title: "Easy Communication",
-      desc: "Structured chat and updates for smooth student–tutor interaction.",
-    },
-  ];
+
+const features = [
+  {
+    id: 1,
+    title: "Secure Role-Based Dashboard",
+    description: "EduConnect uses JWT authentication to provide secure, role-based access for students, tutors, and admins.",
+    img: "https://cdn-icons-png.flaticon.com/128/2092/2092663.png", 
+  },
+  {
+    id: 2,
+    title: "Admin-Approved Tuition Posts",
+    description: "All student tuition posts are reviewed and approved by admins, ensuring authenticity and preventing fake posts.",
+    img: "https://cdn-icons-png.flaticon.com/128/9753/9753554.png", 
+
+  },
+  {
+    id: 3,
+    title: "Smart Tutor Choosing",
+    description: "Students can confirm tutors based on their preferences, ensuring the right fit for every tuition need.",
+    img: "https://cdn-icons-png.flaticon.com/128/12061/12061805.png", 
+
+  },
+  {
+    id: 4,
+    title: "Transparent Payments",
+    description: "Stripe-powered payments with complete transaction history visible in dashboards for both students and tutors.", 
+    img: "https://cdn-icons-png.flaticon.com/128/12551/12551056.png", 
+  },
+];
 
   return (
-    <section className="px-6 md:px-10 py-6 md:py-10 bg-linear-to-br from-gray-50 via-purple-50/0.4 to-indigo-50">
+    <div className="px-6 md:px-10 py-6 md:py-10  ">
       <div className="max-w-7xl mx-auto">
         <motion.h2  variants={headingVariants}  initial="hidden"  whileInView="visible"  viewport={{ once: false, amount: 0.2 }}  className="text-3xl md:text-4xl font-bold text-indigo-600 mb-12 text-center"  > Why Choose Us </motion.h2>
 
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.3 }} transition={{ staggerChildren: 0.15 }} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8" >
           {features.map((feature, idx) => (
-            <motion.div key={idx} variants={cardVariants} className="p-6 rounded-xl border border-gray-200 bg-white shadow-lg hover:shadow-xl transform transition duration-300 hover:scale-[1.05]" >
+            <motion.div key={idx} variants={cardVariants} className="p-6 rounded-xl SectionCard shadow-lg hover:shadow-xl transform transition duration-300 hover:scale-[1.05]" >
+              
               <div className="flex flex-col items-center text-center space-y-4">
-                {feature.icon}
-                <h3 className="text-lg font-semibold text-gray-800">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.desc}</p>
+                <div className="flex justify-center items-center">
+                  <img src={feature.img} alt={feature.title} className="w-14 h-14 object-contain mb-2" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-50">{feature.title}</h3>
+                <p className="text-base-content/70 leading-relaxed "> {feature.description} </p>
               </div>
+
             </motion.div>
           ))}
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default WhyChooseUs;
+export default WhyChooseUs;  
+
+
+// bg-linear-to-br from-gray-50 via-purple-50/0.4 to-indigo-50 dark:bg-gray-800
