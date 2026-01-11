@@ -31,61 +31,27 @@ const slides = [
   }
 ];
 
-
 const Hero = () => {
   return (
+    <div className="relative min-h-[65vh] flex items-center justify-center bg-linear-to-r from-indigo-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 px-6 md:px-12">
+      <Swiper  modules={[Autoplay, Pagination]} autoplay={{ delay: 3000, disableOnInteraction: false }} loop={true} pagination={{ clickable: true }}  className="w-full " >
+        {slides.map((slide, i) => (
+          <SwiperSlide key={i}>
+            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+              <motion.div  className="order-1 md:order-2" initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} >
+                <img src={slide.img} alt={slide.title} className="w-[280px] md:w-[400px]  py-4 " />
+              </motion.div>
 
-<div className="relative min-h-[65vh] flex items-center justify-center bg-linear-to-r from-indigo-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 px-6 md:px-12">
-      
-  <Swiper
-    modules={[Autoplay, Pagination]}
-    autoplay={{ delay: 3000, disableOnInteraction: false }}
-    loop={true}
-    pagination={{ clickable: true }}
-    className="w-full "
-  >
-    {slides.map((slide, i) => (
-      <SwiperSlide key={i}>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-  
-  {/* Right Image */}
-  <motion.div
-    className="order-1 md:order-2"
-    initial={{ opacity: 0, x: 40 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.8 }}
-  >
-    <img
-      src={slide.img}
-      alt={slide.title}
-      className="w-[280px] md:w-[400px]  py-4 "
-    />
-  </motion.div>
-
-  {/* Left Text */}
-  <motion.div
-    className="order-2 md:order-1 text-center md:text-left  py-4 max-w-xl"
-    initial={{ opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-  >
-    <h1 className="text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">
-      {slide.title}
-    </h1>
-    <p className="text-gray-600 dark:text-gray-300 mb-6">{slide.desc}</p>
-    <Link
-      to={slide.btnLink}
-      className="btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mb-6 sm:mb-0"
-    >
-      {slide.btnText}
-    </Link>
-  </motion.div>
-</div>
-
-      </SwiperSlide>
-    ))}
-  </Swiper>
-</div>
+              <motion.div className="order-2 md:order-1 text-center md:text-left  py-4 max-w-xl" initial={{ opacity: 0, y: -20 }}  animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}  >
+                <h1 className="text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">  {slide.title}  </h1>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">{slide.desc}</p>
+                <Link to={slide.btnLink} className="btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mb-6 sm:mb-0" >  {slide.btnText} </Link>
+              </motion.div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

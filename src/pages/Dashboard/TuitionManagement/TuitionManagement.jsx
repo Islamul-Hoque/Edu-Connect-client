@@ -108,18 +108,18 @@ const TuitionManagement = () => {
         <dialog open className="modal">
           <div className="modal-box space-y-3">
             <h2 className="text-3xl font-bold text-indigo-600 mb-6 flex items-center gap-2"> <FaBookOpen /> {selectedTuition.subject}</h2>
-            <p className="text-gray-700 flex items-center gap-2"><FaGraduationCap className="text-indigo-500" /> Class: {selectedTuition.class}</p>
-            <p className="text-gray-700 flex items-center gap-2"><FaSchool className="text-indigo-500" /> Institution: {selectedTuition.institution}</p>
-            <p className="text-gray-700 flex items-center gap-2"><FaMapMarkerAlt className="text-indigo-500" /> Location: {selectedTuition.location}</p>
-            <p className="text-gray-700 flex items-center gap-2"><FaClock className="text-indigo-500" /> Schedule: {selectedTuition.schedule} ({selectedTuition.duration})</p>
-            <p className="text-gray-700 flex items-center gap-2"><FaMoneyBillWave className="text-indigo-500" /> Budget: {selectedTuition.budget} Tk/Month</p>
-            <p className="text-gray-700 flex items-center gap-2"><FaUser className="text-indigo-500" /> Student: {selectedTuition.studentName}</p>
-            <p className="text-gray-700 flex items-center gap-2"><FaPhoneAlt className="text-indigo-500" /> Phone: {selectedTuition.phone}</p>
-            <p className="text-gray-700 flex items-center gap-2"><FaEnvelope className="text-indigo-500" /> Email: {selectedTuition.studentEmail}</p>
-            <p className="text-gray-700 flex items-center gap-2"><FaClipboardList className="text-indigo-500" /> Additional Requirements: {selectedTuition.additionalRequirements}</p>
-            <div className="text-gray-600 text-sm flex items-center gap-2"><FaRegCalendarAlt className="text-indigo-500" /> {format(new Date(selectedTuition.createdAt), "dd/MM/yyyy")}</div>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaGraduationCap className="text-indigo-500" /> Class: {selectedTuition.class}</p>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaSchool className="text-indigo-500" /> Institution: {selectedTuition.institution}</p>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaMapMarkerAlt className="text-indigo-500" /> Location: {selectedTuition.location}</p>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaClock className="text-indigo-500" /> Schedule: {selectedTuition.schedule} ({selectedTuition.duration})</p>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaMoneyBillWave className="text-indigo-500" /> Budget: {selectedTuition.budget} Tk/Month</p>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaUser className="text-indigo-500" /> Student: {selectedTuition.studentName}</p>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaPhoneAlt className="text-indigo-500" /> Phone: {selectedTuition.phone}</p>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaEnvelope className="text-indigo-500" /> Email: {selectedTuition.studentEmail}</p>
+            <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaClipboardList className="text-indigo-500" /> Additional Requirements: {selectedTuition.additionalRequirements}</p>
+            <div className="text-gray-600 dark:text-gray-50  text-sm flex items-center gap-2"><FaRegCalendarAlt className="text-indigo-500" /> {format(new Date(selectedTuition.createdAt), "dd/MM/yyyy")}</div>
             <div className="modal-action">
-              <button onClick={() => setSelectedTuition(null)} className="btn">Close</button>
+              <button onClick={() => setSelectedTuition(null)} className="btn dark:bg-gray-700">Close</button>
             </div>
           </div>
         </dialog>

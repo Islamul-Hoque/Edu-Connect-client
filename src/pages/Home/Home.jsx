@@ -6,17 +6,19 @@ import HowItWorks from './HowItWorks/HowItWorks';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 import Faq from './WhyChooseUs/FAQ/Faq';
 import PlatformStats from './PlatformStats/PlatformStats';
+import CallToAction from './CallToAction/CallToAction';
 
 const Home = () => {
     return (
         <div className=''>
             <Hero/>
-            <TuitionPosts/>
+            {/* <TuitionPosts/>
             <Tutors/>
             <HowItWorks/>
             <WhyChooseUs/>
-            <Faq/>
+            <Faq/> */}
             <PlatformStats />
+            <CallToAction/>
         </div>
     );
 };

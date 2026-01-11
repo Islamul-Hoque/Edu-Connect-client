@@ -60,7 +60,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className='bg-indigo-50 dark:bg-gray-900 sticky z-50 top-0'>
+        <div className='bg-indigo-100 dark:bg-gray-900 sticky z-50 top-0'>
         <div className='max-w-7xl mx-auto '>
         <div className="px-6 md:px-10 navbar   sha dow">
             <div className="navbar-start">
@@ -88,12 +88,12 @@ const NavBar = () => {
                 </label>
 
                 {user ? (
-                    <div className="dropdown dropdown-end dark:bg-gray-800">
+                    <div className="dropdown dropdown-end ">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full"> 
                                 <img src=
                                 {user?.photoURL ||  user?.providerData?.[0]?.photoURL || "https://i.ibb.co.com/RTyj1cSs/1559144-200.png"} 
-                                alt="" /> </div>
+                                alt="User Avatar" /> </div>
                         </div>
 
                         <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">

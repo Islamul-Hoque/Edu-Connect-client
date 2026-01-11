@@ -99,7 +99,7 @@ const UserManagement = () => {
                 </td>
                 <td>{user.role}</td>
                 <td>
-                  <select defaultValue={user.role} onChange={(e) => handleRoleUpdate(user._id, e.target.value)} className="select select-sm">
+                  <select defaultValue={user.role} onChange={(e) => handleRoleUpdate(user._id, e.target.value)} className="select inputField inputFieldDark select-sm">
                     <option value="Student">Student</option>
                     <option value="Tutor">Tutor</option>
                     <option value="Admin">Admin</option>
