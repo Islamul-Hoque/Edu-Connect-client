@@ -99,6 +99,7 @@ const NavBar = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <li><a className="hover:bg-indigo-50 dark:hover:bg-indigo-900 dark:text-gray-200">{user?.displayName || user?.providerData?.[0]?.displayName || "User"}</a></li>
                             <li><a className="hover:bg-indigo-50 dark:hover:bg-indigo-900 dark:text-gray-200">{user?.email || user?.providerData?.[0]?.email}</a></li>
+                            <li><Link to="/dashboard/edit-profile" className="  hover:bg-indigo-50 dark:hover:bg-indigo-900 dark:text-gray-200">Edit Profile</Link></li>
                             <li><Link onClick={handleLogOut} className="text-red-600 hover:bg-red-50">Logout</Link></li>
                         </ul>
                     </div>
