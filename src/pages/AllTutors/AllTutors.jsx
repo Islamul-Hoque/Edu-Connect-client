@@ -23,7 +23,9 @@ const AllTutors = () => {
                 <p className="text-gray-600 dark:text-gray-50 mb-6"> Browse all verified tutors with their qualifications and experience.  </p>
             </div>
 
-            { isLoading || isFetching && ( <TutorsCardSkeleton count={8} /> )}
+            { isLoading  && ( <TutorsCardSkeleton count={8} /> )}
+            { isFetching  && ( <TutorsCardSkeleton count={8} /> )}
+            
 
             {isError && (
                 <div className="flex flex-col items-center justify-center py-12">

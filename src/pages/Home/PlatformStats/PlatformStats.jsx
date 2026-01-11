@@ -51,7 +51,9 @@ const PlatformStats = () => {
     const [start, setStart] = useState(false);
 
     return (
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: false, amount: 0.5 }} onViewportEnter={() => setStart(true)} onViewportLeave={() => setStart(false)} className="p-6 rounded-xl shadow-lg bg-white dark:bg-gray-800 text-center">
+        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} 
+        viewport={{ once: false, amount: 0.5 }} onViewportEnter={() => setStart(true)} onViewportLeave={() => setStart(false)}
+        className="p-6 rounded-xl shadow-md bg-gray-50 dark:bg-gray-800 text-center">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">{title}</h3>
             <p className="text-3xl font-bold text-indigo-600">{start && <CountUp end={value} duration={3} />}</p>
         </motion.div>

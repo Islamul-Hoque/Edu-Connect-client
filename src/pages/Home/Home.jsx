@@ -7,18 +7,23 @@ import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 import Faq from './WhyChooseUs/FAQ/Faq';
 import PlatformStats from './PlatformStats/PlatformStats';
 import CallToAction from './CallToAction/CallToAction';
+import PlatformBenefits from './PlatformBenefits/PlatformBenefits';
 
 const Home = () => {
     return (
         <div className=''>
             <Hero/>
-            {/* <TuitionPosts/>
+            {/* <PlatformStats />
+
+            <TuitionPosts/>
             <Tutors/>
+
             <HowItWorks/>
             <WhyChooseUs/>
+
             <Faq/> */}
-            <PlatformStats />
-            <CallToAction/>
+            <PlatformBenefits />
+            <CallToAction />
         </div>
     );
 };

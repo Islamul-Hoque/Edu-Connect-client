@@ -6,6 +6,7 @@ import { Autoplay } from "swiper/modules";
 import {  Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { FaSearch, FaChalkboardTeacher, FaShieldAlt } from "react-icons/fa";
 
 const slides = [
   {
@@ -13,23 +14,33 @@ const slides = [
     desc: "Browse hundreds of verified tuition posts from across the city. Filter by subject, location, and budget to quickly discover the opportunities that match your needs.",
     img: "https://i.ibb.co.com/WNzsSqBq/1st.png",
     btnText: "Find Tuitions",
-    btnLink: "/all-tuitions"
+    btnLink: "/all-tuitions",
+    icon: "FaSearch"
   },
   {
     title: "Join as Tutor",
     desc: "Create your profile and showcase your expertise. Connect with motivated students, build your reputation, and start earning by teaching the subjects you love.",
-    img: "https://i.ibb.co.com/fVMfzsRF/hand-drawn-online-tutor-illustration.png",
+    // img: "https://i.ibb.co.com/fVMfzsRF/hand-drawn-online-tutor-illustration.png",
+    img: "https://i.ibb.co.com/F4s2WMT4/tu.png",
     btnText: "Join Now",
-    btnLink: "/register"
+    btnLink: "/register",
+    icon: "FaChalkboardTeacher"
   },
   {
     title: "Secure & Verified",
     desc: "We ensure every tutor is verified and every payment is secure. Our trusted platform makes communication safe and transparent, so you can focus on learning and teaching.",
     img: "https://i.ibb.co.com/JFW8RmhB/trust-safety.png",
     btnText: "Learn More",
-    btnLink: "/about"
+    btnLink: "/about",
+    icon: "FaShieldAlt"
   }
 ];
+
+const iconMap = { 
+  FaSearch: <FaSearch className="text-lg" />, 
+  FaChalkboardTeacher: <FaChalkboardTeacher className="text-lg" />, 
+  FaShieldAlt: <FaShieldAlt className="text-lg" /> 
+};
 
 const Hero = () => {
   return (
@@ -45,7 +56,8 @@ const Hero = () => {
               <motion.div className="order-2 md:order-1 text-center md:text-left  py-4 max-w-xl" initial={{ opacity: 0, y: -20 }}  animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}  >
                 <h1 className="text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">  {slide.title}  </h1>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">{slide.desc}</p>
-                <Link to={slide.btnLink} className="btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mb-6 sm:mb-0" >  {slide.btnText} </Link>
+                <Link to={slide.btnLink} className="btn  bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mb-6 sm:mb-0" > 
+                {iconMap[slide.icon]} {slide.btnText} </Link>
               </motion.div>
             </div>
           </SwiperSlide>

@@ -53,7 +53,7 @@ const Footer = () => {
 
         <hr className="my-6 border-gray-200 dark:border-gray-700" />
 
-        <div className="text-center text-sm text-gray-500">&copy; {new Date().getFullYear()} eTuitionBd. All rights reserved.</div>
+        <div className="text-center text-sm text-gray-500 dark:text-gray-50 ">&copy; {new Date().getFullYear()} EduConnect. All rights reserved.</div>
       </div>
       </section>
     </footer>
