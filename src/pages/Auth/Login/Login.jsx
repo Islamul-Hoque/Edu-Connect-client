@@ -77,18 +77,18 @@ const handleDemoLogin = (role) => {
   return (
     <div className="flex justify-center items-center min-h-screen dark:bg-gray-800 ">
       <div className="w-[88%] md:w-[50%] dark:hover:shadow-[0_0_7px_rgba(255,255,255,0.05)]  bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 pb-3 rounded-[0.7rem] overflow-hidden shadow  ">
-        <h2 className="text-2xl md:text-4xl font-bold text-center text-indigo-500 pt-10"> Login to <span className="text-gradient">eTuitionBd</span></h2>
+        <h2 className="text-2xl md:text-4xl font-bold text-center text-indigo-500 pt-10"> Login to <span className="text-gradient">EduConnect</span></h2>
         <div className="card-body text-gray-800 ">
           <form  onSubmit={handleSubmit(handleLogin)}>
             <fieldset className="fieldset">
               <label className="label dark:text-gray-50">Email</label>
-              <input type="email" {...register("email", { required: true })} className="inputField inputFieldDark" placeholder="Email" />
+              <input type="email" {...register("email", { required: true })} className="inputField dark:text-white inputFieldDark" placeholder="Email" />
               {errors.email?.type === "required" && <p className="text-red-500">Please enter a valid email address</p>}
 
-              <div className="relative">
+              <div className="relative mt-1">
                 <label className="label dark:text-gray-50">Password</label>
-                <input type={ show ? "text" : "password" } {...register("password", { required: true, minLength: 6 })} className="inputField inputFieldDark" placeholder="Password" />
-                <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.9rem] cursor-pointer z-50 " > { show ? <FaEye/> : <IoEyeOff/> }  </span>
+                <input type={ show ? "text" : "password" } {...register("password", { required: true, minLength: 6 })} className="inputField dark:text-white inputFieldDark" placeholder="Password" />
+                <span onClick={()=> setShow(!show) } className="absolute text-[1rem] right-4 top-[1.9rem] cursor-pointer z-50 dark:text-white" > { show ? <FaEye/> : <IoEyeOff/> }  </span>
                 {errors.password?.type === "required" && <p className="text-red-500">Please enter your password</p>}
               </div>
 
