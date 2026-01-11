@@ -48,11 +48,10 @@ const listVariants = {
                     <img
                         // src="https://possip.com/wp-content/uploads/2020/03/New-FI-for-Blogs-Odd-Pages-31.png"
                         // src="https://www.shutterstock.com/image-vector/online-learning-platform-offering-virtual-600nw-2655109283.jpg"
-                        src="https://i.ibb.co.com/fVMfzsRF/hand-drawn-online-tutor-illustration.png"
                         // src="https://i.ibb.co.com/RTtxFGDB/be.jpg"
                         // src="https://c8.alamy.com/comp/2GBJ2CG/distance-education-modern-technology-vector-illustration-cartoon-man-student-graduate-character-studying-online-sitting-with-laptop-graduation-hat-apple-knowledge-line-icons-isolated-on-white-2GBJ2CG.jpg"
-                        alt="EduConnect Benefits"
-                        className="w-full "
+                        src="https://i.ibb.co.com/fVMfzsRF/hand-drawn-online-tutor-illustration.png"
+                        className="w-full " alt="EduConnect Benefits"
                         />
                 </motion.div>
 

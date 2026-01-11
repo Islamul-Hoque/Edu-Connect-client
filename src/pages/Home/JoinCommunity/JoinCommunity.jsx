@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FaSearch, FaChalkboardTeacher } from "react-icons/fa";
 
 
-const CallToAction = () => {
+const JoinCommunity = () => {
     return (
         <div className="relative bg-linear-to-r from-indigo-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-16 px-6 md:px-12">
             <div className="max-w-4xl mx-auto text-center">
@@ -27,4 +27,4 @@ const CallToAction = () => {
     );
 };
 
-export default CallToAction;
+export default JoinCommunity;

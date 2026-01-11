@@ -6,14 +6,15 @@ import HowItWorks from './HowItWorks/HowItWorks';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 import Faq from './WhyChooseUs/FAQ/Faq';
 import PlatformStats from './PlatformStats/PlatformStats';
-import CallToAction from './CallToAction/CallToAction';
 import PlatformBenefits from './PlatformBenefits/PlatformBenefits';
+import JoinCommunity from './JoinCommunity/JoinCommunity';
+import LearningResources from './LearningResources/LearningResources';
 
 const Home = () => {
     return (
         <div className=''>
             <Hero/>
-            {/* <PlatformStats />
+            <PlatformStats />
 
             <TuitionPosts/>
             <Tutors/>
@@ -21,9 +22,10 @@ const Home = () => {
             <HowItWorks/>
             <WhyChooseUs/>
 
-            <Faq/> */}
+            <Faq/>
             <PlatformBenefits />
-            <CallToAction />
+            <LearningResources />
+            <JoinCommunity/>
         </div>
     );
 };

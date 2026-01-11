@@ -68,6 +68,3 @@ const features = [
 };
 
 export default WhyChooseUs;  
-
-
-// bg-linear-to-br from-gray-50 via-purple-50/0.4 to-indigo-50 dark:bg-gray-800

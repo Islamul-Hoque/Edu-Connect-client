@@ -180,6 +180,3 @@ const HowItWorks = () => {
 }
 
 export default HowItWorks;
-
-
-// text-4xl font-bold mb-6 bg-linear-to-r from-indigo-500 via-purple-500 to-indigo-600  bg-clip-text text-transparent
