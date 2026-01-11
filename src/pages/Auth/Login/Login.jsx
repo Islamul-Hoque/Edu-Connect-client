@@ -75,7 +75,7 @@ const handleDemoLogin = (role) => {
 };
 
   return (
-    <div className="flex justify-center items-center min-h-screen dark:bg-gray-800 ">
+    <div className="flex justify-center items-center min-h-screen  ">
       <div className="w-[88%] md:w-[50%] dark:hover:shadow-[0_0_7px_rgba(255,255,255,0.05)]  bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 pb-3 rounded-[0.7rem] overflow-hidden shadow  ">
         <h2 className="text-2xl md:text-4xl font-bold text-center text-indigo-500 pt-10"> Login to <span className="text-gradient">EduConnect</span></h2>
         <div className="card-body text-gray-800 ">
@@ -103,7 +103,7 @@ const handleDemoLogin = (role) => {
               <hr className="flex-1 border-gray-200" />
           </div>
 
-          <button onClick={handleGoogleSignIn} className="btn w-full bg-white text-black rounded-md border border-[#e5e5e5] flex items-center justify-center gap-2"> 
+          <button onClick={handleGoogleSignIn} className="btn w-full dark:bg-gray-700 dark:text-gray-50 text-black rounded-md border border-[#e5e5e5] flex items-center justify-center gap-2"> 
             <FcGoogle size={18}/>Login with Google
           </button>
 

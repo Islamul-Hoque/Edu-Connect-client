@@ -1,36 +1,91 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Link } from "react-router";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import {  Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+
+const slides = [
+  {
+    title: "Find Tuition Easily",
+    desc: "Browse hundreds of verified tuition posts from across the city. Filter by subject, location, and budget to quickly discover the opportunities that match your needs.",
+    img: "https://i.ibb.co.com/WNzsSqBq/1st.png",
+    btnText: "Find Tuitions",
+    btnLink: "/all-tuitions"
+  },
+  {
+    title: "Join as Tutor",
+    desc: "Create your profile and showcase your expertise. Connect with motivated students, build your reputation, and start earning by teaching the subjects you love.",
+    img: "https://i.ibb.co.com/fVMfzsRF/hand-drawn-online-tutor-illustration.png",
+    btnText: "Join Now",
+    btnLink: "/register"
+  },
+  {
+    title: "Secure & Verified",
+    desc: "We ensure every tutor is verified and every payment is secure. Our trusted platform makes communication safe and transparent, so you can focus on learning and teaching.",
+    img: "https://i.ibb.co.com/JFW8RmhB/trust-safety.png",
+    btnText: "Learn More",
+    btnLink: "/about"
+  }
+];
+
 
 const Hero = () => {
   return (
-    <section className="bg-indigo-50 bg-dark text-gray-800 min-h-[80vh] flex items-center px-6 md:px-10 py-6 md:py-10">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
-        <motion.div initial={{ opacity: 0, scale: 0.8, rotate: -5 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 0.3, type: "spring", stiffness: 70 }} className="flex justify-center md:justify-end order-1 md:order-2" >
-          <img src="https://i.ibb.co.com/fVMfzsRF/hand-drawn-online-tutor-illustration.png"
-            className=" md:w-[35.1rem] object-contain drop-shadow-xl"  alt="Education Hero" />
-        </motion.div>
+<div className="relative min-h-[65vh] flex items-center justify-center bg-linear-to-r from-indigo-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 px-6 md:px-12">
+      
+  <Swiper
+    modules={[Autoplay, Pagination]}
+    autoplay={{ delay: 3000, disableOnInteraction: false }}
+    loop={true}
+    pagination={{ clickable: true }}
+    className="w-full "
+  >
+    {slides.map((slide, i) => (
+      <SwiperSlide key={i}>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+  
+  {/* Right Image */}
+  <motion.div
+    className="order-1 md:order-2"
+    initial={{ opacity: 0, x: 40 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    <img
+      src={slide.img}
+      alt={slide.title}
+      className="w-[280px] md:w-[400px]  py-4 "
+    />
+  </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ type: "spring", stiffness: 80, damping: 20 }}
-          className="space-y-6 text-center md:text-left order-2 md:order-1  mb-10 md:mb-0" >
-          <motion.h1 initial={{ opacity: 0, y: -30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, type: "spring" }}  className="text-3xl md:text-5xl font-extrabold leading-tight text-indigo-600"  > Find Verified Tutors & Trusted Tuition Posts
-          </motion.h1>
+  {/* Left Text */}
+  <motion.div
+    className="order-2 md:order-1 text-center md:text-left  py-4 max-w-xl"
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    <h1 className="text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">
+      {slide.title}
+    </h1>
+    <p className="text-gray-600 dark:text-gray-300 mb-6">{slide.desc}</p>
+    <Link
+      to={slide.btnLink}
+      className="btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mb-6 sm:mb-0"
+    >
+      {slide.btnText}
+    </Link>
+  </motion.div>
+</div>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, type: "spring" }} className="text-base md:text-xl text-gray-700" > eTuitionBd connects students and tutors with a seamless platform for learning, teaching, and growth. </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, type: "spring" }} 
-              className="flex flex-row gap-4 justify-center md:justify-start" >
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Link to="/all-tuitions" className="bg-indigo-500 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-600 transition" > Browse Tuitions </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Link to="/all-tutors" className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition" >  Explore Tutors  </Link>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
+      </SwiperSlide>
+    ))}
+  </Swiper>
+</div>
   );
 };
 

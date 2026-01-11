@@ -8,7 +8,9 @@ const Footer = () => {
 
   return (
     <footer className="bg-indigo-50 dark:bg-gray-900  text-gray-800 dark:text-gray-100  pt-10 pb-6 border-t border-gray-200 dark:border-gray-700">
+      <section className='max-w-7xl mx-auto'>
 
+      
       <div className="px-6 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
@@ -22,17 +24,18 @@ const Footer = () => {
               <li><Link to="/" className="footerLink">Home</Link></li>
               <li><Link to="/all-tuitions" className="footerLink">Tuitions</Link></li>
               <li><Link to="/all-tutors" className="footerLink">Tutors</Link></li>
-              <li><Link to="/about" className="footerLink">About Us</Link></li>
+              {/* <li><Link to="/about" className="footerLink">About Us</Link></li> */}
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4 footerLinkHeading">Resources</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href='' className="footerLink">FAQ</a></li>
-              <li><a href='' className="footerLink">Privacy Policy</a></li>
-              <li><a href='' className="footerLink">Terms of Service</a></li>
-              <li><a href='' className="footerLink">Support</a></li>
+              {/* <li><a href='#faq' className="footerLink">FAQ</a></li> */}
+              {/* <li><a href='' className="footerLink">Privacy Policy</a></li>
+              <li><a href='' className="footerLink">Terms of Service</a></li> */}
+              <li><Link to="/about" className="footerLink">About Us</Link></li>
+              <li><Link to='/contact' className="footerLink">Contact</Link></li>
             </ul>
           </div>
 
@@ -52,6 +55,7 @@ const Footer = () => {
 
         <div className="text-center text-sm text-gray-500">&copy; {new Date().getFullYear()} eTuitionBd. All rights reserved.</div>
       </div>
+      </section>
     </footer>
   );
 };

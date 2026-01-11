@@ -22,7 +22,7 @@ const TuitionPosts = () => {
     };
 
     return (
-        <section className="px-6 md:px-10 py-6 md:py-10 bg-gray-50 dark:bg-gray-900  ">
+        <section className="px-6 md:px-10 py-6 md:py-10   ">
             <div className="max-w-7xl mx-auto ">
                 <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} 
                 className="text-3xl md:text-4xl font-bold text-indigo-600 mb-8 text-center"> Latest Tuition Posts</motion.h2>

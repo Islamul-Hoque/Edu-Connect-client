@@ -4,8 +4,9 @@ import { Link, NavLink } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
 import toast from 'react-hot-toast';
 import { useQueryClient } from '@tanstack/react-query';
-import { HiOutlineHome, HiOutlineInformationCircle, HiOutlineMail } from "react-icons/hi";
+import { HiOutlineBookOpen, HiOutlineHome, HiOutlineInformationCircle, HiOutlineMail } from "react-icons/hi";
 import { LuLayoutDashboard } from "react-icons/lu";
+import { FaChalkboardTeacher } from 'react-icons/fa';
 
 const NavBar = () => {
     const { user, logOut } = useAuth();
@@ -46,8 +47,8 @@ const NavBar = () => {
 
     const links = <>
         <li><NavLink className={activeClass} to="/"><HiOutlineHome/>Home</NavLink></li>
-        <li><NavLink className={activeClass} to="/all-tuitions">Tuitions</NavLink></li>
-        <li><NavLink className={activeClass} to="/all-tutors">Tutors</NavLink></li>
+        <li><NavLink className={activeClass} to="/all-tuitions"> <HiOutlineBookOpen/> Tuitions</NavLink></li>
+        <li><NavLink className={activeClass} to="/all-tutors"><FaChalkboardTeacher/> Tutors</NavLink></li>
         <li><NavLink className={activeClass} to="/about"><HiOutlineInformationCircle /> About</NavLink></li>
         <li><NavLink className={activeClass} to="/contact"><HiOutlineMail/>Contact</NavLink></li>
 
@@ -59,7 +60,9 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="px-6 md:px-10 navbar bg-indigo-50 dark:bg-gray-900 sticky z-50 top-0 shadow">
+        <div className='bg-indigo-50 dark:bg-gray-900 sticky z-50 top-0'>
+        <div className='max-w-7xl mx-auto '>
+        <div className="px-6 md:px-10 navbar   sha dow">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -106,6 +109,8 @@ const NavBar = () => {
                     </div>
                 )}
             </div>
+        </div>
+        </div>
         </div>
     );
 };

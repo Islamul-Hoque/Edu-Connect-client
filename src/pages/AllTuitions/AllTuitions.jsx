@@ -52,14 +52,14 @@ const AllTuitions = () => {
 
   const headingVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
   return (
-    <div className=" px-6 md:px-10 py-6 md:py-10 bg-dark ">
+    <div className=" px-6 md:px-10 py-6 md:py-10  ">
       <div className="text-center mb-6">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 text-center" >All Tuitions</motion.h2>
         <br />
         <p className="text-gray-600 dark:text-gray-50">Showing {tuitions.length} of {total} tuitions</p>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm mb-6">
+      <div className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-sm mb-6">
         <div className="flex flex-wrap gap-4 justify-center items-center">
           <div className="relative w-full sm:w-64 md:w-80 "> 
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-[1rem]" />

@@ -41,8 +41,8 @@ const faqs = [
 ];
 
     return (
-        <div className="px-6 md:px-10 pb-6 md:pb-10 ">
-          <div className="">
+        <div className="px-6 md:px-10 pb-6 md:pb-6 ">
+          <div>
             <div className="text-center  my-14">
                 <motion.h2 initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
                   className="text-3xl md:text-4xl font-bold text-indigo-600 mb-8 text-center">Frequently <span className="text-gradient"> Asked Questions</span></motion.h2>

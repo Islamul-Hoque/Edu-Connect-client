@@ -117,7 +117,7 @@ return (
                     </fieldset>
                 </form>
 
-                <p className="text-gray-500  text-center">Already have an account? <Link to="/login" state={location.state}  className="text-gradient font-medium hover:text-indigo-600 hover:link" >  Login </Link></p>
+                <p className="text-gray-500 dark:text-gray-50  text-center">Already have an account? <Link to="/login" state={location.state}  className="text-gradient font-medium hover:text-indigo-600 hover:link" >  Login </Link></p>
             </div>
         </div>
     </div>
