@@ -66,9 +66,9 @@ const handleDelete = async (appId) => {
     <div className="px-6 md:px-10 py-6 md:py-10">
       <h2 className="text-2xl font-bold text-indigo-600 mb-4">My Applications ({myApplications.length})</h2>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table dark:bg-gray-900">
           <thead>
-            <tr>
+            <tr className="dark:text-gray-50">
               <th>#</th>
               <th>Tuition Info</th>
               <th>Student Info</th>
@@ -81,7 +81,7 @@ const handleDelete = async (appId) => {
           </thead>
           <tbody>
             {myApplications.map((app, index) => (
-              <tr key={app._id}>
+              <tr key={app._id} className="dark:text-gray-50">
                 <td>{index + 1}</td>
                 <td><span className="font-semibold"> {app.tuitionSubject}</span><br /><span> {app.tuitionClass}</span></td>
                 <td><span className="font-semibold">{app.studentName}</span><br /> <span> {app.studentEmail}</span></td>

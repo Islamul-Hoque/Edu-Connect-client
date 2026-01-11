@@ -54,12 +54,12 @@ const MyTuitions = () => {
     if (isError) return <p>Something went wrong!</p>;
 
     return (
-        <div className="p-6">
-            <h2 className="text-2xl font-bold text-indigo-600 mb-4"> My Tuitions ({myTuitions.length}) </h2>
+        <div className="p-6 ">
+            <h2 className="text-2xl font-bold text-indigo-600  mb-4"> My Tuitions ({myTuitions.length}) </h2>
             <div className="overflow-x-auto">
-                <table className="table table-zebra w-full">
+                <table className="table table-zebra dark:bg-gray-900 w-full">
                     <thead>
-                        <tr>
+                        <tr className="dark:text-gray-50">
                             <th>#</th>
                             <th>Subject</th>
                             <th>Class</th>
@@ -71,7 +71,7 @@ const MyTuitions = () => {
                     </thead>
                     <tbody>
                         {myTuitions.map((tuition, index) => (
-                        <tr key={tuition._id}>
+                        <tr key={tuition._id} className="dark:text-gray-50">
                             <td>{index + 1}</td>
                             <td>{tuition.subject}</td>
                             <td>{tuition.class}</td>

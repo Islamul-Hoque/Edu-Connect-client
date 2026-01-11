@@ -6,16 +6,9 @@ import { QueryClient, useQuery } from "@tanstack/react-query";
 import TuitionCardSkeleton from "../../../Components/Skeleton/TuitionCardSkeleton";
 
 const TuitionPosts = () => {
-    // const [tuitions, setTuitions] = useState([]);
     const axiosSecure = useAxiosSecure();
 
-    // useEffect(() => {
-    // axiosSecure.get("/latest-tuitions")
-    //     .then(res => setTuitions(res.data))
-    //     .catch(error => console.error("Error fetching tuitions:", error));
-    // }, [axiosSecure]);
-
-    const { data: tuitions = [], isLoading, isError } = useQuery({
+    const { data: tuitions = [], isLoading, isError, isFetching } = useQuery({
         queryKey: ["latest-tuitions"],
         queryFn: async () => {
             const res = await axiosSecure.get("/latest-tuitions");
@@ -29,12 +22,12 @@ const TuitionPosts = () => {
     };
 
     return (
-        <section className="px-6 md:px-10 py-6 md:py-10 bg-linear-to-br from-indigo-50 via-purple-50/0.1 bg-dark  ">
+        <section className="px-6 md:px-10 py-6 md:py-10 bg-gray-50 dark:bg-gray-900  ">
             <div className="max-w-7xl mx-auto ">
                 <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} 
                 className="text-3xl md:text-4xl font-bold text-indigo-600 mb-8 text-center"> Latest Tuition Posts</motion.h2>
 
-            {isLoading && <TuitionCardSkeleton count={4} />}
+            {isLoading || isFetching && ( <TuitionCardSkeleton count={4} /> ) }
 
             {isError && (
                 <div className="text-center py-10 ">

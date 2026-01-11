@@ -48,9 +48,9 @@ const TuitionManagement = () => {
       <h2 className="text-2xl font-bold text-indigo-600 mb-4">Tuition Management ({tuitions.length})</h2>
 
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table dark:bg-gray-900">
           <thead>
-            <tr>
+            <tr className="dark:text-gray-50">
               <th>#</th>
               <th>Student info</th>
               <th>Subject</th>
@@ -64,11 +64,11 @@ const TuitionManagement = () => {
             {tuitions.map((tuition, index) => {
               const isPending = tuition.status === "Pending";
               return (
-                <tr key={tuition._id}>
+                <tr key={tuition._id} className="dark:text-gray-50">
                   <td>{index + 1}</td>
                   <td>
                     <div>{tuition.studentName}</div>
-                    <div className="text-sm opacity-50">{tuition.studentEmail}</div>
+                    <div className="text-sm opacity-50 dark:opacity-100">{tuition.studentEmail}</div>
                   </td>
                   <td>{tuition.subject}</td>
                   <td>{tuition.class}</td>

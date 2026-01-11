@@ -21,18 +21,18 @@ const RevenueHistory = () => {
     const totalEarnings = payments.reduce((sum, p) => sum + p.amount, 0);
 
     return (
-        <div className="px-6 md:px-10 py-6 md:py-10">
-            <h3 className="text-2xl font-bold text-indigo-600 mb-4"> Revenue History </h3>
+        <div className="px-6 md:px-10 py-6 md:py-10 min-h-screen">
+            <h3 className="text-2xl font-bold  text-indigo-600 mb-4"> Revenue History </h3>
 
-            <div className="bg-indigo-50 p-4 rounded-lg mb-6">
-                <p className="text-lg font-semibold text-indigo-700"> Total Earnings: {totalEarnings} {payments[0]?.currency?.toUpperCase() || "Tk"} </p>
-                <p className="text-sm text-gray-600"> Total Transactions: {payments.length} </p>
+            <div className="bg-indigo-50 dark:bg-gray-900 p-4 rounded-lg mb-6">
+                <p className="text-lg font-semibold text-indigo-700 dark:text-indigo-500"> Total Earnings: {totalEarnings} {payments[0]?.currency?.toUpperCase() || "Tk"} </p>
+                <p className="text-sm text-gray-600 dark:text-gray-50"> Total Transactions: {payments.length} </p>
             </div>
 
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table dark:bg-gray-900">
                     <thead>
-                        <tr>
+                        <tr className="dark:text-gray-50">
                             <th>#</th>
                             <th>Subject</th>
                             <th>Class</th>
@@ -43,7 +43,7 @@ const RevenueHistory = () => {
                         </tr>
                     </thead>
                 <tbody>{payments.map((p, index) => (
-                    <tr key={p._id}>
+                    <tr key={p._id} className="dark:text-gray-50">
                         <td>{index + 1}</td>
                         <td>{p.subject}</td>
                         <td>{p.class}</td>

@@ -21,24 +21,24 @@ const StudentDashboardHome = () => {
       <h2 className="text-3xl font-bold text-indigo-600 mb-8 text-center"> Student Dashboard </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <div className="bg-indigo-50 shadow rounded-xl p-6 text-center">
-          <h3 className="text-lg font-semibold text-indigo-600 mb-2"> Total Tuition Posts</h3>
-          <p className="text-3xl font-bold text-indigo-700">{stats.totalPosts}</p>
+        <div className="bg-indigo-50 dark:bg-gray-900  shadow rounded-xl p-6 text-center">
+          <h3 className="text-lg font-semibold text-indigo-600 dark:text-indigo-300 mb-2"> Total Tuition Posts</h3>
+          <p className="text-3xl font-bold text-indigo-700 dark:text-indigo-300 ">{stats.totalPosts}</p>
         </div>
 
-        <div className="bg-green-50 shadow rounded-xl p-6 text-center">
-          <h3 className="text-lg font-semibold text-green-600 mb-2">  Approved Tuitions</h3>
-          <p className="text-3xl font-bold text-green-700">{stats.approved}</p>
+        <div className="bg-green-50 dark:bg-gray-900 shadow rounded-xl p-6 text-center">
+          <h3 className="text-lg font-semibold text-green-600 dark:dark:text-green-300 mb-2">  Approved Tuitions</h3>
+          <p className="text-3xl font-bold text-green-700 dark:dark:text-green-300">{stats.approved}</p>
         </div>
 
-        <div className="bg-yellow-50 shadow rounded-xl p-6 text-center">
-          <h3 className="text-lg font-semibold text-yellow-600 mb-2"> Pending Tuitions </h3>
-          <p className="text-3xl font-bold text-yellow-700">{stats.pending}</p>
+        <div className="bg-yellow-50 dark:bg-gray-900 shadow rounded-xl p-6 text-center">
+          <h3 className="text-lg font-semibold text-yellow-600 dark:text-yellow-300 mb-2"> Pending Tuitions </h3>
+          <p className="text-3xl font-bold text-yellow-700 dark:text-yellow-300">{stats.pending}</p>
         </div>
 
-        <div className="bg-red-50 shadow rounded-xl p-6 text-center">
-          <h3 className="text-lg font-semibold text-red-600 mb-2"> Rejected Tuitions </h3>
-          <p className="text-3xl font-bold text-red-700">{stats.rejected}</p>
+        <div className="bg-red-50 dark:bg-gray-900 shadow rounded-xl p-6 text-center">
+          <h3 className="text-lg font-semibold text-red-600 dark:text-red-400 mb-2"> Rejected Tuitions </h3>
+          <p className="text-3xl font-bold text-red-700 dark:text-red-400 ">{stats.rejected}</p>
         </div>
       </div>
     </div>

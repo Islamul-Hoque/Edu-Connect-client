@@ -1,17 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaBookOpen, FaChartBar, FaClipboardList, FaGraduationCap, FaMoneyBillWave, FaPlusCircle, FaRegCreditCard, FaTasks, FaUserEdit, FaUsers } from 'react-icons/fa';
 import { Link, NavLink, Outlet } from 'react-router';
 import useRole from '../../hooks/useRole';
 import logo from '../../assets/eTuitionBD.png';
 import { FaHome } from "react-icons/fa";
-import { MdDashboard } from 'react-icons/md';
+import { MdDashboard, MdMenu } from 'react-icons/md';
 
 const DashboardLayout = () => {
   const { role } = useRole();
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+    useEffect(() => {
+        const html = document.querySelector("html");
+        html.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+    }, [theme]);
+
+    const handleTheme = (checked) => {
+        setTheme(checked ? "dark" : "light");
+    };
 
   const activeClass = ({ isActive }) => isActive
     ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
-    : "text-gray-700 hover:text-indigo-500 px-3 py-1 rounded-md";
+    : "text-gray-700 dark:text-gray-50 hover:text-indigo-500 px-3 py-1 rounded-md";
 
   return (
     <div className="drawer lg:drawer-open max-w-7xl mx-auto">
@@ -20,12 +31,20 @@ const DashboardLayout = () => {
       <div className="drawer-content flex flex-col">
         <nav className="navbar w-full bg-indigo-50 dark:bg-gray-800 text-gray-800 shadow sticky top-0 z-10 flex justify-between">
           <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <MdMenu className="text-2xl text-gray-800 dark:text-gray-100" />
           </label>
 
-          <Link to='/' className="font-bold md:text-2xl text-indigo-500">EduConnect Dashboard</Link>
+          <Link to='/' className="font-bold md:text-2xl text-indigo-500">Dashboard</Link>
+        {/* Theme Icon */}
+          <label className="swap swap-rotate text-base-content mr-4">
+              <input type="checkbox"
+              onChange={(e) => handleTheme(e.target.checked)}
+              defaultChecked={localStorage.getItem('theme') === "dark"}
+              className="theme-controller" />
+              <svg aria-label="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="swap-off fill-current w-6 h-6"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></g></svg>
+              <svg aria-label="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="swap-on fill-current w-6 h-6"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></g></svg>
+          </label>
+
         </nav>
 
         <div className=""> <Outlet /> </div>

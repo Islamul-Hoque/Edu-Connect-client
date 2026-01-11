@@ -66,9 +66,9 @@ const AppliedTutors = () => {
       <h2 className="text-2xl font-bold text-indigo-600 mb-4"> Applied Tutors ({applications.length}) </h2>
 
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table dark:bg-gray-900">
           <thead>
-            <tr>
+            <tr className="dark:text-gray-50">
               <th>#</th>
               <th>Tuition Info</th>
               <th>Tutor</th>
@@ -80,7 +80,7 @@ const AppliedTutors = () => {
           </thead>
           <tbody>
             {applications.map((app, index) => (
-              <tr key={app._id}>
+              <tr key={app._id} className="dark:text-gray-50">
                 <td>{index + 1}</td>
 
                 <td>
@@ -93,7 +93,7 @@ const AppliedTutors = () => {
                     <div className="avatar">  <div className="mask mask-squircle h-12 w-12"><img src={app.tutorPhoto}  alt="Tutor Avatar" /> </div> </div>
                     <div>
                       <div className="font-bold">{app.tutorName}</div>
-                      <div className="text-sm opacity-50">{app.tutorEmail}</div>
+                      <div className="text-sm opacity-50 dark:opacity-100">{app.tutorEmail}</div>
                     </div>
                   </div>
                 </td>

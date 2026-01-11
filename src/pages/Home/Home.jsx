@@ -11,10 +11,10 @@ const Home = () => {
     return (
         <div className=''>
             <Hero/>
-            {/* <TuitionPosts/>
+            <TuitionPosts/>
             <Tutors/>
             <HowItWorks/>
-            <WhyChooseUs/> */}
+            <WhyChooseUs/>
             <Faq/>
             <PlatformStats />
         </div>

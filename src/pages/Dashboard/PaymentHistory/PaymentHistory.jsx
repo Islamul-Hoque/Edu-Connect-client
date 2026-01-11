@@ -21,23 +21,23 @@ const PaymentHistory = () => {
       <h2 className="text-3xl font-bold text-indigo-600 mb-8 text-center"> My Payment History </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-indigo-50 shadow rounded-xl p-6 text-center">
+        <div className="bg-indigo-50 shadow rounded-xl p-6 dark:bg-gray-900 text-center">
           <h3 className="text-lg font-semibold text-indigo-600 mb-2"> Total Payments </h3>
           <p className="text-3xl font-bold text-indigo-700"> {payments.length} </p>
         </div>
 
-        <div className="bg-green-50 shadow rounded-xl p-6 text-center">
+        <div className="bg-green-50 shadow rounded-xl p-6 dark:bg-gray-900 text-center">
           <h3 className="text-lg font-semibold text-green-600 mb-2"> Total Payments Amount </h3>
           <p className="text-3xl font-bold text-green-700"> {payments.reduce((sum, pay) => sum + pay.amount, 0)} USD</p>
         </div>
       </div>
 
-      <div className="bg-white shadow-lg rounded-xl p-6">
+      <div className="bg-white shadow-lg rounded-xl p-6 dark:bg-gray-900">
         <h3 className="text-2xl font-semibold text-indigo-500 mb-4"> Successful Transactions </h3>
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table className="table w-full ">
             <thead>
-              <tr>
+              <tr className="dark:text-gray-50">
                 <th>#</th>
                 <th>Tutor</th>
                 <th>Subject</th>
@@ -49,14 +49,14 @@ const PaymentHistory = () => {
             </thead>
             <tbody>
               {payments.map((pay, index) => (
-                <tr key={pay._id}>
+                <tr key={pay._id} className="dark:text-gray-50">
                     <td>{index + 1}</td>
                     <td>
                   <div className="flex flex-col">
-                    <span className="font-semibold text-gray-800">
+                    <span className="font-semibold text-gray-800 dark:text-gray-50">
                       {pay.tutorName}
                     </span>
-                    <span className="text-sm text-gray-500">
+                    <span className="text-sm text-gray-500 dark:text-gray-50">
                       {pay.tutorEmail}
                     </span>
                   </div>

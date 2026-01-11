@@ -75,7 +75,7 @@ const UserManagement = () => {
   return (
     <div className="px-6 md:px-10 py-6 md:py-10">
       <h2 className="text-2xl font-bold text-indigo-600 mb-4">User Management ({users.length})</h2>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto dark:bg-gray-900">
         <table className="table">
           <thead>
             <tr><th>#</th>
@@ -117,16 +117,16 @@ const UserManagement = () => {
       </div>
 
       <dialog ref={UpdateModalRef} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-white">
+        <div className="modal-box bg-white dark:bg-gray-900">
           <h3 className="font-bold text-[1.5rem] text-center">Update User</h3>
           {selectedUser && (
             <form onSubmit={(e) => handleUpdateSubmit(e, selectedUser)} className="space-y-3 mt-4">
-              <label className="label">Name</label><input name="displayName" type="text" value={selectedUser.displayName || ""} onChange={(e) => setSelectedUser({ ...selectedUser, displayName: e.target.value })} className="input w-full" required />
-              <label className="label">Email</label><input name="email" type="email" value={selectedUser.email || ""} onChange={(e) => setSelectedUser({ ...selectedUser, email: e.target.value })} className="input w-full" required />
-              <label className="label">Photo URL</label><input name="photoURL" type="text" value={selectedUser.photoURL || ""} onChange={(e) => setSelectedUser({ ...selectedUser, photoURL: e.target.value })} className="input w-full" />
-              <label className="label">Phone</label><input name="phone" type="text" value={selectedUser.phone || ""} onChange={(e) => setSelectedUser({ ...selectedUser, phone: e.target.value })} className="input w-full" />
+              <label className="label">Name</label><input name="displayName" type="text" value={selectedUser.displayName || ""} onChange={(e) => setSelectedUser({ ...selectedUser, displayName: e.target.value })} className="inputField inputFieldDark" required />
+              <label className="label">Email</label><input name="email" type="email" value={selectedUser.email || ""} onChange={(e) => setSelectedUser({ ...selectedUser, email: e.target.value })} className="inputField inputFieldDark" required />
+              <label className="label">Photo URL</label><input name="photoURL" type="text" value={selectedUser.photoURL || ""} onChange={(e) => setSelectedUser({ ...selectedUser, photoURL: e.target.value })} className="inputField inputFieldDark" />
+              <label className="label">Phone</label><input name="phone" type="text" value={selectedUser.phone || ""} onChange={(e) => setSelectedUser({ ...selectedUser, phone: e.target.value })} className="inputField inputFieldDark" />
               <label className="label">Status</label>
-                <select name="status" value={selectedUser.status || ""} onChange={(e) => setSelectedUser({ ...selectedUser, status: e.target.value })} className="select w-full">
+                <select name="status" value={selectedUser.status || ""} onChange={(e) => setSelectedUser({ ...selectedUser, status: e.target.value })} className="select inputField inputFieldDark">
                   <option value="Active">Active</option>
                   <option value="Inactive">Inactive</option>
                 </select>

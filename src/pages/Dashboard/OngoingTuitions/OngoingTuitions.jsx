@@ -22,9 +22,9 @@ const OngoingTuitions = () => {
         <div className="px-6 md:px-10 py-6 md:py-10">
             <h3 className="text-2xl font-bold text-indigo-600 mb-4">Ongoing Tuitions ({ongoingTuitions.length})</h3>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table dark:bg-gray-900">
                     <thead>
-                        <tr>
+                        <tr className="dark:text-gray-50">
                             <th>#</th>
                             <th>Subject</th>
                             <th>Class</th>
@@ -35,7 +35,7 @@ const OngoingTuitions = () => {
                         </tr>
                     </thead>
                 <tbody>{ongoingTuitions.map((tuition, index) => (
-                    <tr key={tuition._id}>
+                    <tr key={tuition._id} className="dark:text-gray-50">
                         <td>{index + 1}</td>
                         <td>{tuition.tuitionSubject}</td>
                         <td>{tuition.tuitionClass}</td>

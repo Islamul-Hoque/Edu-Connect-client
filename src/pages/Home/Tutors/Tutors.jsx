@@ -8,14 +8,7 @@ import { QueryClient, useQuery } from "@tanstack/react-query";
 const headingVariants = { hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } };
 
 const LatestTutors = () => {
-  // const [tutors, setTutors] = useState([]);
   const axiosSecure = useAxiosSecure();
-
-  // useEffect(() => {
-  //   axiosSecure.get("/latest-tutors")
-  //     .then(res => setTutors(res.data))
-  //     .catch(error => console.error("Error fetching tutors:", error));
-  // }, [axiosSecure]);
 
   const { data: tutors = [], isLoading, isError, isFetching } = useQuery({
     queryKey: ["latest-tutors"],
@@ -26,7 +19,7 @@ const LatestTutors = () => {
 
 
   return (
-    <section className="px-6 md:px-10 py-6 md:py-10 bg-linear-to-bl from-indigo-50  via-purple-50/0.1 to-gray-100 bg-dark ">
+    <section className="px-6 md:px-10 py-6 md:py-10 bg-base-100 ">
       <div className="max-w-7xl mx-auto">
         <motion.h2 variants={headingVariants} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.2 }} className="text-3xl md:text-4xl font-bold text-indigo-600 mb-8 text-center">Latest Tutors</motion.h2>
 

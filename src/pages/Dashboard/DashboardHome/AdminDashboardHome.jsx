@@ -39,9 +39,9 @@ const AdminDashboardHome = () => {
       <h2 className="text-4xl font-bold text-indigo-600 mb-8 text-center"> Admin Dashboard Overview </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        <div className="bg-white shadow-lg rounded-xl p-4">
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4"> User Stats </h3>
-          <p className="text-gray-600 mb-2"> Total Users:{' '} <span className="font-bold text-indigo-500">{totalUsers}</span> </p>
+        <div className="bg-white dark:bg-gray-900 shadow-lg rounded-xl p-4">
+          <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-50 mb-4"> User Stats </h3>
+          <p className="text-gray-600 dark:text-gray-50 mb-2"> Total Users:{' '} <span className="font-bold text-indigo-500">{totalUsers}</span> </p>
 
           <div className="stats stats-horizontal">
             {adminStats.userStats.map((stat) => (
@@ -53,9 +53,9 @@ const AdminDashboardHome = () => {
           </div>
         </div>
 
-        <div className="bg-white shadow-lg rounded-xl p-4">
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4"> User Roles </h3>
-            <p className="text-gray-600 mb-2"> Total Role Users:{' '} <span className="font-bold text-indigo-500">{totalRoles}</span> </p>
+        <div className="bg-white dark:bg-gray-900 shadow-lg rounded-xl p-4">
+          <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-50 mb-4"> User Roles </h3>
+            <p className="text-gray-600 dark:text-gray-50 mb-2"> Total Role Users:{' '} <span className="font-bold text-indigo-500">{totalRoles}</span> </p>
             <div className="stats stats-horizontal">
               {adminStats.roleStats.map((stat) => (
                 <div key={stat._id} className="stat">
@@ -66,9 +66,9 @@ const AdminDashboardHome = () => {
             </div>
         </div>
 
-        <div className="bg-white shadow-lg rounded-xl p-4">
-          <h3 className="text-2xl font-semibold text-gray-700  mb-4">Tuition Post Stats</h3>
-            <p className="text-gray-600 mb-2"> Total Tuition Posts:{' '}<span className="font-bold text-indigo-500">{adminStats.totalTuitions}</span> </p>
+        <div className="bg-white dark:bg-gray-900  shadow-lg rounded-xl p-4">
+          <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-50 mb-4">Tuition Post Stats</h3>
+            <p className="text-gray-600 dark:text-gray-50 mb-2"> Total Tuition Posts:{' '}<span className="font-bold text-indigo-500">{adminStats.totalTuitions}</span> </p>
             <div className="stats stats-horizontal">
               {adminStats.tuitionStats.map((stat) => (
                 <div key={stat._id} className="stat">
@@ -80,7 +80,7 @@ const AdminDashboardHome = () => {
         </div>
       </div>
 
-      <div className="bg-white shadow-lg rounded-xl p-6  mx-auto">
+      <div className="bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6  mx-auto">
         <h3 className="text-xl font-semibold text-indigo-500 mb-4 text-center"> Platform Distribution Overview </h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={combinedData}>
