@@ -92,7 +92,7 @@ const handleDemoLogin = (role) => {
                 {errors.password?.type === "required" && <p className="text-red-500">Please enter your password</p>}
               </div>
 
-              <button className="w-full btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mt-3">Login</button>
+              <button className="w-full btn bg-[#3B82F6] text-white hover:bg-[#2563EB] shadow-md mt-3 transition duration-300">Login</button>
             </fieldset>
           </form>
           <p className="text-gray-500 dark:text-gray-50 text-center"> Don’t have an account?{" "} <Link state={location.state} to="/register" className="text-gradient font-medium hover:text-indigo-600 hover:link"> Sign Up </Link></p>
@@ -114,10 +114,10 @@ const handleDemoLogin = (role) => {
                 <div className="flex-1 h-px bg-[#E5E7EB]"  ></div> 
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <button  onClick={() => handleDemoLogin("student")} className="btn w-full bg-indigo-100 text-indigo-700 hover:bg-indigo-200" >  Login as Student  </button>
-                <button  onClick={() => handleDemoLogin("tutor")} className="btn w-full bg-green-100 text-green-700 hover:bg-green-200" >  Login as Tutor </button>
-                <button  onClick={() => handleDemoLogin("admin")} className="btn w-full bg-red-100 text-red-700 hover:bg-red-200" >  Login as Admin </button>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <button  onClick={() => handleDemoLogin("student")}  className="btn w-full bg-[#3B82F6] text-white hover:bg-[#2563EB] transition duration-300 shadow-md" >  Login as Student </button>
+                <button onClick={() => handleDemoLogin("tutor")} className="btn w-full bg-[#38BDF8] text-white hover:bg-[#0EA5E9] transition duration-300 shadow-md" > Login as Tutor </button>
+                <button  onClick={() => handleDemoLogin("admin")}  className="btn w-full bg-[#60A5FA] text-white hover:bg-[#3B82F6] transition duration-300 shadow-md" >  Login as Admin </button>
               </div>
             </div>
 

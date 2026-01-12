@@ -113,7 +113,7 @@ return (
                         {errors.phone && <p className="text-red-500">Phone number is required.</p>}
 
                         {authError && <p className="text-red-500 text-[0.8rem]">{authError}</p>}
-                        <button className="w-full btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md mt-3">Register</button>
+                        <button className="w-full btn bg-[#3B82F6] text-white hover:bg-[#2563EB] shadow-md mt-3 transition duration-300">Register</button>
                     </fieldset>
                 </form>
 

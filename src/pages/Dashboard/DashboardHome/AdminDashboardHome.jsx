@@ -92,7 +92,7 @@ const AdminDashboardHome = () => {
             {/* <Tooltip /> */}
               <Tooltip
                 contentStyle={{  borderRadius: "8px",  border: "none", }}
-                itemStyle={{  color: theme === "dark" ? "#6366F1" : "#6366F1",  }}
+                // itemStyle={{  color: theme === "dark" ? "#6366F1" : "#6366F1",  }}
                 labelStyle={{  color: theme === "dark" ? "#374151" : "#374151",  fontWeight: "400", }}
               />
             <Legend />
