@@ -66,11 +66,6 @@ const About = () => {
           </motion.div>
         </div>
 
-        {/* <motion.div className="text-center p-12 bg-white SectionCard rounded-xl shadow-xl" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: "easeOut" }} viewport={{ once: true, amount: 0.3 }}>
-          <motion.h3 className="text-3xl font-bold text-indigo-600 mb-4" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>Join Our Community Today!</motion.h3>
-          <motion.p className="text-gray-700 dark:text-gray-50 mb-6" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}>Discover the perfect tutor or find your next great tuition job with ease.</motion.p>
-          <motion.a href="/register" className="inline-block px-10 py-3 text-lg font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition duration-300 shadow-lg" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>Register Now</motion.a>
-        </motion.div> */}
       </div>
     </div>
   );

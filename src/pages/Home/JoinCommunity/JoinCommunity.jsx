@@ -19,9 +19,7 @@ const JoinCommunity = () => {
                 <Link to="/all-tuitions" className="btn bg-indigo-500 text-white hover:bg-indigo-700 shadow-md px-3 md:px-6 py-3 rounded-md flex items-center gap-2" > <FaSearch className="text-lg" /> Find Tuitions </Link>
                 <Link to="/register" className="btn bg-[#3b9ae1] hover:bg-[#2f7fcf] text-white shadow-md px-3 md:px-6 py-3 rounded-md flex items-center gap-2"> <FaChalkboardTeacher className="text-lg" /> Become a Tutor</Link>
 
-                {/* <Link to="/all-tuitions" className="relative inline-flex items-center gap-2 px-6 py-3 rounded-md bg-indigo-500 text-white shadow-md transition-all duration-300 hover:bg-linear-to-r hover:from-indigo-500 hover:to-blue-400 hover:scale-105" >  <FaSearch className="text-lg" />   Find Tuitions </Link>
-                <Link to="/register" className="relative inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#3b9ae1] text-white shadow-md transition-all duration-300 hover:bg-[#2f7fcf] hover:scale-105 hover:shadow-lg" >  <FaChalkboardTeacher className="text-lg" /> Become a Tutor </Link> */}
-            </motion.div>
+                </motion.div>
         </div>
     </div>
     );

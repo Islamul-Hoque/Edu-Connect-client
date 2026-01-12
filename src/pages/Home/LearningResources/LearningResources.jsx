@@ -44,7 +44,7 @@ const cardVariants = {
 
 const ResourceHighlights = () => {
     return (
-        <div className="py-16 px-6 md:px-12 bg-gray-100 dark:bg-gray-900">
+        <div className="py-16 px-6 md:px-12 bg-gray-50 dark:bg-gray-900">
             <div className="max-w-7xl mx-auto">
                 <motion.div  initial={{ opacity: 0, y: -16 }}  whileInView={{ opacity: 1, y: 0 }}  transition={{ duration: 0.6 }}
                     viewport={{ once: false, amount: 0.4 }}  className="text-center mb-10"  >

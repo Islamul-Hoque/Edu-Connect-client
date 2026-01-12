@@ -147,7 +147,7 @@ const HowItWorks = () => {
                       transition={{ type: "spring", stiffness: 100, damping: 15, bounce: 0.4, delay: index * 0.1,  }} className="w-full md:w-[45%] group" >
 
                       <div className="bg-base-200 p-8 rounded-4xl shadow -xl border border-base-300  transition-all duration-300 relative">
-                        {/* Icon + Step + Title in one row */}
+                        
                         <div className="flex items-center gap-3 mb-4">
                           <div className={`w-12 h-12 rounded-2xl ${step.color} text-white flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform`} >
                             {step.icon}

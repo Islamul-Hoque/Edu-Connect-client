@@ -35,12 +35,8 @@ const NavBar = () => {
         }
     }
 
-    // const activeClass = ({ isActive }) => isActive
-    //     ? "bg-indigo-100 text-indigo-600 px-3 py-1 rounded-md font-semibold"
-    //     : "text-gray-800 dark:text-gray-50 hover:text-indigo-500 px-3 py-1 rounded-md";
-
     const activeClass = ({ isActive }) =>
-  isActive
+    isActive
     ? "bg-indigo-200 text-indigo-600 dark:bg-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-md font-semibold"
     : "text-gray-800 dark:text-gray-50 hover:text-indigo-500 dark:hover:text-indigo-400 px-3 py-1 rounded-md";
 

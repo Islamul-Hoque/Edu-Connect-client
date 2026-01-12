@@ -10,7 +10,6 @@ import toast, { Toaster } from "react-hot-toast";
 import { format } from "date-fns";
 import TuitionDetailsSkeleton from "../../Components/Skeleton/TuitionDetailsSkeleton";
 
-
 const TuitionDetails = () => {
   const { user } = useAuth();
   const { id } = useParams();

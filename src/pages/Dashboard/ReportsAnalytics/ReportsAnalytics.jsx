@@ -59,27 +59,27 @@ const ReportsAnalytics = () => {
                     {/* <td>{index + 1}</td> */}
                     <td>{tx.studentEmail} </td>
                     <td>{tx.tutorName} ({tx.tutorEmail})
-                  </td>
-                  <td>{tx.subject}</td>
-                  <td className="text-indigo-500 font-semibold">
+                    </td>
+                    <td>{tx.subject}</td>
+                    <td className="text-indigo-500 font-semibold">
                     {tx.amount} <span className='uppercase'>{tx.currency}</span>
-                  </td>
-                  <td>
-                    {new Date(tx.paidAt).toLocaleDateString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                      year: 'numeric',
+                    </td>
+                    <td>
+                        {new Date(tx.paidAt).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
                     })}
-                  </td>
-                  <td>{tx.transactionId}</td>
+                    </td>
+                    <td>{tx.transactionId}</td>
                 </tr>
-              ))}
+                ))}
             </tbody>
-          </table>
+            </table>
         </div>
-      </div>
+        </div>
     </div>
-  );
+   );
 };
 
 export default ReportsAnalytics;

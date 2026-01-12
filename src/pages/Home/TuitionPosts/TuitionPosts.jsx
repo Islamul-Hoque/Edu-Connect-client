@@ -49,8 +49,3 @@ const TuitionPosts = () => {
 };
 
 export default TuitionPosts;
-
-
-// bg-white dark:bg-gray-800
-
-// dark:hover:shadow-[0_0_10px_rgba(255,255,255,0.05)]  bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700

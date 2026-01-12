@@ -3,8 +3,10 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useTheme from '../../../hooks/useTheme';
 
 const AdminDashboardHome = () => {
+  const { theme, toggleTheme } = useTheme();
   const axiosSecure = useAxiosSecure();
   const { data: adminStats = { userStats: [], roleStats: [], tuitionStats: [] } } = useQuery({
     queryKey: ['admin-stats'],
@@ -80,13 +82,19 @@ const AdminDashboardHome = () => {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-900 shadow-lg rounded-xl p-6  mx-auto">
+      <div className="bg-white dark:bg-gray-900 shadow-lg rounded-xl py-6   mx-auto">
         <h3 className="text-xl font-semibold text-indigo-500 mb-4 text-center"> Platform Distribution Overview </h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={combinedData}>
-            <XAxis dataKey="name" />
+            {/* <XAxis dataKey="name" /> */}
+            <XAxis dataKey="name"   tick={{ fontSize: "10px" }}/>
             <YAxis />
-            <Tooltip />
+            {/* <Tooltip /> */}
+              <Tooltip
+                contentStyle={{  borderRadius: "8px",  border: "none", }}
+                itemStyle={{  color: theme === "dark" ? "#6366F1" : "#6366F1",  }}
+                labelStyle={{  color: theme === "dark" ? "#374151" : "#374151",  fontWeight: "400", }}
+              />
             <Legend />
             <Bar dataKey="value" fill="#6366F1" radius={[4, 4, 0, 0]} />
           </BarChart>
