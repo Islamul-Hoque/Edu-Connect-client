@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { FaBan, FaCheckCircle, FaEdit, FaHourglassHalf, FaLock, FaTimesCircle, FaTrash } from "react-icons/fa";
 
 const MyApplications = () => {
@@ -118,22 +118,23 @@ const handleDelete = async (appId) => {
       </div>
 
       <dialog ref={UpdateModalRef} className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-white">
+        <div className="modal-box SectionCard ">
           <h3 className="font-bold text-[1.5rem] text-center">Update Application</h3>
           {selectedApp && (
               <form onSubmit={(e) => handleUpdateSubmit(e, selectedApp)} className="space-y-3 mt-4">
-                <label className="label">Qualifications</label><input name="qualifications" type="text" value={selectedApp?.qualifications || ""} onChange={(e) => setSelectedApp({ ...selectedApp, qualifications: e.target.value })} className="input w-full" required />
-                <label className="label">Experience</label><input name="experience" type="text" value={selectedApp?.experience || ""} onChange={(e) => setSelectedApp({ ...selectedApp, experience: e.target.value })} className="input w-full" required />
-                <label className="label">Expected Salary</label><input name="salary" type="number" value={selectedApp?.expectedSalary || ""} onChange={(e) => setSelectedApp({ ...selectedApp, expectedSalary: e.target.value })} className="input w-full" required />
-                <label className="label">Contact Number</label><input name="contact" type="text" value={selectedApp?.contact || ""} onChange={(e) => setSelectedApp({ ...selectedApp, contact: e.target.value })} className="input w-full" required />
-                <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">Update Application</button>
+                <label className="label dark:text-gray-50">Qualifications</label><input name="qualifications" type="text" value={selectedApp?.qualifications || ""} onChange={(e) => setSelectedApp({ ...selectedApp, qualifications: e.target.value })} className="inputField inputFieldDark" required />
+                <label className="label dark:text-gray-50">Experience</label><input name="experience" type="text" value={selectedApp?.experience || ""} onChange={(e) => setSelectedApp({ ...selectedApp, experience: e.target.value })} className="inputField inputFieldDark" required />
+                <label className="label dark:text-gray-50">Expected Salary</label><input name="salary" type="number" value={selectedApp?.expectedSalary || ""} onChange={(e) => setSelectedApp({ ...selectedApp, expectedSalary: e.target.value })} className="inputField inputFieldDark" required />
+                <label className="label dark:text-gray-50">Contact Number</label><input name="contact" type="text" value={selectedApp?.contact || ""} onChange={(e) => setSelectedApp({ ...selectedApp, contact: e.target.value })} className="inputField inputFieldDark" required />
+                <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md cursor-pointer mt-3">Update Application</button>
               </form>
           )}
           <div className="modal-action">
-            <form method="dialog" className="w-full"><button className="w-full bg-indigo-100 text-gray-800 py-2 rounded-lg hover:bg-indigo-200 transition duration-300 font-semibold shadow-md">Cancel</button></form>
+            <form method="dialog" className="w-full"><button className="w-full bg-indigo-100 text-gray-800 py-2 rounded-lg hover:bg-indigo-200 cursor-pointer transition duration-300 font-semibold shadow-md">Cancel</button></form>
           </div>
         </div>
       </dialog>
+      <Toaster />
     </div>
   );
 };

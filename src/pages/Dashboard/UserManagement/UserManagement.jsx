@@ -3,7 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../../Components/Loading/Loading";
 import Swal from "sweetalert2";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { FaEdit, FaTrash, FaSync } from "react-icons/fa";
 
 const UserManagement = () => {
@@ -140,6 +140,7 @@ const UserManagement = () => {
           </div>
         </div>
       </dialog>
+      <Toaster />
     </div>
   );
 };

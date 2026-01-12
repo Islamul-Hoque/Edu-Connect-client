@@ -23,15 +23,15 @@ useEffect(() => {
 }, [sessionId, axiosSecure]);
 
 return (
-  <div className='p-6  bg-linear-to-bl from-indigo-50  via-purple-50/0.1 to-gray-100  min-h-screen'>
+  <div className='p-6  bg-base-100 min-h-screen'>
     <div className="text-center ">
       <h2 className="text-4xl font-bold text-success mb-4">Payment Successful 🎉</h2>
-      <div className="text-lg">Transaction ID: <span className="font-mono">{paymentInfo.transactionId}</span></div>
-      <div className="text-lg">Tutor: {paymentInfo.tutorName} ({paymentInfo.tutorEmail})</div>
-      <div className="text-lg">Tuition: {paymentInfo.subject} ({paymentInfo.class})</div>
-      <div className="text-lg">Paid Amount: ${paymentInfo.amount}</div>
-      <div className="text-sm text-gray-500 mt-2">Paid At: {new Date(paymentInfo.paidAt).toLocaleString()}</div>
-      <p className="mt-4 text-gray-600">Thank you! You’ve successfully approved the tutor’s application with payment.</p>
+      <div className="text-lg dark:text-gray-50">Transaction ID: <span className="font-mono">{paymentInfo.transactionId}</span></div>
+      <div className="text-lg dark:text-gray-50">Tutor: {paymentInfo.tutorName} ({paymentInfo.tutorEmail})</div>
+      <div className="text-lg dark:text-gray-50">Tuition: {paymentInfo.subject} ({paymentInfo.class})</div>
+      <div className="text-lg dark:text-gray-50">Paid Amount: ${paymentInfo.amount}</div>
+      <div className="text-sm dark:text-gray-50 text-gray-500 mt-2">Paid At: {new Date(paymentInfo.paidAt).toLocaleString()}</div>
+      <p className="mt-4 text-gray-600 dark:text-gray-50">Thank you! You’ve successfully approved the tutor’s application with payment.</p>
       <Link to="/dashboard/applied-tutors"> <button className="btn bg-indigo-600 text-white rounded-md font-semibold py-2 hover:bg-indigo-700 transition duration-300 shadow-md mt-4">
         <FaArrowLeft className="text-white" /> Back to My Applications</button> </Link>
     </div>

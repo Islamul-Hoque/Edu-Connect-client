@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 
@@ -120,6 +120,7 @@ return (
                 <p className="text-gray-500 dark:text-gray-50  text-center">Already have an account? <Link to="/login" state={location.state}  className="text-gradient font-medium hover:text-indigo-600 hover:link" >  Login </Link></p>
             </div>
         </div>
+        <Toaster />
     </div>
 )
 }

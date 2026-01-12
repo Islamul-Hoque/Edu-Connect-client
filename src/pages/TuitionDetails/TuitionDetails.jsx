@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 import { FaBookOpen, FaGraduationCap, FaSchool, FaMapMarkerAlt, FaClock, FaMoneyBillWave, FaUser, FaPhoneAlt, FaEye, FaClipboardList, FaEnvelope, FaRegCalendarAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import Loading from "../../Components/Loading/Loading";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { format } from "date-fns";
+import TuitionDetailsSkeleton from "../../Components/Skeleton/TuitionDetailsSkeleton";
+
 
 const TuitionDetails = () => {
   const { user } = useAuth();
@@ -70,12 +72,18 @@ try {
 }
 };
 
-  if (isLoading || roleLoading) return <Loading />;
+// if (isLoading || roleLoading) return <Loading />;
 
   return (
     <div className="px-6 md:px-10 py-14  ">
       <h1 className="text-4xl font-bold text-indigo-600 dark:text- indigo-400 mb-6 text-center">{tuition.subject} Tuition Details</h1>
+
+      { (isLoading || roleLoading) && <TuitionDetailsSkeleton /> }
+
+    { (!isLoading && !roleLoading) &&  
     <motion.div className="max-w-7xl dark:bg-gray-900 mx-auto bg-white shadow-lg rounded-xl p-8 mt-10 space-y-4" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+      
+
       <h2 className="text-3xl font-bold text-indigo-600 mb-6 flex items-center gap-2"><FaBookOpen /> {tuition.subject}</h2>
 
       <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaGraduationCap className="text-indigo-500" /> Class: {tuition.class}</p>
@@ -87,7 +95,11 @@ try {
       <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaPhoneAlt className="text-indigo-500" /> Phone: {tuition.phone}</p>
       <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"><FaEnvelope className="text-indigo-500" /> Email: {tuition.studentEmail}</p>
       <p className="text-gray-700 dark:text-gray-50 flex items-center gap-2"> <FaClipboardList className="text-indigo-500" />Additional Requirements: {tuition.additionalRequirements}</p>
-      <div className="text-gray-600 dark:text-gray-50 text-sm flex items-center gap-2"> <FaRegCalendarAlt className='text-indigo-500'/> {format(new Date(tuition.createdAt), "dd/MM/yyyy")}</div>
+      <div className="text-gray-600 dark:text-gray-50 text-sm flex items-center gap-2"> 
+        <FaRegCalendarAlt className='text-indigo-500'/>
+         {/* {format(new Date(tuition.createdAt), "dd/MM/yyyy")} */}
+         {tuition?.createdAt ? format(new Date(tuition.createdAt), "dd/MM/yyyy") : "—"}
+        </div>
       {user && role === "Tutor" && (
             <button className="mt-6 w-full cursor-pointer bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md"
               onClick={handleApplyModalOpen} 
@@ -95,30 +107,33 @@ try {
       )} 
     
     </motion.div>
+    }
 
     <dialog ref={ApplyModalRef} className="modal modal-bottom sm:modal-middle">
-      <div className="modal-box bg-white">
+      <div className="modal-box SectionCard">
         <h3 className="font-bold text-[1.5rem] text-center"> Apply for {tuition.subject} </h3>
 
             <form onSubmit={handleApplySubmit} className="space-y-3 mt-4">
               <div className="flex gap-4">
-                <div className="w-1/2"><label className="label">Name</label><input name="name" defaultValue={user?.displayName} readOnly type="text" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your name" required /></div>
-                <div className="w-1/2"><label className="label">Email</label><input name="email" defaultValue={user?.email || user?.providerData?.[0]?.email} readOnly type="email" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your email" required /></div>
+                <div className="w-1/2"><label className="label dark:text-gray-50">Name</label><input name="name" defaultValue={user?.displayName} readOnly type="text" className="inputField inputFieldDark" placeholder="Your name" required /></div>
+                <div className="w-1/2"><label className="label dark:text-gray-50">Email</label><input name="email" defaultValue={user?.email || user?.providerData?.[0]?.email} readOnly type="email" 
+                className="inputField inputFieldDark" placeholder="Your email" required /></div>
               </div>
-              <label className="label -mb-[0.2rem]">Qualifications</label><input name="qualifications" type="text" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder={`e.g. B.Sc in ${tuition.subject}`} required />
-              <label className="label -mb-[0.2rem]">Experience</label><input name="experience" type="text" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g. 6 years overall teaching experience" required />
-              <label className="label -mb-[0.2rem]">Expected Salary</label><input name="salary" type="number" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g. 4000" required />
-              <label className="label -mb-[0.2rem]">Contact Number</label><input name="contact" type="text" className="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="e.g. 017XXXXXXXX" required />
-              <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">Submit Application</button>
+              <label className="label dark:text-gray-50 -mb-[0.2rem]">Qualifications</label><input name="qualifications" type="text"  className="inputField inputFieldDark" placeholder={`e.g. B.Sc in ${tuition.subject}`} required />
+              <label className="label dark:text-gray-50 -mb-[0.2rem]">Experience</label><input name="experience" type="text"  className="inputField inputFieldDark" placeholder="e.g. 6 years overall teaching experience" required />
+              <label className="label dark:text-gray-50 -mb-[0.2rem]">Expected Salary</label><input name="salary" type="number"  className="inputField inputFieldDark" placeholder="e.g. 4000" required />
+              <label className="label dark:text-gray-50 -mb-[0.2rem]">Contact Number</label><input name="contact" type="text"  className="inputField inputFieldDark" placeholder="e.g. 017XXXXXXXX" required />
+              <button type="submit" className="w-full cursor-pointer bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">Submit Application</button>
             </form>
 
         <div className="modal-action">
           <form method="dialog" className="w-full">
-            <button  className="w-full bg-indigo-100 text-gray-800 py-2 rounded-lg hover:bg-indigo-200 transition duration-300 font-semibold shadow-md"  >  Cancel  </button>
+            <button  className="w-full bg-indigo-100 text-gray-800 py-2 rounded-lg cursor-pointer hover:bg-indigo-200 transition duration-300 font-semibold shadow-md"  >  Cancel  </button>
           </form>
         </div>
       </div>
     </dialog>
+    <Toaster />
   </div>
   );
 };

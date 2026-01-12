@@ -2,7 +2,7 @@ import React from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddTuition = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -95,7 +95,7 @@ const AddTuition = () => {
         </div>
 
         <div>
-          <label className="label dark:text-gray-50">Budget</label>
+          <label className="label dark:text-gray-50">Budget(BDT)</label>
           <input type="number" {...register("budget", { required: true })} className="inputField inputFieldDark" placeholder="Enter budget (e.g. 4000)" />
           {errors.budget && <p className="text-red-500">Budget is required.</p>}
         </div>
@@ -122,12 +122,13 @@ const AddTuition = () => {
         </div>
 
         <div className="md:col-span-2">
-          <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">
+          <button type="submit" className="w-full cursor-pointer bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">
             Submit Tuition Post
           </button>
         </div>
       </form>
     </div>
+    <Toaster/>
     </div>
   );
 };

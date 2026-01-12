@@ -6,8 +6,6 @@ import logo from '../../assets/eTuitionBD.png';
 import { FaHome } from "react-icons/fa";
 import { MdDashboard, MdMenu } from 'react-icons/md';
 import useAuth from '../../hooks/useAuth';
-import toast from 'react-hot-toast';
-import { QueryClient } from '@tanstack/react-query';
 
 const DashboardLayout = () => {
   const { user } = useAuth()

@@ -2,12 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaClock, FaCalendarAlt } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const fadeInUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
 const staggerContainer = { hidden: { opacity: 1 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 } } };
 
-const handleSubmit = (e) => { e.preventDefault(); toast.success("Your message has been sent successfully!"); e.target.reset(); };
+const handleSubmit = (e) => { 
+    e.preventDefault(); 
+    toast.success("Your message has been sent successfully!"); 
+    e.target.reset(); 
+};
 
 const Contact = () => {
     const { user } = useAuth();
@@ -43,6 +47,7 @@ const Contact = () => {
                     </motion.form>
                 </div>
             </div>
+            <Toaster />
         </div>
     );
 };

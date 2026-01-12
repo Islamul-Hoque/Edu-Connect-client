@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure.jsx";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOff } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
@@ -123,6 +123,7 @@ const handleDemoLogin = (role) => {
 
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };

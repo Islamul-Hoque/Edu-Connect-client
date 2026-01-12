@@ -5,7 +5,7 @@ const TutorsCard = ({tutor}) => {
     const cardVariants = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
     return (
         <div>
-        <motion.div variants={cardVariants} className="SectionCard group block 
+        <motion.div variants={cardVariants} className=" group block 
         
         p-6 rounded-xl border-indigo-100/60 dark:border-gray-700 bg-indigo-50/40 dark:bg-gray-800 shadow-sm text-center
         

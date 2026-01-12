@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const UpdateTuitionPost = () => {
     const { id } = useParams();
@@ -87,9 +87,10 @@ const UpdateTuitionPost = () => {
                         {errors.additionalRequirements && <p className="text-red-500">Additional requirements are required.</p>}
                     </div>
 
-                    <div className="md:col-span-2"> <button type="submit" className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">Update Tuition Post</button> </div>
+                    <div className="md:col-span-2"> <button type="submit" className="w-full cursor-pointer bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-semibold shadow-md mt-3">Update Tuition Post</button> </div>
                 </form>
             </div>
+            <Toaster />
         </div>
     );
 };

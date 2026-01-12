@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Logo from '../../../components/Logo/Logo';
 import { Link, NavLink } from 'react-router';
 import useAuth from '../../../hooks/useAuth';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { useQueryClient } from '@tanstack/react-query';
 import { HiOutlineBookOpen, HiOutlineHome, HiOutlineInformationCircle, HiOutlineMail } from "react-icons/hi";
 import { LuLayoutDashboard } from "react-icons/lu";
@@ -112,6 +112,7 @@ const NavBar = () => {
             </div>
         </div>
         </div>
+        <Toaster />
         </div>
     );
 };
